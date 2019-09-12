@@ -1,0 +1,38 @@
+%input {
+    border: 2px solid $justwhite;
+    background: none;
+    font-family: inherit;
+    padding: 5px 10px;
+    color: $justwhite;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+        color: $justwhite;
+    }
+
+    &:focus {
+        background-color: $justwhite;
+        color: $almostblack;
+        outline: none;
+        transition: all 0.2s ease;
+
+        &::placeholder {
+            color: $almostblack;
+        }
+    }
+}
+
+%button {
+    font-family: inherit;
+    font-size: 1em;
+    padding: 6px 14px;
+    background-color: $justwhite;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        transition: all 0.2s ease;
+        background-color: $justwhite;        
+    }
+}

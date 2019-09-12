@@ -76,7 +76,7 @@
         <meta name="theme-color" content="#1F1F1F">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://kit.fontawesome.com/d6cae58ee4.js"></script>
     </head>
     <body>
