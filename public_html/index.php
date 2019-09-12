@@ -37,6 +37,11 @@
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
         break;
 
+        case '/register' :
+        $title = "Register";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/registratie.php';
+        break;
+
     //logout
       case '/x' :
         session_destroy();
