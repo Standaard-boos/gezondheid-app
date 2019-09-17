@@ -27,15 +27,11 @@
 
   switch ($request) {
     //default
-      case '/' :
+      case '/login' :
         $title = "Login";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
         break;
 
-      case '' :
-        $title = "Login";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-        break;
 
     //logout
       case '/x' :
