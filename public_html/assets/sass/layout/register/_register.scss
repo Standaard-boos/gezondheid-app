@@ -1,6 +1,15 @@
 .container_1 {
-    
+  text-align: center;
+  margin: auto;
+ 
     h1{
-        text-align: center;
+       
+      }
+      input{
+          width: auto;
+          height: 30px;
+          border:1px solid #ced4da;
+          border-radius: .25rem;
+          text-align: center;
       }
 }

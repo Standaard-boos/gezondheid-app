@@ -39,7 +39,7 @@
 
         case '/register' :
         $title = "Register";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/registratie.php';
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/register.php';
         break;
 
     //logout
