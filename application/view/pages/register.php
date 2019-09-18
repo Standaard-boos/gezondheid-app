@@ -13,9 +13,8 @@
                 <i class="fas fa-eye icons-input-right"></i>
             </div>
             <div class="login-flex">
-                <input type="number" name="age" value="Leeftijd">
                 <div class="login-form-buttons">
-                <button class="login-form-submit" name="submit" type="submit" >Registeer</button>
+                <button class="login-form-submit" name="submit" type="submit" >Registreer</button>
             </div>
         </form>
 </div>
@@ -25,7 +24,7 @@
     </div>
         <form class="login-form" name="newForm" method="get" onSubmit="formAction(this)">
             <div class="login-flex">
-            <label>Geslacht</label>
+            <p>Geslacht</label>
             </div>
             <div class="login-flex">
                 <input type="radio" name="gender" value="male" > Male
@@ -41,9 +40,9 @@
                 <label>Leeftijd</label>
             </div>
             <div class="login-flex">
-                <input type="number" name="age" value="Leeftijd">
+                <input type="number" name="age" value="">
                 <div class="login-form-buttons">
-                <button class="login-form-submit" name="submit" type="submit" >Registeer</button>
+                <button class="login-form-submit" name="submit" type="submit" >Waarden toevoegen</button>
             </div>
     </form>
 </div>

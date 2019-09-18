@@ -1,22 +1,26 @@
-.container-login{
+.container-login {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+
   @include respond-to('portrait') {
       width: 750px;   
-  }; 
+  }
+
    @include respond-to('landscape') {
       width: 970px;   
-  }; 
+  }
+
    @include respond-to('desktop-hd') {
       width: 1170px;   
-  }; 
+  }
+
   .login-header{
       padding-top: 10%;
       @include respond-to('landscape') {
           padding-top: 15%;   
-      };
+      }
       width: 100%;
       display: flex;
       justify-content: center;
@@ -29,22 +33,22 @@
       position: relative;
       @include respond-to('portrait') {
           margin-top: 15%;   
-      };
+      }
       .login-flex{
           display: flex;
           display: -ms-flexbox;
           align-items: center;
           @include respond-to('portrait') {
               justify-content: center;
-          };
+          }
           &:nth-child(2){
               margin-top: 10%;
               @include respond-to('portrait') {
                   margin-top: 7%;   
-              };
+              }
                @include respond-to('landscape') {
                   margin-top: 4%;   
-              };
+              }
           }
           .icons-input-left{
               position: absolute;
@@ -52,10 +56,10 @@
               font-size: 1.3em;
               @include respond-to('portrait') {
                   left: 20%;  
-              };
+              }
               @include respond-to('desktop-hd') {
                   left: 26%;  
-              };  
+              } 
           }
           .icons-input-right{
               position: absolute;
@@ -63,10 +67,10 @@
               font-size: 1.3em;
                @include respond-to('portrait') {
                   right: 20%;  
-              };
+              }
               @include respond-to('desktop-hd') {
                   right: 26%;  
-              }; 
+              }
           }
           .login-inputs{
               width: 100%;
@@ -76,10 +80,10 @@
               text-align: center;  
               @include respond-to('portrait') {
                   width: 70%;   
-              };
+              }
               @include respond-to('desktop-hd') {
                   width: 60%;   
-              };
+              }
           }
       }
       .login-form-buttons{
@@ -88,7 +92,7 @@
           margin-top: 10%;
           @include respond-to('portrait') {
               margin-top: 7%;   
-          };
+          }
           a{
               color: black;
           }
@@ -96,10 +100,7 @@
               width: 40%;
               height: 30px;
               border: 1px solid black;
-          }
-      }
+      }   
+    }
   }
- 
-
-  
 }
