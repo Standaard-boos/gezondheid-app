@@ -31,6 +31,7 @@
             <div class="login-flex">
                 <label>Leeftijd</label>
             </div>
+            <div class="login-flex">
                 <input type="number" name="age" value="Leeftijd">
                 <div class="login-form-buttons">
                 <button class="login-form-submit" name="submit" type="submit" >Registeer</button>
@@ -38,3 +39,4 @@
         </form>
     </div>
 </div>
+
