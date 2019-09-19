@@ -1,48 +1,49 @@
-<div class="container-login">
-    <div class="login-header">
+<div class="container-register">
+    <div class="register-header">
         <h1>Persoon Registeren</h1>
     </div>
-        <form class="login-form">
-            <div class="login-flex">
+        <form class="register-form">
+            <div class="register-flex">
                 <i class="fas fa-user-circle icons-input-left"></i>
-                <input type="text" name="name" placeholder="Gebruiksnaam" class="login-inputs" required autofocus>
+                    <input type="text" name="name" placeholder="Gebruiksnaam" class="register-inputs" required autofocus>
             </div>
-            <div class="login-flex">
+            <div class="register-flex">
                 <i class="fas fa-lock icons-input-left"></i>
-                <input type="password" name="password" class="login-inputs" placeholder="Wachtwoord" required><br>
+                    <input type="password" name="password" class="register-inputs" placeholder="Wachtwoord" required><br>
                 <i class="fas fa-eye icons-input-right"></i>
             </div>
-            <div class="login-flex">
-                <div class="login-form-buttons">
-                <button class="login-form-submit" name="submit" type="submit" >Registreer</button>
+            <div class="register-flex">
+                <div class="register-form-buttons">
+                    <button class="register-form-submit" name="submit" type="submit" >Registreer</button>
+                </div>
             </div>
         </form>
 </div>
-<div class="container-login">
-    <div class="login-header">
+<div class="container-register">
+    <div class="register-header">
         <h1>Eigen waarden toevoegen</h1>
     </div>
-        <form class="login-form" name="newForm" method="get" onSubmit="formAction(this)">
-            <div class="login-flex">
-            <p>Geslacht</label>
+        <form class="register-form" name="newForm" method="get" onSubmit="formAction(this)">
+            <div class="register-flex">
+                <label>Geslacht</label>
             </div>
-            <div class="login-flex">
-                <input type="radio" name="gender" value="male" > Male
-                <input type="radio" name="gender" value="female"> Female
+            <div class="register-flex">
+                <input class="register-inputs-gender" type="radio" name="gender" value="male" > Male 
+                <input class="register-inputs-gender" type="radio" name="gender" value="female"> Female
             </div>
-            <div class="login-flex">
-                <input type="text" name="length" value="Lengte">
+            <div class="register-flex">
+                <input class="register-inputs" type="text" name="length" placeholder="Lengte">
             </div>
-            <div class="login-flex">
-                <input type="text" name="weight" value="Gewicht">
+            <div class="register-flex">
+                <input class="register-inputs" type="text" name="weight" placeholder="Gewicht">
             </div>
-            <div class="login-flex">
-                <label>Leeftijd</label>
+            <div class="register-flex">
+                <input class="register-inputs" type="number" name="age" placeholder="leeftijd">
             </div>
-            <div class="login-flex">
-                <input type="number" name="age" value="">
-                <div class="login-form-buttons">
-                <button class="login-form-submit" name="submit" type="submit" >Waarden toevoegen</button>
+            <div class="register-flex">
+                <div class="register-form-buttons">
+                    <button class="register-form-submit" name="submit" type="submit" >Waarden toevoegen</button>
+                </div>
             </div>
     </form>
 </div>
