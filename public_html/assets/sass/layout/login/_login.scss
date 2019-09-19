@@ -1,17 +1,21 @@
-.container-login{
+.container-login {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+
     @include respond-to('portrait') {
         width: 750px;   
-    }; 
+    }
+
      @include respond-to('landscape') {
         width: 970px;   
-    }; 
+    } 
+
      @include respond-to('desktop-hd') {
         width: 1170px;   
-    }; 
+    }
+     
     .login-header{
         padding-top: 10%;
         @include respond-to('landscape') {
