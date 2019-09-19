@@ -1,5 +1,7 @@
 <?php
-
+    include_once '../../config/connection.php';
+    $account = $db->query('SELECT * FROM drinks')->fetchArray();
+    var_dump($account);
 
     class registration
     {

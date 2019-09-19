@@ -1,8 +1,18 @@
+<?php
+
+if (isset($_POST['submit']))
+{
+    $name = $_POST['name'];
+    $password = $_POST['password'];
+    $passwordVerify = $_POST['verifyPassword'];
+}
+
+?>
 <div class="container-register">
     <div class="register-header">
         <h1>Persoon Registeren</h1>
     </div>
-        <form class="register-form">
+        <form class="register-form" action="/register" method="post">
             <div class="register-flex">
                 <i class="fas fa-user-circle icons-input-left"></i>
                     <input type="text" name="name" placeholder="Gebruiksnaam" class="register-inputs" required autofocus>
@@ -11,6 +21,10 @@
                 <i class="fas fa-lock icons-input-left"></i>
                     <input type="password" name="password" class="register-inputs" placeholder="Wachtwoord" required><br>
                 <i class="fas fa-eye icons-input-right"></i>
+            </div>
+            <div class="register-flex">
+                <i class="fas fa-lock icons-input-left"></i>
+                <input type="password" name="verifyPassword" class="register-inputs" placeholder="Herhaal wachtwoord" required><br>
             </div>
             <div class="register-flex">
                 <div class="register-form-buttons">
@@ -42,7 +56,7 @@
             </div>
             <div class="register-flex">
                 <div class="register-form-buttons">
-                    <button class="register-form-submit" name="submit" type="submit" >Waarden toevoegen</button>
+                    <button class="register-form-submit" name="submitWaardes" type="submit" >Waarden toevoegen</button>
                 </div>
             </div>
     </form>
