@@ -1,0 +1,66 @@
+/*fonts*/
+@font-face {
+  font-family: jost;
+  src: url(../font/Jost-300-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: jost;
+  src: url(../font/Jost-400-Book.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: jost;
+  src: url(../font/Jost-500-Book.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: jost;
+  src: url(../font/Jost-700-Book.ttf);
+  font-weight: 700;
+}
+/*Basic css*/
+* {
+  white-space: -moz-pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+*::selection {
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: jost;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.dashboardContainer .button {
+  font-family: inherit;
+  font-size: 1em;
+  padding: 6px 14px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.dashboardContainer .button:hover {
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+/*basic css*/
+
+/*# sourceMappingURL=style.css.map */
