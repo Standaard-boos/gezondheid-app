@@ -1,0 +1,12 @@
+/*basic css*/
+
+.dashboardContainer{
+
+  .button{
+
+    @extend %button;
+
+  }
+
+
+}
