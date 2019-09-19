@@ -1,6 +1,7 @@
 <?php 
-    require "../../config/connection.php";
-    echo "dff";
+    require_once(ROOT . '/../application/config/config');
+    
+    class User 
+    {
 
-    // class User {
-    // }
+    }

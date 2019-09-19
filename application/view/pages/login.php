@@ -1,8 +1,9 @@
 <?php
-    require_once '../controller/classes/user.php';
+    require_once(ROOT . '/../application/controller/classes/user.php');
     if(isset($_POST['submit'])){
         echo "fd";
     }  
+
 ?>
 <div class="container-login">
     <div class="login-header">
