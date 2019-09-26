@@ -38,7 +38,7 @@ switch ($request) {
       $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
       break;
 
-  case '/waardes' :
+  case '/waarden' :
     $title = "Gegevens";
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
     break;
