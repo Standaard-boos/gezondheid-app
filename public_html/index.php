@@ -1,6 +1,6 @@
 <?php
   session_start();
-
+  define('ROOT',__DIR__);
   function connection() {
     $configs = include('config.php');
 
@@ -27,15 +27,11 @@
 
   switch ($request) {
     //default
-      case '/' :
+      case '/login' :
         $title = "Login";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
         break;
 
-      case '' :
-        $title = "Login";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-        break;
 
         case '/register' :
         $title = "Register";
@@ -90,5 +86,6 @@
     </head>
     <body>
         <?php require $pageContent; ?>
+        <script src="assets/js/script.js"></script>        
     </body>
 </html>

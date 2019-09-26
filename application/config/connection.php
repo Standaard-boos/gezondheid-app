@@ -3,7 +3,7 @@
 class db
 {
 
-    protected $connection;
+    public $connection;
     protected $query;
     public $query_count = 0;
 
@@ -133,4 +133,8 @@ $dbuser = 'ivor_gezond';
 $dbpass = '6xra06oQ5';
 $dbname = 'ivor_gezond';
 
+<<<<<<< HEAD
 $db = new db($dbhost, $dbuser, $dbpass, $dbname);
+=======
+$db = new db($dbhost, $dbuser, $dbpass, $dbname);
+>>>>>>> development
