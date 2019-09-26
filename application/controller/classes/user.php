@@ -10,7 +10,6 @@
         public function __construct($db)
         {
             $this->db = $db; 
-            
         }
         public function login()
         {
@@ -29,7 +28,7 @@
                         //  De user bestaat nu wachtwoord controle
                         $login = password_verify($this->userPass, $dbpass);
                         if ($login) {
-                            $loginError = "";
+                            $this->loginError = "";
                             $_SESSION['loggedin'] = $login;
                             $_SESSION['email'] = $this->email;
                             $_SESSION['session_id'] = session_id();
@@ -52,9 +51,5 @@
             if(isset($_SESSION['loggedin'])){
                 header("Location:/dash");
             }
-        }
-        public function validate(){
-            
-                echo "dfsdfsdfsd";
         }
     }

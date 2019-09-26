@@ -17,14 +17,14 @@
     <div class="error">
         <span><?php echo $user->loginError ?></span>
     </div>
-    <form class="login-form" action="/" method="post">|
+    <form class="login-form" action="/" method="post">
         <div class="login-flex">
             <i class="fas fa-user-circle icons-input-left"></i>
-            <input type="email" name="email" placeholder="Email adres" class="login-inputs" min="1" max="254" required autofocus>
+            <input type="email" name="email" placeholder="Email adres" class="login-inputs" min="1" maxlength="254" required autofocus>
         </div>
         <div class="login-flex">
             <i class="fas fa-lock icons-input-left"></i>
-            <input type="password" name="password" id="loginPasswordInput" class="login-inputs" placeholder="Wachtwoord" min="1" max="254" required><br>
+            <input type="password" name="password" id="loginPasswordInput" class="login-inputs" placeholder="Wachtwoord" min="1" maxlength="254" required><br>
             <i class="fas fa-eye icons-input-right" id="seePassword"></i>
         </div>
         <div class="login-form-buttons">
