@@ -27,7 +27,7 @@
 
   switch ($request) {
     //default
-      case '/login' :
+      case '/' :
         $title = "Login";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
         break;

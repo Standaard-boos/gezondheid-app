@@ -5,6 +5,8 @@
         private $email,
                 $userPass;
 
+        public  $loginError;
+
         public function __construct($db)
         {
             $this->db = $db; 
@@ -27,26 +29,32 @@
                         //  De user bestaat nu wachtwoord controle
                         $login = password_verify($this->userPass, $dbpass);
                         if ($login) {
+                            $loginError = "";
                             $_SESSION['loggedin'] = $login;
                             $_SESSION['email'] = $this->email;
                             $_SESSION['session_id'] = session_id();
-                            header('location: /dash');
+                            header('location:/dash');
                             return true;
                         }
-                    else {
-                            echo "not loged in";
-                        }
+                        
+                    }else{
+                        $this->loginError = "Email of wachtwoord is onjuist";
                     }
                 }
             }
         }
         public function getDrinks()
         {
+            // voorbeeld
             $account = $this->db->query('SELECT * FROM drinks')->fetchArray();
         }
         public function logedIn(){
             if(isset($_SESSION['loggedin'])){
                 header("Location:/dash");
             }
+        }
+        public function validate(){
+            
+                echo "dfsdfsdfsd";
         }
     }
