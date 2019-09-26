@@ -1,59 +1,64 @@
 <?php
-  session_start();
-  define('ROOT', __DIR__);
-  function connection() {
-    $configs = include('config.php');
+  $servername = json_encode($configs->host);
+  $username = json_encode($configs->app_info);
+  $password = json_encode($configs->app_info);
+  $dbname = json_encode($configs->app_info);
 
-    $servername = json_encode($configs->host);
-    $username = json_encode($configs->app_info);
-    $password = json_encode($configs->app_info);
-    $dbname = json_encode($configs->app_info);
+  $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
 
-    $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
+  return $conn;
+}
 
-    return $conn;
+{
+  if (isset($_COOKIE[$cookieName])) {
+    unset($_COOKIE[$cookieName]);
+    setcookie($cookieName, '', time() - 3600, '/');
   }
-
-  function deleteCookie($cookieName) {
-    if (isset($_COOKIE[$cookieName])) {
-        unset($_COOKIE[$cookieName]);
-        setcookie($cookieName, '', time() - 3600, '/');
-    } 
-  }
+}
 
 //	setcookie('messageSuc', "Account toegevoegd", time() + (86400 * 30) , "/");
 
-  $request = $_SERVER['REQUEST_URI'];
+$request = $_SERVER['REQUEST_URI'];
 
-  switch ($request) {
+switch ($request) {
     //default
-      case '/' :
-        $title = "Login";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-        break;
+    case '/':
+      $title = "Login";
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+      break;
 
-      case '' :
-        $title = "Login";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-        break;
+    case '':
+      $title = "Login";
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+      break;
 
-        case '/register' :
-        $title = "Register";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/register.php';
+    case '/register' :
+      $title = "Register";
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/registratie.php';
+      break;
+
+  case '/login' :
+      $title = "Login";
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+      break;  
+      
+    case '/dash' :
+        $title = "Login";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
         break;
 
     //logout
-      case '/x' :
-        session_destroy();
-        header('location: /');
-        break;
-    
+  case '/x':
+    session_destroy();
+    header('location: /');
+    break;
+
     //404      
-      default:
-        $title = 'Sorry page not found!';
-        $pageContent = dirname(__DIR__, 1) . '/application/view/error/404.php';
-        break;
-  }
+  default:
+    $title = 'Sorry page not found!';
+    $pageContent = dirname(__DIR__, 1) . '/application/view/error/404.php';
+    break;
+}
 
 ?>
 <!DOCTYPE html>
@@ -86,5 +91,6 @@
     </head>
     <body>
         <?php require $pageContent; ?>
+        <script src="assets/js/script.js"></script>        
     </body>
 </html>
