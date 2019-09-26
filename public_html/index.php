@@ -1,5 +1,6 @@
 <?php
   session_start();
+  define('ROOT',(__DIR__));
 
 function connection() {
   $servername = json_encode($configs->host);
@@ -13,36 +14,29 @@ function connection() {
 }
 
 
-//	setcookie('messageSuc', "Account toegevoegd", time() + (86400 * 30) , "/");
-
 $request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
-    //default
-    case '/':
-      $title = "Login";
-      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-      break;
+  //default
+  case '/':
+    $title = "Login";
+    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+    break;
 
-    case '':
-      $title = "Login";
-      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-      break;
+  case '':
+    $title = "Login";   
+    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+    break;
 
-    case '/register' :
-      $title = "Register";
-      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/registratie.php';
-      break;
-
-  case '/login' :
-      $title = "Login";
-      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-      break;  
+  case '/register' :
+    $title = "Register";
+    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/register.php';
+    break; 
       
-    case '/dash' :
-        $title = "Login";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
-        break;
+  case '/dash' :
+      $title = "Login";
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
+      break;
 
     //logout
   case '/x':
