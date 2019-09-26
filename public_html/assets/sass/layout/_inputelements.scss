@@ -1,17 +1,19 @@
 %input {
-    border: 2px solid $justwhite;
-    background: none;
+    border: 2px solid $grey;
+    background-color: $justwhite;
     font-family: inherit;
-    padding: 5px 10px;
-    color: $justwhite;
+    padding: 10px 10px;
+    color: $pureblack;
+    border-radius: 8px;
+    font-size: 1em;
     transition: all 0.2s ease;
 
     &::placeholder {
-        color: $justwhite;
+        color: $pureblack;
     }
 
     &:focus {
-        background-color: $justwhite;
+        background-color: $lightgrey;
         color: $almostblack;
         outline: none;
         transition: all 0.2s ease;
@@ -24,11 +26,13 @@
 
 %button {
     font-family: inherit;
-    font-size: 1em;
-    padding: 6px 14px;
-    background-color: $justwhite;
-    border: none;
+    font-size: 1.2em;
+    padding: 6px 50px;
+    border: 2px solid $grey;
+    background-color: $lightgrey;
+    color: $pureblack;
     cursor: pointer;
+    border-radius: 8px;
     transition: all 0.2s ease;
 
     &:hover {

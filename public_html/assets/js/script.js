@@ -10,11 +10,11 @@ function seePass(){
     seePassword.addEventListener('click', () => { 
         if(bool){
             loginPasswordInput.type = 'text'
-            seePassword.className = 'fas fa-eye-slash icons-input-right'
+            seePassword.className = 'fas fa-eye-slash fa-lg icon-right'
             bool = false;
         }else{
             loginPasswordInput.type = 'password'
-            seePassword.className = 'fas fa-eye icons-input-right'
+            seePassword.className = 'fas fa-eye fa-lg icon-right'
             bool = true;
         }
     })
