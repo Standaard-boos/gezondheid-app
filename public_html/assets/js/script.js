@@ -1,0 +1,22 @@
+
+window.onload = function (){
+    seePass()
+}
+
+function seePass(){
+    let seePassword = document.querySelector('#seePassword');
+    let loginPasswordInput = document.querySelector('#loginPasswordInput');
+    let bool = true;
+    seePassword.addEventListener('click', () => { 
+        if(bool){
+            loginPasswordInput.type = 'text'
+            seePassword.className = 'fas fa-eye-slash icons-input-right'
+            bool = false;
+        }else{
+            loginPasswordInput.type = 'password'
+            seePassword.className = 'fas fa-eye icons-input-right'
+            bool = true;
+        }
+    })
+}
+

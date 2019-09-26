@@ -19,7 +19,7 @@
     .login-header{
         padding-top: 10%;
         @include respond-to('landscape') {
-            padding-top: 15%;   
+            padding-top: 7%;   
         };
         width: 100%;
         display: flex;
@@ -32,7 +32,7 @@
         margin-top: 40%;
         position: relative;
         @include respond-to('portrait') {
-            margin-top: 15%;   
+            margin-top: 8%;   
         };
         .login-flex{
             display: flex;

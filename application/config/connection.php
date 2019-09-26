@@ -3,7 +3,7 @@
 class db
 {
 
-    protected $connection;
+    public $connection;
     protected $query;
     public $query_count = 0;
 

@@ -95,7 +95,7 @@ img {
 
 @media (min-width: 992px) {
   .container-login .login-header {
-    padding-top: 15%;
+    padding-top: 7%;
   }
 }
 
@@ -110,7 +110,7 @@ img {
 
 @media (min-width: 768px) {
   .container-login .login-form {
-    margin-top: 15%;
+    margin-top: 8%;
   }
 }
 
