@@ -6,7 +6,8 @@
     
     if(isset($_POST['submit'])){
         $user->login();
-    }  
+    }
+    $user->logedIn();  
 
 ?>
 <div class="container-login">

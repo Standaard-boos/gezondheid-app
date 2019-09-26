@@ -30,7 +30,7 @@
                             $_SESSION['loggedin'] = $login;
                             $_SESSION['email'] = $this->email;
                             $_SESSION['session_id'] = session_id();
-                            header("location:register");
+                            header('location: /dash');
                             return true;
                         }
                     else {
@@ -43,5 +43,10 @@
         public function getDrinks()
         {
             $account = $this->db->query('SELECT * FROM drinks')->fetchArray();
+        }
+        public function logedIn(){
+            if(isset($_SESSION['loggedin'])){
+                header("Location:/dash");
+            }
         }
     }
