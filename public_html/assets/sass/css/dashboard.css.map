@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,aAAa;AAEb,AAEE,mBAFiB,CAEjB,OAAO,CAAA;EAGL,gBAAgB,EAAE,gBAAgB;CAEnC",
-    "sources": [
-        "../layout/dashboard.scss"
-    ],
-    "names": [],
-    "file": "dashboard.css"
-}
