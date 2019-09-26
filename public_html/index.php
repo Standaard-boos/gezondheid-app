@@ -1,10 +1,4 @@
 <?php
-session_start();
-define('ROOT', __DIR__);
-function connection()
-{
-  $configs = include('config.php');
-
   $servername = json_encode($configs->host);
   $username = json_encode($configs->app_info);
   $password = json_encode($configs->app_info);
@@ -15,7 +9,6 @@ function connection()
   return $conn;
 }
 
-function deleteCookie($cookieName)
 {
   if (isset($_COOKIE[$cookieName])) {
     unset($_COOKIE[$cookieName]);

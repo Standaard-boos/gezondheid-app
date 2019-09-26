@@ -1,6 +1,121 @@
-.container_1 {
-    
-    h1{
-        text-align: center;
+.container-register {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include respond-to('portrait') {
+      width: 750px;   
+  }
+
+   @include respond-to('landscape') {
+      width: 970px;   
+  }
+
+   @include respond-to('desktop-hd') {
+      width: 1170px;   
+  }
+
+  .register-header{
+      padding-top: 10%;
+      @include respond-to('landscape') {
+          padding-top: 15%;   
       }
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      h1{
+          font-size: 25px;
+      }
+  }
+   .register-form{
+      margin-top: 10%;
+      position: relative;
+      @include respond-to('portrait') {
+        //   margin-top: 15%;   
+      }
+      .register-flex{
+          display: flex;
+          display: -ms-flexbox;
+          align-items: center;
+          @include respond-to('portrait') {
+              justify-content: center;
+          }
+          &:nth-child(even){
+            //   margin-top: 10%;
+              @include respond-to('portrait') {
+                  margin-top: 7%;   
+              }
+               @include respond-to('landscape') {
+                  margin-top: 4%;   
+              }
+          }
+          .icons-input-left{
+              position: absolute;
+              left: 10%;
+              font-size: 1.3em;
+              @include respond-to('portrait') {
+                  left: 20%;  
+              }
+              @include respond-to('desktop-hd') {
+                  left: 26%;  
+              } 
+          }
+          .icons-input-right{
+              position: absolute;
+              right: 10%;
+              font-size: 1.3em;
+               @include respond-to('portrait') {
+                  right: 20%;  
+              }
+              @include respond-to('desktop-hd') {
+                  right: 26%;  
+              }
+          }
+          .register-inputs{
+              width: 100%;
+              height: 35px;
+              border-radius: 5px;
+              border: 1px solid gray;
+              text-align: center;  
+              @include respond-to('portrait') {
+                  width: 70%;   
+              }
+              @include respond-to('desktop-hd') {
+                  width: 60%;   
+              }
+          }
+
+          .register-inputs-gender{
+            // width: 50%;
+            height: 20px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            // text-align: left;  
+            width: 3% !important;
+            @include respond-to('portrait') {
+                width: 70%;   
+            }
+            @include respond-to('desktop-hd') {
+                width: 60%;   
+            }
+        }
+      }
+      .register-form-buttons{
+          width: 100%;
+          text-align: center;
+        //   margin-top: 10%;
+          @include respond-to('portrait') {
+              margin-top: 7%;   
+          }
+          a{
+              color: black;
+          }
+          .register-form-submit{
+              width: 40%;
+              height: 30px;
+              border: 1px solid black;
+      }   
+    }
+  }
 }
