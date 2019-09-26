@@ -1,18 +1,46 @@
 <?php
-    include_once '../../config/connection.php';
-    $account = $db->query('SELECT * FROM drinks')->fetchArray();
-    var_dump($account);
 
     class registration
     {
         protected $username;
-        protected $email;
         protected $password;
-        protected $weight;
-        protected $height;
-        protected $age;
-        protected $gender;
+        protected $passwordVerify;
 
+        public function __construct($db)
+        {
+            $this->db = $db;
+        }
 
+        public function register()
+        {
+            if (isset($_POST['submit']))
+            {
+                $username = htmlspecialchars($_POST['name']);
+                $email = htmlspecialchars($_POST['email']);
+                $password = htmlspecialchars($_POST['password']);
+                $verifyPassword = htmlspecialchars($_POST['verifyPassword']);
+                $heightUser = htmlspecialchars($_POST['height']);
+                $weightUser = htmlspecialchars($_POST['weight']);
+                $ageUser = htmlspecialchars($_POST['age']);
+                $genderUser = htmlspecialchars($_POST['gender']);
 
+                $error = 0;
+
+                if ($password === $verifyPassword)
+                {
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                    $error = 0;
+                } else
+                {
+                    $error = 1;
+                    echo 'Wachtwoorden zijn niet gelijk!';
+                }
+
+                if ($error === 0)
+                {
+                    $this->db->query('INSERT INTO user (username, email, password, weight, height, age, gender)
+                                VALUES (?, ?, ?, ?, ?, ?, ?)', $username, $email, $hashed_password, $weightUser, $heightUser, $ageUser, $genderUser);
+                }
+            }
+        }
     }

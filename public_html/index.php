@@ -1,6 +1,6 @@
 <?php
   session_start();
-
+  define('ROOT', __DIR__);
   function connection() {
     $configs = include('config.php');
 
