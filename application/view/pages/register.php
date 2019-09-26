@@ -7,49 +7,43 @@ $registration = new registration($db);
 $registration->register();
 
 ?>
-<div class="container-register">
-    <div class="register-header">
-        <h1>Persoon Registeren</h1>
-    </div>
-    <form class="register-form" action="/register" method="post">
-        <div class="register-flex">
-            <i class="fas fa-user-circle icons-input-left"></i>
-            <input type="text" name="name" placeholder="Gebruiksnaam" class="register-inputs" required autofocus>
+<div class="container-form">
+    <h1 class="title">Persoon Registeren</h1>
+    <form class="form" action="/register" method="post">
+        <div class="input-icon">
+            <i class="fas fa-user-circle icon"></i>
+            <input type="text" name="name" placeholder="Gebruiksnaam" class="input" required autofocus>
         </div>
-        <div class="register-flex">
-            <input class="register-inputs" type="text" name="email" placeholder="Email">
+        <div class="input-icon">
+            <input class="input" type="text" name="email" placeholder="Email">
         </div><br>
-        <div class="register-flex">
-            <i class="fas fa-lock icons-input-left"></i>
-            <input type="password" name="password" class="register-inputs" placeholder="Wachtwoord" required><br>
-            <i class="fas fa-eye icons-input-right"></i>
+        <div class="input-icon">
+            <i class="fas fa-lock icon"></i>
+            <input  type="password" name="password" class="input" placeholder="Wachtwoord" required><br>
+            <i class="fas fa-eye icon-right"></i>
         </div>
-        <div class="register-flex">
-            <i class="fas fa-lock icons-input-left"></i>
-            <input type="password" name="verifyPassword" class="register-inputs" placeholder="Herhaal wachtwoord"
+        <div class="input-icon">
+            <i class="fas fa-lock icon"></i>
+            <input type="password" name="verifyPassword" class="input" placeholder="Herhaal wachtwoord"
                    required><br>
         </div>
-        <div class="register-flex">
+        <div class="input-icon">
             <label>Geslacht</label>
         </div>
-        <div class="register-flex">
-            <input class="register-inputs-gender" type="radio" name="gender" value="male"> Male
-            <input class="register-inputs-gender" type="radio" name="gender" value="female"> Female
+        <div class="input-icon">
+            <input class="" type="radio" name="gender" value="male"> Male
+            <input class="" type="radio" name="gender" value="female"> Female
         </div>
-        <div class="register-flex">
-            <input class="register-inputs" type="text" name="height" placeholder="Hoogte">
+        <div class="input-icon">
+            <input class="input" type="text" name="height" placeholder="Lengte">
         </div>
-        <div class="register-flex">
-            <input class="register-inputs" type="text" name="weight" placeholder="Gewicht">
+        <div class="input-icon">
+            <input class="input" type="text" name="weight" placeholder="Gewicht">
         </div>
-        <div class="register-flex">
-            <input class="register-inputs" type="number" name="age" placeholder="leeftijd">
+        <div class="input-icon">
+            <input class="input" type="number" name="age" placeholder="leeftijd">
         </div>
-        <div class="register-flex">
-            <div class="register-form-buttons">
-                <button class="register-form-submit" name="submit" type="submit">Registreer</button>
-            </div>
-        </div>
+        <button class="button" name="submit" type="submit">Registreer</button>
     </form>
 </div>
 
