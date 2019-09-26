@@ -1,4 +1,7 @@
 <?php
+  session_start();
+
+function connection() {
   $servername = json_encode($configs->host);
   $username = json_encode($configs->app_info);
   $password = json_encode($configs->app_info);
@@ -9,12 +12,6 @@
   return $conn;
 }
 
-{
-  if (isset($_COOKIE[$cookieName])) {
-    unset($_COOKIE[$cookieName]);
-    setcookie($cookieName, '', time() - 3600, '/');
-  }
-}
 
 //	setcookie('messageSuc', "Account toegevoegd", time() + (86400 * 30) , "/");
 
