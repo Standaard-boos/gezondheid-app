@@ -1,0 +1,101 @@
+/*basic css*/
+
+.dashboardContainer{
+
+
+  .hidden{
+
+    display: none;
+  }
+
+  .buttonContainer{
+
+    margin-top:0%;
+
+
+  }
+
+  .h2,.h3{
+
+    
+    //width: 100%;
+    padding: 10px;
+    text-align: center;
+
+  }
+
+  .selectbox{
+
+    width: 100%;
+    height: 30px;
+    margin-top:20px;
+  }
+
+  .button{
+
+    @extend %button;
+    width:100%;
+    margin-top: 30px;
+    
+  }
+
+  .dataPerson{
+
+    //margin: auto;
+    //width: 100%;
+    margin-left: 35%;
+    text-align: left;
+
+  }
+
+}
+
+@media screen and (min-width: 768px){
+
+
+  .selectbox{
+    display: none;
+  }
+ 
+  .dataPerson{
+    // text-align: center !important;
+    // margin-left: 0% !important;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+ 
+  }
+
+  .hidden{
+    display: block !important;
+  }
+
+  .containerCharts{
+
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    
+
+
+  }
+  
+    #chart1{
+
+      width: 50%;
+      height: 0px;
+      
+
+    }
+    #chart2{
+
+    
+    width: 50%;
+    float: right;
+      
+    }
+
+
+
+
+}

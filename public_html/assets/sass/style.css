@@ -1,0 +1,251 @@
+/*fonts*/
+@font-face {
+  font-family: jost;
+  src: url(../font/Jost-300-Light.ttf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: jost;
+  src: url(../font/Jost-400-Book.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: jost;
+  src: url(../font/Jost-500-Medium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: jost;
+  src: url(../font/Jost-700-Bold.ttf);
+  font-weight: 700;
+}
+
+/*Basic css*/
+* {
+  white-space: -moz-pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+*::-moz-selection {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+*::selection {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: jost;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container-form .form .input-icon .input {
+  border: 2px solid #7C7C7C;
+  background-color: #ffffff;
+  font-family: inherit;
+  padding: 10px 10px;
+  color: #000000;
+  border-radius: 8px;
+  font-size: 1em;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.container-form .form .input-icon .input::-webkit-input-placeholder {
+  color: #000000;
+}
+
+.container-form .form .input-icon .input:-ms-input-placeholder {
+  color: #000000;
+}
+
+.container-form .form .input-icon .input::-ms-input-placeholder {
+  color: #000000;
+}
+
+.container-form .form .input-icon .input::placeholder {
+  color: #000000;
+}
+
+.container-form .form .input-icon .input:focus {
+  background-color: #DEDEDE;
+  color: #070707;
+  outline: none;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.container-form .form .input-icon .input:focus::-webkit-input-placeholder {
+  color: #070707;
+}
+
+.container-form .form .input-icon .input:focus:-ms-input-placeholder {
+  color: #070707;
+}
+
+.container-form .form .input-icon .input:focus::-ms-input-placeholder {
+  color: #070707;
+}
+
+.container-form .form .input-icon .input:focus::placeholder {
+  color: #070707;
+}
+
+.container-form .form .button, .dashboardContainer .button {
+  font-family: inherit;
+  font-size: 1.2em;
+  padding: 6px 50px;
+  border: 2px solid #7C7C7C;
+  background-color: #DEDEDE;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 8px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.container-form .form .button:hover, .dashboardContainer .button:hover {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+.container-form {
+  width: 100%;
+}
+
+.container-form .title {
+  text-align: center;
+  font-size: 2em;
+  padding: 10px 0;
+  color: #7C7C7C;
+}
+
+@media (min-width: 750px) {
+  .container-form .title {
+    padding-top: 80px;
+  }
+}
+
+.container-form .form {
+  width: 305px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.container-form .form .login-error {
+  text-align: center;
+  color: red;
+}
+
+.container-form .form .input-icon {
+  position: relative;
+  margin-top: 10px;
+}
+
+.container-form .form .input-icon .input {
+  width: calc(100% - 54px);
+  padding-left: 40px;
+}
+
+.container-form .form .input-icon .icon {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+}
+
+.container-form .form .input-icon .icon-right {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+}
+
+.container-form .form .button {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.container-form .form .link {
+  display: block;
+  padding-top: 10px;
+}
+
+/*basic css*/
+.dashboardContainer .hidden {
+  display: none;
+}
+
+.dashboardContainer .buttonContainer {
+  margin-top: 0%;
+}
+
+.dashboardContainer .h2, .dashboardContainer .h3 {
+  padding: 10px;
+  text-align: center;
+}
+
+.dashboardContainer .selectbox {
+  width: 100%;
+  height: 30px;
+  margin-top: 20px;
+}
+
+.dashboardContainer .button {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.dashboardContainer .dataPerson {
+  margin-left: 35%;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+  .selectbox {
+    display: none;
+  }
+  .dataPerson {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+  .hidden {
+    display: block !important;
+  }
+  .containerCharts {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+  #chart1 {
+    width: 50%;
+    height: 0px;
+  }
+  #chart2 {
+    width: 50%;
+    float: right;
+  }
+}
+
+.container-add-goal {
+  background-color: red;
+}
+/*# sourceMappingURL=style.css.map */
