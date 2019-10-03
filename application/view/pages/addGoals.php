@@ -1,7 +1,25 @@
+<?php
+    require_once(ROOT . '/../application/controller/classes/addGoals.php');
+    require_once(ROOT . '/../application/config/connection.php');
 
+    $goal = new AddGoals($db);
+    $goal->addGoal();
+
+?>
 <div class="container-add-goal">
     <div class="container-header">
-        <i class="fas fa-arrow-left"></i>
-        <h1 class="title"></h1>
+        <a><i class="fas fa-arrow-left fa-2x"></i> &nbsp</a>
+        <h1 class="title">Doelen invoeren</h1>
     </div>
+    <form action="/addgoal" method="post" class="form">
+        <div class="form-group">
+            <label>Taak</label>
+            <input type="text" name="task" class="input" placeholder="Rennen.." required autofocus>
+        </div>
+         <div class="form-group">
+            <label>Hoeveel</label>
+            <input type="text" name="task_quantity" class="input" placeholder="0" required>
+        </div>
+        <button type="submit" name="submit" class="button" >Verstuur</button>
+    </form>
 </div>

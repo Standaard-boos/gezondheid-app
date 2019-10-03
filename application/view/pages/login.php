@@ -2,7 +2,7 @@
     require_once(ROOT . '/../application/controller/classes/user.php');
     require_once(ROOT . '/../application/config/connection.php');
 
-    $user = new user($db);
+    $user = new User($db);
     $user->login();
     $user->logedIn();  
 
