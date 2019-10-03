@@ -2,10 +2,6 @@
 
     class registration
     {
-        protected $username;
-        protected $password;
-        protected $passwordVerify;
-
         public function __construct($db)
         {
             $this->db = $db;
