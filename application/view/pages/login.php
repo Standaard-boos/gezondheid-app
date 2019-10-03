@@ -6,7 +6,8 @@
     
     if(isset($_POST['submit'])){
         $user->login();
-    }  
+    }
+    $user->logedIn();  
 
 ?>
 <div class="container-form">
@@ -24,5 +25,4 @@
         <button type="submit" name="submit" class="button" >Login</button>
         <a class="link" href="/register">Geen account? Aanmelden</a>
     </form>
-
 </div>
