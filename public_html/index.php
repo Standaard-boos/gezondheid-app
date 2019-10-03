@@ -43,6 +43,11 @@ switch ($request) {
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
     break;
 
+    case '/drugs' :
+    $title = "Drugs";
+    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/drugs.php';
+    break;
+
     //logout
   case '/x':
     session_destroy();
