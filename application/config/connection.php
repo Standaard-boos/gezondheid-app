@@ -128,9 +128,9 @@ class db
 
 }
 
-$dbhost = 'codana.tk';
-$dbuser = 'ivor_gezond';
-$dbpass = '6xra06oQ5';
-$dbname = 'ivor_gezond';
+$dbhost = 'phpmyadmin.marojeri.nl';
+$dbuser = 'team_13';
+$dbpass = 'vG7nL2Wo18dslfNk';
+$dbname = 'team_13';
 
 $db = new db($dbhost, $dbuser, $dbpass, $dbname);
