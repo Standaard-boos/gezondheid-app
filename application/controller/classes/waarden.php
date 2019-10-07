@@ -23,9 +23,9 @@
 
                 if ($error === 0)
                 {
+
                     $this->db->query('INSERT INTO food (name_food, kcal, fat, salt, sugar, protein, carbohydrates)
                                 VALUES (?, ?, ?, ?, ?, ?, ?)', $food, $calories, $fat, $salt, $sugars, $protein, $carbohydrates);
-                    echo 'Toegevoegd';
                 }
             }
         }
