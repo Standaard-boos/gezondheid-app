@@ -8,7 +8,7 @@
 ?>
 <div class="container-add-goal">
     <div class="container-header">
-        <a><i class="fas fa-arrow-left fa-2x" id="goBackArrow"></i> &nbsp</a>
+        <a href="/dash"><i class="fas fa-arrow-left fa-2x" id="goBackArrow"></i> &nbsp</a>
         <h1 class="title">Doelen invoeren</h1>
     </div>
     <form action="/addgoal" method="post" class="form">
