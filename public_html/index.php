@@ -38,6 +38,11 @@ switch ($request) {
       $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
       break;
 
+  case '/addgoal':
+    $title = "addgoal";
+    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
+
+
   case '/waarden' :
     $title = "Gegevens";
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
@@ -87,6 +92,5 @@ switch ($request) {
     </head>
     <body>
         <?php require $pageContent; ?>
-        <script src="assets/js/script.js"></script>        
     </body>
 </html>

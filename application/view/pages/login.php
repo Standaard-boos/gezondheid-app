@@ -2,14 +2,12 @@
     require_once(ROOT . '/../application/controller/classes/user.php');
     require_once(ROOT . '/../application/config/connection.php');
 
-    $user = new user($db);
-    
-    if(isset($_POST['submit'])){
-        $user->login();
-    }
+    $user = new User($db);
+    $user->login();
     $user->logedIn();  
 
 ?>
+
 <div class="container-form">
     <h1 class="title">Gezondheidsmeter</h1>
     <form class="form login-form" action="" method="post">
@@ -26,3 +24,4 @@
         <a class="link" href="/register">Geen account? Aanmelden</a>
     </form>
 </div>
+<script src="assets/js/script.js"></script>        

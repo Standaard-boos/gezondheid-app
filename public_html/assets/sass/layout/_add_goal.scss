@@ -1,0 +1,46 @@
+.container-add-goal{
+    
+    .container-header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+
+        #goBackArrow{
+            @include respond-to('portrait') {
+                display: none;
+            }
+        }
+    }
+    .form {
+        width: 305px;
+        margin: 80px auto;
+        text-align: center;
+        .form-group{
+
+            margin: 10px 0;
+            label{
+                color: $grey;
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+            .input {
+                @extend %input;
+                width: calc(100% - 54px);
+                margin: 10px 0;
+                padding-left: 40px;
+            }
+        }
+
+        .button {
+            @extend %button;
+            margin-top: 25px;
+            text-align: center;
+            display: block;
+        }
+        .sendBtn{
+            width: 100%;
+        }
+    }
+   
+}
