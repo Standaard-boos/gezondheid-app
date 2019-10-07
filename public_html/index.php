@@ -48,6 +48,10 @@ switch ($request) {
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
     break;
 
+    case '/api/chart':
+        include dirname(__DIR__, 1) . '/application/controller/function/GetChartDataHandler.php';
+        die();
+
     //logout
   case '/x':
     session_destroy();
@@ -89,6 +93,8 @@ switch ($request) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://kit.fontawesome.com/d6cae58ee4.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     </head>
     <body>
         <?php require $pageContent; ?>
