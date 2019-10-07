@@ -36,8 +36,8 @@
                                 $_SESSION['email'] = $this->email;
                                 $_SESSION['session_id'] = session_id();
 
-                                
-                                header('location:/dash');
+
+                                echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
                                 return true;
                             }
                             else{
@@ -59,7 +59,7 @@
         }
         public function logedIn(){
             if(isset($_SESSION['loggedin'])){
-                header("Location:/dash");
+                echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
             }
         }
     }
