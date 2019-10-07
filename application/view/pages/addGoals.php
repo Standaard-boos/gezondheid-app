@@ -21,7 +21,7 @@
             <input type="text" name="task_quantity" class="input" placeholder="0" required>
         </div>
         <button type="submit" name="submit" class="button sendBtn" >Verstuur</button>
-        <a href="/dash" class="button">Terug</a>
+        <a href="/dash" class="button backBtn">Terug</a>
     </form>
 
 </div>

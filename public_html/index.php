@@ -41,13 +41,12 @@ switch ($request) {
   case '/addgoal':
     $title = "addgoal";
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
-
+    break;
 
   case '/waarden' :
     $title = "Gegevens";
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
     break;
-
     //logout
   case '/x':
     session_destroy();

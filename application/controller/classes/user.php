@@ -29,8 +29,7 @@
                             $login = password_verify($this->userPass, $dbpass);
                             if ($login) {
                                 $this->loginError = "";
-                                // $sql_user_id = "SELECT id FROM user WHERE email = '{$this->email}' AND password = '{$this->userPass}' LIMIT 1";
-                                $sql_user_id = $this->db->query('SELECT `ID` FROM user WHERE email = ? LIMIT 1',$this->email );
+                                $sql_user_id = $this->db->query('SELECT `ID` FROM user WHERE email = ? LIMIT 1',$this->email)->fetchArray();
 
                                 $_SESSION['user_id'] = $sql_user_id;
                                 $_SESSION['loggedin'] = $login;

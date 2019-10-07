@@ -41,6 +41,11 @@
         .sendBtn{
             width: 100%;
         }
+        .backBtn{
+            @include respond-to('portrait') {
+                display: none;
+            }
+        }
     }
    
 }
