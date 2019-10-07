@@ -128,7 +128,7 @@ class db
 
 }
 
-$dbhost = 'marojeri.nl';
+$dbhost = 'phpmyadmin.marojeri.nl';
 $dbuser = 'team_13';
 $dbpass = 'vG7nL2Wo18dslfNk';
 $dbname = 'team_13';

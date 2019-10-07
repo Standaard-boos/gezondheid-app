@@ -23,6 +23,11 @@ switch ($request) {
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
     break;
 
+  case '':
+    $title = "Login";   
+    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+    break;
+
   case '/register' :
     $title = "Register";
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/register.php';
@@ -32,9 +37,15 @@ switch ($request) {
       $title = "Login";
       $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
       break;
+
   case '/addgoal':
     $title = "addgoal";
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
+
+
+  case '/waarden' :
+    $title = "Gegevens";
+    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
     break;
 
     //logout
