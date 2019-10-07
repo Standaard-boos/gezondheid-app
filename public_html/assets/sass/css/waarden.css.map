@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"waarden.css"}
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../layout/waarden.scss"
+    ],
+    "names": [],
+    "file": "waarden.css"
+}
