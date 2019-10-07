@@ -25,3 +25,4 @@
         <a class="link" href="/register">Geen account? Aanmelden</a>
     </form>
 </div>
+<script src="assets/js/script.js"></script>        

@@ -7,6 +7,11 @@
 
         public function __construct($db){
             $this->db = $db;
+
+            if(!isset($_SESSION['loggedin'])){
+                header("Location:/");
+            }
+            var_dump($_SESSION['user_id']);
         }
 
         public function addGoal(){
