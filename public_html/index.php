@@ -16,53 +16,134 @@ function connection() {
 
 $request = $_SERVER['REQUEST_URI'];
 
-switch ($request) {
-  //default
-  case '/':
-    $title = "Login";
-    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-    break;
+// switch ($request) {
+//   //default
+//   case '/':
+//     $title = "Login";
+//     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+//     break;
 
-  case '':
-    $title = "Login";   
-    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
-    break;
+//   case '':
+//     $title = "Login";   
+//     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+//     break;
 
-  case '/register' :
-    $title = "Register";
-    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/register.php';
-    break; 
+//   case '/register' :
+//     $title = "Register";
+//     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/register.php';
+//     break; 
       
-  case '/dash' :
+//   case '/dash' :
+//       $title = "Login";
+//       $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
+//       break;
+
+//   case '/addgoal':
+//     $title = "addgoal";
+//     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
+
+
+//   case '/waarden' :
+//     $title = "Gegevens";
+//     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
+//     break;
+
+//     case '/api/chart':
+//         include dirname(__DIR__, 1) . '/application/controller/function/GetChartDataHandler.php';
+//         die();
+
+//     //logout
+//   case '/x':
+//     session_destroy();
+//     header('location: /');
+//     break;
+
+//     //404      
+//   default:
+//     $title = 'Sorry page not found!';
+//     $pageContent = dirname(__DIR__, 1) . '/application/view/error/404.php';
+//     break;
+// }
+
+
+if(!isset($_SESSION['user_id'])) { 
+  switch ($request) {
+    //default
+    case '/':
       $title = "Login";
-      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
       break;
 
-  case '/addgoal':
-    $title = "addgoal";
-    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
+    case '':
+      $title = "Login";   
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+      break;
 
+    case '/register' :
+      $title = "Register";
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/register.php';
+      break; 
 
-  case '/waarden' :
-    $title = "Gegevens";
-    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
-    break;
-
-    case '/api/chart':
-        include dirname(__DIR__, 1) . '/application/controller/function/GetChartDataHandler.php';
-        die();
-
-    //logout
-  case '/x':
-    session_destroy();
-    header('location: /');
-    break;
+    //dashboard
+      case '/dash' :
+      header('location: /');
+      break;
 
     //404      
-  default:
-    $title = 'Sorry page not found!';
-    $pageContent = dirname(__DIR__, 1) . '/application/view/error/404.php';
-    break;
+      default:
+        $title = 'Sorry page not found!';
+        $pageContent = dirname(__DIR__, 1) . '/application/view/error/404.php';
+        break;
+
+     //logout
+      case '/x' :
+        session_destroy();
+        header('location: /');
+        break; 
+  }
+} else {
+  switch ($request) {
+    //default
+      case '/' :
+        header('location: /dash');
+        break;
+
+      case '' :
+        header('location: /dash');
+        break;
+
+      case '/dash' :
+        $title = "Login";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
+        break;
+  
+      case '/addgoal':
+        $title = "addgoal";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
+    
+    
+      case '/waarden' :
+        $title = "Gegevens";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
+        break;
+    
+    //API
+      case '/api/chart':
+        include dirname(__DIR__, 1) . '/application/controller/function/GetChartDataHandler.php';
+        die();
+            
+    //logout
+      case '/x' :
+        session_destroy();
+        header('location: /');
+        break;
+    
+    //404      
+      default:
+        $title = 'Sorry page not found!';
+        $pageContent = dirname(__DIR__, 1) . '/views/error/404.php';
+        break;
+  }
 }
 
 ?>
