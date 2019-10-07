@@ -42,8 +42,9 @@
             width: 100%;
         }
         .backBtn{
+            display: none;
             @include respond-to('portrait') {
-                display: none;
+                display: block;
             }
         }
     }
