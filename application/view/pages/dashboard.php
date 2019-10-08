@@ -19,6 +19,8 @@ if (isset($_SESSION['valid'])) {
         <div class="buttonContainer">
             <button class="button">Invoer Gegevens</button>
             <button class="button">Doelen</button>
+            <a href="../view/pages/addgoal.php" class="button">Voeg doel toe</a>
+            <a href="../view/pages/seegoal.php" class="button">Zie doelen</a>
         </div>
         <div>
             <select id="ChartSelectBox" class="selectbox" onchange="ShowHideCharts()">
