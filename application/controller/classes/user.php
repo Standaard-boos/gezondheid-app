@@ -29,16 +29,15 @@
                             $login = password_verify($this->userPass, $dbpass);
                             if ($login) {
                                 $this->loginError = "";
-                                // $sql_user_id = "SELECT id FROM user WHERE email = '{$this->email}' AND password = '{$this->userPass}' LIMIT 1";
-                                $sql_user_id = $this->db->query('SELECT `ID` FROM user WHERE email = ? LIMIT 1',$this->email );
+                                $sql_user_id = $this->db->query('SELECT `ID` FROM user WHERE email = ? LIMIT 1',$this->email)->fetchArray();
 
                                 $_SESSION['user_id'] = $sql_user_id;
                                 $_SESSION['loggedin'] = $login;
                                 $_SESSION['email'] = $this->email;
                                 $_SESSION['session_id'] = session_id();
 
-                                
-                                header('location:/dash');
+
+                                echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
                                 return true;
                             }
                             else{
@@ -60,7 +59,7 @@
         }
         public function logedIn(){
             if(isset($_SESSION['loggedin'])){
-                header("Location:/dash");
+                echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
             }
         }
     }
