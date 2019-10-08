@@ -37,6 +37,11 @@ switch ($request) {
     $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
     break;
 
+    case '/seegoal':
+    $title = "seegoal";
+    $pageContent = dirname(__DIR__, 1) . '/application/view/pages/seegoal.php';
+    break;
+
     //logout
   case '/x':
     session_destroy();
