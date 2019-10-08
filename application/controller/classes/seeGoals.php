@@ -3,16 +3,47 @@
 
 class SeeGoals{
 
-    protected   $task,
-                $task_quantity;
+    protected   $user_id;
 
-    public function __construct($db){
-        $this->db = $db;
-    }
+        public function __construct($db){
+            $this->db = $db;
+            $this->user_id = implode('', $_SESSION['user_id']);
+            
+            if(!isset($_SESSION['loggedin'])){
+                header("Location:/");
+            }
+        }
 
-    public function SeeGoal(){
-        
-       
-    }
+        public function SeeGoal(){
+            
+            // Fetch all for multiple
+            // FetchArray for single
+            $goal = $db->query("SELECT user_goals.user_id, goals.task, user_goals.task_quantity 
+            FROM goals 
+            INNER JOIN user_goals
+            ON goals.id = user_goals.user_id
+            WHERE user_id = $this->user_id")->fetchAll();
+
+            foreach($goal as $row){
+                echo '<div class="input-blocks">',
+                        '<div class="input-icon"> ',
+                            '<div class="title">'.$row["task"],
+                            '</div>',
+                        '</div>',
+                        '<div class="input-icon">',
+                            '<i class="far fa-clock icon"></i>',
+                            '<div class="input">'.$row["task_quantity"],
+                            '</div>',
+                        '</div>',
+                        '<div class="input-icon">',
+                            '<i class="far fa-clock icon"></i>',
+                            '<input class="input" type="text" name="goal" placeholder="Doel">',
+                        '</div>',
+                            '<button class="button" name="UpdateDoel" type="submit">Update doel</button>',
+                            '<button class="button" name="DeleteDoel" type="submit">Verwijder doel</button>',
+                    '</div>';
+
+                }
+        }
 }     
         ?>
