@@ -1,42 +1,51 @@
 <?php
 
-    class registration
+class registration
+{
+    protected $username;
+    protected $password;
+    protected $passwordVerify;
+
+    public function __construct($db)
     {
-        public function __construct($db)
-        {
-            $this->db = $db;
-        }
+        $this->db = $db;
+    }
 
-        public function register()
+    public function register()
+    {
+        if (isset($_POST['submit']))
         {
-            if (isset($_POST['submit']))
+            $username = htmlspecialchars($_POST['name']);
+            $email = htmlspecialchars($_POST['email']);
+            $password = htmlspecialchars($_POST['password']);
+            $verifyPassword = htmlspecialchars($_POST['verifyPassword']);
+            $heightUser = htmlspecialchars($_POST['height']);
+            $weightUser = htmlspecialchars($_POST['weight']);
+            $ageUser = htmlspecialchars($_POST['age']);
+            $genderUser = htmlspecialchars($_POST['gender']);
+
+            $error = 0;
+
+            if ($password === $verifyPassword)
             {
-                $username = htmlspecialchars($_POST['name']);
-                $email = htmlspecialchars($_POST['email']);
-                $password = htmlspecialchars($_POST['password']);
-                $verifyPassword = htmlspecialchars($_POST['verifyPassword']);
-                $heightUser = htmlspecialchars($_POST['height']);
-                $weightUser = htmlspecialchars($_POST['weight']);
-                $ageUser = htmlspecialchars($_POST['age']);
-                $genderUser = htmlspecialchars($_POST['gender']);
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            } else
+            {
+                $error = 1;
+                echo 'Wachtwoorden zijn niet gelijk!';
+            }
 
-                $error = 0;
+            if ($error === 0)
+            {
+                $this->db->query('INSERT INTO user (username, password, email, age, height, gender)
+                                VALUES (?, ?, ?, ?, ?, ?)', $username, $hashed_password, $email, $ageUser, $heightUser, $genderUser);
 
-                if ($password === $verifyPassword)
-                {
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                    $error = 0;
-                } else
-                {
-                    $error = 1;
-                    echo 'Wachtwoorden zijn niet gelijk!';
-                }
+                $account = $this->db->query('SELECT ID FROM user WHERE username = ? AND email = ?', $username, $email)->fetchArray();
+                $UserID = $account['ID'];
 
-                if ($error === 0)
-                {
-                    $this->db->query('INSERT INTO user (username, email, password, weight, height, age, gender)
-                                VALUES (?, ?, ?, ?, ?, ?, ?)', $username, $email, $hashed_password, $weightUser, $heightUser, $ageUser, $genderUser);
-                }
+                $this->db->query('INSERT INTO weight (user_id, weights)
+                                VALUES (?, ?)', $UserID, $weightUser);
             }
         }
     }
+}
