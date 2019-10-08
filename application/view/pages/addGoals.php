@@ -8,7 +8,7 @@
 ?>
 <div class="container-add-goal">
     <div class="container-header">
-        <a><i class="fas fa-arrow-left fa-2x"></i> &nbsp</a>
+        <a href="/dash"><i class="fas fa-arrow-left fa-2x" id="goBackArrow"></i> &nbsp</a>
         <h1 class="title">Doelen invoeren</h1>
     </div>
     <form action="/addgoal" method="post" class="form">
@@ -20,6 +20,8 @@
             <label>Hoeveel</label>
             <input type="text" name="task_quantity" class="input" placeholder="0" required>
         </div>
-        <button type="submit" name="submit" class="button" >Verstuur</button>
+        <button type="submit" name="submit" class="button sendBtn" >Verstuur</button>
+        <a href="/dash" class="button backBtn">Terug</a>
     </form>
+
 </div>

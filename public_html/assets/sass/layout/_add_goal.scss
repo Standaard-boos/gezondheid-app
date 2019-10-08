@@ -5,6 +5,12 @@
         align-items: center;
         justify-content: center;
         padding: 10px 0;
+
+        #goBackArrow{
+            @include respond-to('portrait') {
+                display: none;
+            }
+        }
     }
     .form {
         width: 305px;
@@ -30,6 +36,16 @@
             @extend %button;
             margin-top: 25px;
             text-align: center;
+            display: block;
+        }
+        .sendBtn{
+            width: 100%;
+        }
+        .backBtn{
+            display: none;
+            @include respond-to('portrait') {
+                display: block;
+            }
         }
     }
    

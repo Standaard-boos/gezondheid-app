@@ -10,11 +10,10 @@
 
 <div class="container-form">
     <h1 class="title">Gezondheidsmeter</h1>
-    <form class="form login-form" action="/" method="post">
-        <p class="login-error"><?php echo $user->loginError ?></p>
+    <form class="form login-form" action="" method="post">
         <div class="input-icon">
             <i class="fas fa-user-circle fa-lg icon"></i>
-            <input class="input" type="email" name="email" placeholder="Email adres" class="login-inputs"  required autofocus>
+            <input class="input" type="text" name="email" placeholder="Email adres" class="login-inputs" required autofocus>
         </div>
         <div class="input-icon">
             <i class="fas fa-lock fa-lg icon"></i>
@@ -25,3 +24,4 @@
         <a class="link" href="/register">Geen account? Aanmelden</a>
     </form>
 </div>
+<script src="assets/js/script.js"></script>        
