@@ -3,6 +3,10 @@ require_once('user.php');
 
 class registration
 {
+    protected $username;
+    protected $password;
+    protected $passwordVerify;
+
     public function __construct($db)
     {
         $this->db = $db;
@@ -26,7 +30,6 @@ class registration
             if ($password === $verifyPassword)
             {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                $error = 0;
             } else
             {
                 $error = 1;
@@ -35,10 +38,14 @@ class registration
 
             if ($error === 0)
             {
-                $this->db->query('INSERT INTO user (username, email, password, weight, height, age, gender)
-                                VALUES (?, ?, ?, ?, ?, ?, ?)', $username, $email, $hashed_password, $weightUser, $heightUser, $ageUser, $genderUser);
-                $_SESSION['loggedin'] = true;
-                echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
+                $this->db->query('INSERT INTO user (username, password, email, age, height, gender)
+                                VALUES (?, ?, ?, ?, ?, ?)', $username, $hashed_password, $email, $ageUser, $heightUser, $genderUser);
+
+                $account = $this->db->query('SELECT ID FROM user WHERE username = ? AND email = ?', $username, $email)->fetchArray();
+                $UserID = $account['ID'];
+
+                $this->db->query('INSERT INTO weight (user_id, weights)
+                                VALUES (?, ?)', $UserID, $weightUser);
             }
         }
     }
