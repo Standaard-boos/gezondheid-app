@@ -75,7 +75,8 @@ if(!isset($_SESSION['user_id'])) {
       case '/addgoal':
         $title = "addgoal";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
-    
+        break;
+
     
       case '/waarden' :
         $title = "Gegevens";

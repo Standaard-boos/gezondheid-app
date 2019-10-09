@@ -15,15 +15,15 @@ class SeeGoals{
         }
 
         public function SeeGoal(){
-            
             // Fetch all for multiple
             // FetchArray for single
-            $goal = $db->query("SELECT user_goals.user_id, goals.task, user_goals.task_quantity 
-            FROM goals 
-            INNER JOIN user_goals
-            ON goals.id = user_goals.user_id
-            WHERE user_id = $this->user_id")->fetchAll();
+            $goal = $this->db->query('SELECT user_goals.user_id, goals.task, user_goals.task_quantity 
+            FROM user_goals 
+            INNER JOIN goals
+            ON goals.id = user_goals.ID
+            WHERE user_goals.user_id = ?', $this->user_id)->fetchAll();
 
+        
             foreach($goal as $row){
                 echo '<div class="input-blocks">',
                         '<div class="input-icon"> ',
@@ -43,7 +43,7 @@ class SeeGoals{
                             '<button class="button" name="DeleteDoel" type="submit">Verwijder doel</button>',
                     '</div>';
 
-                }
+            }   
         }
 }     
         ?>

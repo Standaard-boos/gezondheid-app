@@ -18,7 +18,7 @@
         </div>
          <div class="form-group">
             <label>Hoeveel</label>
-            <input type="text" name="task_quantity" class="input" placeholder="0" required>
+            <input type="number" name="task_quantity" class="input" placeholder="0" required>
         </div>
         <button type="submit" name="submit" class="button sendBtn" >Verstuur</button>
         <a href="/dash" class="button backBtn">Terug</a>
