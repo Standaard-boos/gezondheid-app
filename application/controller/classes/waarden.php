@@ -2,6 +2,8 @@
 
     class insertWaardes
     {
+
+        protected $user_ID;
         public function __construct($db)
         {
             $this->db = $db;
@@ -11,6 +13,7 @@
         {
             if (isset($_POST['submit']))
             {
+                $user_id = $_SESSION['user_id'];
                 $food = htmlspecialchars($_POST['voedsel']);
                 $calories = htmlspecialchars($_POST['calorieen']);
                 $carbohydrates = htmlspecialchars($_POST['koolhydraten']);
@@ -23,9 +26,8 @@
 
                 if ($error === 0)
                 {
-
-                    $this->db->query('INSERT INTO food (name_food, kcal, fat, salt, sugar, protein, carbohydrates)
-                                VALUES (?, ?, ?, ?, ?, ?, ?)', $food, $calories, $fat, $salt, $sugars, $protein, $carbohydrates);
+                    $this->db->query('INSERT INTO food (user_ID, name_food, kcal, fat, salt, sugar, protein, carbohydrates)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?)', $user_id, $food, $calories, $fat, $salt, $sugars, $protein, $carbohydrates);
                 }
             }
         }
