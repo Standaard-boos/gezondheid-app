@@ -24,6 +24,5 @@
                     VALUES (?,?,?,?,?)', $this->task_quantity);
                 $this->db->query('INSERT INTO goals (id,task)
                     VALUES (?,?)',$this->task);
-            }
-        }
+
     }
