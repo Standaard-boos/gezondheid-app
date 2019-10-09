@@ -12,7 +12,6 @@
             if(!isset($_SESSION['loggedin'])){
                 header("Location:/");
             }
-             
         }
 
         public function addGoal(){

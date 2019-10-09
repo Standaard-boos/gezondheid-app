@@ -52,11 +52,7 @@
             }
             
         }
-        public function getDrinks()
-        {
-            // voorbeeld
-            $account = $this->db->query('SELECT * FROM drinks')->fetchArray();
-        }
+
         public function logedIn(){
             if(isset($_SESSION['loggedin'])){
                 header("Location:/dash");
