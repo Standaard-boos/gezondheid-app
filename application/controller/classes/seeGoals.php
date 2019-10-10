@@ -23,8 +23,6 @@ class SeeGoals{
             ON user_goals.goals_id = goals.id
             WHERE user_goals.user_id = ?', $this->user_id)->fetchAll();
 
-            var_dump($goal);
-            
                     foreach($goal as $row){
                         echo '<div class="input-blocks">',
                                 '<div class="input-icon"> ',

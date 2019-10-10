@@ -14,6 +14,11 @@ require_once(ROOT . '/../application/config/connection.php');
             <div class="input-icon">
                 <div class="title" id="NoGoals"></div>
             </div>
+            <div class="input-icon">
+            <a href="../addgoal" class="button">Voeg doel toe</a>
+            </div>
+            <div class="input-icon">
             <a href="../dash" class="button">Terug</a>
+            </div>
     </form>
 </div>
