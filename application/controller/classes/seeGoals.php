@@ -3,6 +3,7 @@
 
 class SeeGoals{
 
+
     protected   $user_id;
 
         public function __construct($db){
@@ -14,6 +15,20 @@ class SeeGoals{
             }
         }
 
+
+        public static function updateDoel(){
+            if($_SERVER['REQUEST_METHOD'] === 'POST'){
+                echo 'het werkt';
+                $updateDoel = json_decode($_POST['doel']) or $_REQUEST['doel'];
+                json_decode($updateDoel);
+                echo $updateDoel;
+            }
+           
+            // $this->db->query('UPDATE goals
+            // SET user_doelen = ?,
+            // WHERE id = ?');
+        }
+
         public function SeeGoal(){
             // Fetch all for multiple
             // FetchArray for single
@@ -23,29 +38,50 @@ class SeeGoals{
             ON user_goals.goals_id = goals.id
             WHERE user_goals.user_id = ?', $this->user_id)->fetchAll();
 
-                    foreach($goal as $row){
-                        echo '<div class="input-blocks">',
-                                '<div class="input-icon"> ',
-                                    '<div class="title">'.$row["task"],
-                                    '</div>',
+                foreach($goal as $row){
+                    echo '<div class="input-blocks">',
+                            '<div class="input-icon"> ',
+                                '<div class="title">'.$row["task"],
                                 '</div>',
-                                '<div class="input-icon">',
-                                    '<i class="far fa-clock icon"></i>',
-                                    '<div class="input">'.$row["task_quantity"],
-                                    '</div>',
+                            '</div>',
+                            '<div class="input-icon">',
+                                '<i class="far fa-clock icon"></i>',
+                                '<div class="input">'.$row["task_quantity"],
                                 '</div>',
-                                '<div class="input-icon">',
-                                    '<i class="far fa-clock icon"></i>',
-                                    '<input class="input" type="text" name="goal" placeholder="Doel">',
-                                '</div>',
-                                    '<button class="button" name="UpdateDoel" type="submit">Update doel</button>',
-                                    '<button class="button" name="DeleteDoel" type="submit">Verwijder doel</button>',
-                            '</div>';
-                    }
+                            '</div>',
+                            '<div class="input-icon">',
+                                '<i class="far fa-clock icon"></i>',
+                                '<input class="input goal" type="text" name="goal" placeholder="Hoeveel heeft u gehaald van uw doel">',
+                            '</div>',
+                                '<button class="button" type="button" onclick="updateDoel()" name="updateDoel2">Update doel</button>',
+                                '<button class="button" name="DeleteDoel">Verwijder doel</button>',
+                        '</div>';
+                }
 
-                    if(empty($goal)){
-                        echo  'Geen doelen gevonden.';
-                    }
+            if(empty($goal)){
+                echo  'Geen doelen gevonden.';
+            }
         }
 }     
 ?>
+<!-- 
+
+    this.updateDoel()
+
+function updateDoel(){
+    let updateDoel =  document.getElementById('goal').innerText
+
+    (async () => {
+        const rawResponse = await fetch('http://gezondheidmeter.test/ajax', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updateDoel)
+        });
+        const content = await rawResponse.json();
+      
+        console.log(content);
+      })();
+} -->

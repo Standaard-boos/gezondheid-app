@@ -1,6 +1,7 @@
 <?php
   session_start();
   define('ROOT',(__DIR__));
+  require_once(ROOT . '/../application/controller/classes/SeeGoals.php');
 
 function connection() {
   $servername = json_encode($configs->host);
@@ -62,6 +63,12 @@ if(!isset($_SESSION['user_id'])) {
         header('location: /dash');
         break;
 
+      case '/ajax' :
+        $pageContent = dirname(__DIR__, 1) . '/../application/controller/classes/SeeGoals.php';
+        SeeGoals::updateDoel();
+        die;
+      break;
+
       case '/dash' :
         $title = "Login";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
@@ -107,8 +114,7 @@ if(!isset($_SESSION['user_id'])) {
   }
 }
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html class="no-js">
     <head>
         <meta charset="utf-8">
