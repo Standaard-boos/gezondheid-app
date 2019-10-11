@@ -4,10 +4,10 @@ class GetPersonData{
 
     static function GetData(){
 
-        $username = "Hulk Hogan";
-        $gewicht = 120 . "KG";
-        $lengte = 188 . "CM";
-        $leeftijd = 99 . "jaar";
+        $username = $_SESSION['user_name'];
+        $gewicht = $_SESSION['user_weight'] . " KG";
+        $lengte = $_SESSION['height'] . " CM";
+        $leeftijd = $_SESSION['user_age'] . " jaar";
         $roken = "nee";
 
         echo "<p>Username: ". $username."</p><p> Gewicht: ".$gewicht."</p><p> Lengte: ". $lengte."</p><p> Leeftijd: ".$leeftijd."</p><p>Roker: ".$roken."</p>";  

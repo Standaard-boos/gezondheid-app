@@ -29,13 +29,18 @@
                             $login = password_verify($this->userPass, $dbpass);
                             if ($login) {
                                 $this->loginError = "";
-                                $sql_user_id = $this->db->query('SELECT `ID` FROM user WHERE email = ? LIMIT 1',$this->email)->fetchArray();
-
-                                $_SESSION['user_id'] = $sql_user_id;
+                                $user_info = $this->db->query('SELECT user.ID, user.username, user.email, user.age, user.height, user.gender, weight.weights 
+                                                               FROM user INNER JOIN weight ON weight.ID WHERE user.email = ? LIMIT 1',$this->email)->fetchArray();
+                                $_SESSION['user_id'] = $user_info['ID'];
+                                $_SESSION['user_name'] = $user_info['username'];
+                                $_SESSION['user_email'] = $user_info['email'];
+                                $_SESSION['user_weight'] = $user_info['weights'];
+                                $_SESSION['user_age'] = $user_info['age'];
+                                $_SESSION['height'] = $user_info['height'];
+                                $_SESSION['gender'] = $user_info['gender'];
                                 $_SESSION['loggedin'] = $login;
                                 $_SESSION['email'] = $this->email;
                                 $_SESSION['session_id'] = session_id();
-
 
                                 echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
                                 return true;
