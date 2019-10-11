@@ -20,7 +20,6 @@
                 $this->task = $this->db->connection->real_escape_string(strtolower($_POST['task'])) ?? 'not defined';
                 $this->task_quantity = $this->db->connection->real_escape_string($_POST['task_quantity']) ?? 'not defined';
 
-                
                 $stmtCheck = $this->db->connection->prepare('SELECT `id` FROM goals WHERE task = ?');
                 $stmtCheck->bind_param('s',$this->task);
                 $stmtCheck->bind_result($id);

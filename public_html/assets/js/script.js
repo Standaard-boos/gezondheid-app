@@ -4,19 +4,21 @@ window.onload = function (){
 }
 
 function seePass(){
-    let seePassword = document.querySelector('#seePassword');
-    let loginPasswordInput = document.querySelector('#loginPasswordInput');
-    let bool = true;
-    seePassword.addEventListener('click', () => { 
-        if(bool){
-            loginPasswordInput.type = 'text'
-            seePassword.className = 'fas fa-eye-slash fa-lg icon-right'
-            bool = false;
-        }else{
-            loginPasswordInput.type = 'password'
-            seePassword.className = 'fas fa-eye fa-lg icon-right'
-            bool = true;
-        }
-    })
+    let seePassword = document.querySelectorAll('.seePassword');
+    let bool = true;    
+    Array.from(seePassword).forEach(e => {
+        e.addEventListener('click',() => {
+            let input = e.parentNode.childNodes[3];
+            if(bool) {
+                input.type = 'text'
+                e.className = 'fas fa-eye-slash fa-lg icon-right seePassword'
+                bool = false;
+            }else{
+                input.type = 'password'
+                e.className = 'fas fa-eye fa-lg icon-right seePassword'
+                bool = true;
+            }
+        })
+    });
 }
 
