@@ -17,8 +17,8 @@
         </div>
         <div class="input-icon">
             <i class="fas fa-lock fa-lg icon"></i>
-            <input class="input" type="password" name="password" id="loginPasswordInput" class="login-inputs" placeholder="Wachtwoord" required><br>
-            <i class="fas fa-eye fa-lg icon-right" id="seePassword"></i>
+            <input class="input" type="password" name="password" class="login-inputs loginPasswordInput" placeholder="Wachtwoord" required><br>
+            <i class="fas fa-eye fa-lg icon-right seePassword"></i>
         </div>
         <button type="submit" name="submit" class="button" >Login</button>
         <a class="link" href="/register">Geen account? Aanmelden</a>
