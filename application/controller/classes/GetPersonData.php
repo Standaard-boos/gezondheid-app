@@ -6,7 +6,7 @@ class GetPersonData{
 
         $username = $_SESSION['user_name'];
         $gewicht = $_SESSION['user_weight'] . " KG";
-        $lengte = $_SESSION['height'] . " CM";
+        $lengte = $_SESSION['height'] . " M";
         $leeftijd = $_SESSION['user_age'] . " jaar";
         $roken = "nee";
 
