@@ -2,9 +2,11 @@
 require_once(ROOT . '/../application/controller/classes/FirstClass.php');
 require_once(ROOT . '/../application/controller/classes/GetChartData.php');
 require_once(ROOT . '/../application/controller/classes/GetPersonData.php');
+require_once(ROOT . '/../application/config/connection.php');
+
 $_SESSION['username'] = "Hulk hogan";
 $_SESSION['valid'] = true;
-
+$class = new GetPersonData($db);
 
 if (isset($_SESSION['valid'])) {
 
@@ -14,7 +16,7 @@ if (isset($_SESSION['valid'])) {
         <h2 class="h2">Overzicht</h2>
         <!-- <h3 class="h3">Welkom : <?php //echo $_SESSION['username']; ?></h3> -->
         <div class="dataPerson">
-            <?php echo GetPersonData::GetData(); ?>
+            <?php echo $class->getData(); ?>
         </div>
         <div class="buttonContainer">
             <button class="button">Invoer Gegevens</button>
