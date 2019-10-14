@@ -39,30 +39,3 @@ if (isset($_SESSION['valid'])) { ?>
 
     <script src="assets/js/chart.js"></script>
 <?php } ?>
-
-
-<!-- <div class="dash-container">
-        <h1 >Overzicht</h1>
-        <div class="">
-            <?php echo GetPersonData::GetData(); ?>
-        </div>
-        <div class="buttonContainer">
-            <button class="button">Invoer Gegevens</button>
-            <a class="button" href="seegoal"><button>Doelen</button></a>
-        </div>
-        <div>
-            <select id="ChartSelectBox" class="selectbox" onchange="ShowHideCharts()">
-                <option value="kies">kies...</option>
-                <option value="voeding">chart voor voeding</option>
-                <option value="gewicht">chart voor gewicht</option>
-            </select>
-            <div class="containerCharts">
-                <div class="hidden" id="chart1">
-                    <canvas id="myChart" width="400" height="400"></canvas>
-                </div>
-                <div class="hidden" id="chart2">
-                    <canvas id="myChart2" width="400" height="400"></canvas>
-                </div>
-            </div>
-        </div>
-    </div> -->
