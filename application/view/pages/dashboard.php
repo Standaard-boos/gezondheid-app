@@ -8,8 +8,9 @@ $_SESSION['username'] = "Hulk hogan";
 $_SESSION['valid'] = true;
 $class = new GetPersonData($db);
 
-if (isset($_SESSION['valid'])) { ?>
+if (isset($_SESSION['valid'])) {?>
 
+    
     <div class="dash-container">
         <div class="header">
             <h1 class="title">Overzicht</h1>
