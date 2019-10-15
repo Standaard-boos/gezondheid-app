@@ -10,41 +10,56 @@ class changeUserValues
 
     public function getValueUser()
     {
-        if (isset($_POST['submit']))
+        if (empty($_SESSION['token']))
         {
-            $error = 0;
+            $_SESSION['token'] = bin2hex(random_bytes(32));
+        }
+        $token = $_SESSION['token'];
 
-            $emailUser = htmlspecialchars($_POST['emailUser']);
-            $passwordUser = htmlspecialchars($_POST['userPassword']);
-            $newPasswordUser = htmlspecialchars($_POST['newPasswordUser']);
-
-            $user_info = $this->db->query('SELECT * FROM user WHERE ID = ?', $_SESSION['user_id'])->fetchArray();
-            $verifiedPassword = password_verify($passwordUser, $user_info['password']);
-            if ($passwordUser != $verifiedPassword)
+        if (!empty($_POST['token']))
+        {
+            if (hash_equals($_SESSION['token'], $_POST['token']))
             {
-                $error = 1;
-                echo 'Uw huidige wachtwoord klopt niet' . '<br>';
-            }
+                if (isset($_POST['submit']))
+                {
+                    $error = 0;
 
-            if ($emailUser == '' || $passwordUser == '' || $newPasswordUser == '')
-            {
-                echo 'Velden mogen niet leeg';
-                exit();
-            }
+                    $emailUser = htmlspecialchars($_POST['emailUser']);
+                    $passwordUser = htmlspecialchars($_POST['userPassword']);
+                    $newPasswordUser = htmlspecialchars($_POST['newPasswordUser']);
 
-            if ($error === 0)
-            {
-                $hashed_password_new = password_hash($newPasswordUser, PASSWORD_DEFAULT);
-                $updateQuery = $this->db->query('UPDATE user SET email = ?, password = ? WHERE  ID = ?', $emailUser, $hashed_password_new, $_SESSION['user_id']);
-                echo 'Gewijzigd';
+                    $user_info = $this->db->query('SELECT * FROM user WHERE ID = ?', $_SESSION['user_id'])->fetchArray();
+                    $verifiedPassword = password_verify($passwordUser, $user_info['password']);
+                    if ($passwordUser != $verifiedPassword)
+                    {
+                        $error = 1;
+                        echo 'Uw huidige wachtwoord klopt niet' . '<br>';
+                    }
+
+                    if ($emailUser == '' || $passwordUser == '' || $newPasswordUser == '')
+                    {
+                        echo 'Velden mogen niet leeg';
+                        exit();
+                    }
+
+                    if ($error === 0)
+                    {
+                        $hashed_password_new = password_hash($newPasswordUser, PASSWORD_DEFAULT);
+                        $updateQuery = $this->db->query('UPDATE user SET email = ?, password = ? WHERE  ID = ?', $emailUser, $hashed_password_new, $_SESSION['user_id']);
+                        echo 'Gewijzigd';
+                    }
+                } else
+                {
+                    echo 'token is invalid';
+                }
             }
         }
-
         $user_info = $this->db->query('SELECT * FROM user WHERE ID = ?', $_SESSION['user_id'])->fetchArray();
 
         echo '<div class="container-form">
                 <h1 class="title">Uw gegevens</h1>
                 <form class="form login-form" action="" method="post">
+                <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
                     Uw email:
                     <div class="input-icon">
                         <input class="input" value="' . $user_info['email'] . '" type="text" name="emailUser" class="login-inputs" placeholder="Uw email" required><br>
