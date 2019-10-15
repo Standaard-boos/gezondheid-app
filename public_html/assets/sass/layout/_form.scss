@@ -32,6 +32,7 @@
                 @extend %input;
                 width: calc(100% - 54px);
                 padding-left: 40px;
+               
             }
 
             .icon {
@@ -58,4 +59,14 @@
             padding-top: 10px;
         }
     }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }

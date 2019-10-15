@@ -92,12 +92,23 @@ if(!isset($_SESSION['user_id'])) {
         $title = "Drugs";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/drugs.php';
         break;
-    
+
+    // Ajax calls
+      case '/ajax' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
+      case '/deleteGoal' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
+      case '/getGoals' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
     //API
       case '/api/chart':
         include dirname(__DIR__, 1) . '/application/controller/function/GetChartDataHandler.php';
         die();
-            
+        break;
+
     //logout
       case '/x' :
         session_destroy();
@@ -112,8 +123,7 @@ if(!isset($_SESSION['user_id'])) {
   }
 }
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html class="no-js">
     <head>
         <meta charset="utf-8">
