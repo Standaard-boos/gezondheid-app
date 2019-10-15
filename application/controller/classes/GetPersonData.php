@@ -15,8 +15,8 @@ class GetPersonData
 
         $this->db;
         $username = $_SESSION['user_name'];
-        $gewicht = $user_info['weights'] . " KG";
-        $lengte = $_SESSION['height'] . " CM";
+        $gewicht = $_SESSION['user_weight'] . " KG";
+        $lengte = $_SESSION['height'] . " M";
         $leeftijd = $_SESSION['user_age'] . " jaar";
         $roken = "nee";
 

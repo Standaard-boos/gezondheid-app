@@ -8,34 +8,32 @@ $_SESSION['username'] = "Hulk hogan";
 $_SESSION['valid'] = true;
 $class = new GetPersonData($db);
 
-if (isset($_SESSION['valid'])) {
+if (isset($_SESSION['valid'])) { ?>
 
-    ?>
-
-    <div class="dashboardContainer">
-        <h2 class="h2">Overzicht</h2>
-        <!-- <h3 class="h3">Welkom : <?php //echo $_SESSION['username']; ?></h3> -->
-        <div class="dataPerson">
-            <?php echo $class->getData(); ?>
+    <div class="dash-container">
+        <div class="header">
+            <h1 class="title">Overzicht</h1>
+            <a class="logout" href="/x"><span class="button desktop">Logout</span><i class="fas fa-sign-out-alt fa-2x mobile"></i></a>
         </div>
-        <div class="buttonContainer">
-            <button class="button">Invoer Gegevens</button>
-            <button class="button">Doelen</button>
-            <a href="../addgoal" class="button">Voeg doel toe</a>
-            <a href="../seegoal" class="button">Zie doelen</a>
-        </div>
-        <div>
-            <select id="ChartSelectBox" class="selectbox" onchange="ShowHideCharts()">
-                <option value="kies">kies...</option>
-                <option value="voeding">chart voor voeding</option>
-                <option value="gewicht">chart voor gewicht</option>
-            </select>
-            <div class="containerCharts">
-                <div class="hidden" id="chart1">
-                    <canvas id="myChart" width="400" height="400"></canvas>
+        <div class="main">
+            <div class="flex-container">
+                    <div class="content account">
+                        <div>
+                            <?php echo $class->GetData(); ?> 
+                        </div>
+                        <a href="/user"><button class="button account-btn">Beheer account</button></a>
+                    </div>
+            </div>
+            <div class="flex-container">
+                <div class="content">
+                    <div class="hidden" id="chart1">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                    </div>
                 </div>
-                <div class="hidden" id="chart2">
-                    <canvas id="myChart2" width="400" height="400"></canvas>
+                <div class="content">
+                    <div class="hidden" id="chart2">
+                        <canvas id="myChart2" width="400" height="400"></canvas>
+                    </div>
                 </div>
             </div>
         </div>

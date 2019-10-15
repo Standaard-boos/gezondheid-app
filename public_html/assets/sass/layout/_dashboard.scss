@@ -1,101 +1,86 @@
-/*basic css*/
-
-.dashboardContainer{
-
-
-  .hidden{
-
-    display: none;
-  }
-
-  .buttonContainer{
-
-    margin-top:0%;
-
-
-  }
-
-  .h2,.h3{
-
-    
-    //width: 100%;
-    padding: 10px;
-    text-align: center;
-
-  }
-
-  .selectbox{
-
-    width: 100%;
-    height: 30px;
-    margin-top:20px;
-  }
-
-  .button{
-
+.dash-container {
+  .button {
     @extend %button;
-    width:100%;
-    margin-top: 30px;
-    
   }
 
-  .dataPerson{
+  .header {
+    width: 100%;
+    height: 70px;
 
-    //margin: auto;
-    //width: 100%;
-    margin-left: 35%;
-    text-align: left;
+    .title {
+      display: inline-block;
+      width: 100%;
+      padding-top: 10px;
+      text-align: center;
+      font-size: 2em;
+        color: $grey;
+    }
 
+    .logout {
+      position: absolute;
+      right: 15px;
+      top: 10px ;
+      background-color: none;
+      width: auto;
+
+      .desktop {
+        position: relative;
+        display: none;
+
+        @include respond-to('phablet') {
+          display: block;
+        }
+      }
+
+      .mobile {
+        display: block;
+
+        @include respond-to('phablet') {
+          display: none;
+        }
+      }
+    }
   }
 
-}
+  .main{
+    width: 100%;
 
-@media screen and (min-width: 768px){
+    .flex-container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      padding: 20px 10px;
 
+      @include respond-to('phablet') {
+        padding: 20px 80px;
+      }
 
-  .selectbox{
-    display: none;
-  }
- 
-  .dataPerson{
-    // text-align: center !important;
-    // margin-left: 0% !important;
-    margin: auto;
-    width: 50%;
-    padding: 10px;
- 
-  }
+      .content {
+        flex-wrap: wrap; 
+        width: 100%;
+        height: 400px;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.18);
 
-  .hidden{
-    display: block !important;
-  }
+        @include respond-to('phablet') {
+          width: 400px;
+        }
+      }
+      
+      .account {
+        width: 100%;
+        height: 200px;
 
-  .containerCharts{
-
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-    
-
-
-  }
+        @include respond-to('phablet') {
+          width: 400px;
+        }
   
-    #chart1{
-
-      width: 50%;
-      height: 0px;
-      
-
+        .account-btn {
+          margin-top: 20px;
+        }
+      }
     }
-    #chart2{
-
-    
-    width: 50%;
-    float: right;
-      
-    }
-
-
-
-
+  }
 }
