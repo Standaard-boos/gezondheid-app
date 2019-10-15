@@ -11,6 +11,7 @@
 <div class="container-form">
     <h1 class="title">Gezondheidsmeter</h1>
     <form class="form login-form" action="" method="post">
+        <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?>">
         <div class="input-icon">
             <i class="fas fa-user-circle fa-lg icon"></i>
             <input class="input" type="text" name="email" placeholder="Email adres" class="login-inputs" required autofocus>

@@ -1,10 +1,10 @@
 
 window.onload = function (){
-    seePass()
+    this.seePass()
 }
 
 function seePass(){
-    let seePassword = document.querySelectorAll('.seePassword');
+    const seePassword = document.querySelectorAll('.seePassword');
     let bool = true;    
     Array.from(seePassword).forEach(e => {
         e.addEventListener('click',() => {

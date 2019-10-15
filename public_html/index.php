@@ -1,7 +1,6 @@
 <?php
   session_start();
   define('ROOT',(__DIR__));
-  require_once(ROOT . '/../application/controller/classes/SeeGoals.php');
 
 function connection() {
   $servername = json_encode($configs->host);
@@ -63,12 +62,6 @@ if(!isset($_SESSION['user_id'])) {
         header('location: /dash');
         break;
 
-      case '/ajax' :
-        $pageContent = dirname(__DIR__, 1) . '/../application/controller/classes/SeeGoals.php';
-        SeeGoals::updateDoel();
-        die;
-      break;
-
       case '/dash' :
         $title = "Login";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
@@ -94,12 +87,23 @@ if(!isset($_SESSION['user_id'])) {
         $title = "Drugs";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/drugs.php';
         break;
-    
+
+    // Ajax calls
+      case '/ajax' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
+      case '/deleteGoal' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
+      case '/getGoals' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
     //API
       case '/api/chart':
         include dirname(__DIR__, 1) . '/application/controller/function/GetChartDataHandler.php';
         die();
-            
+        break;
+
     //logout
       case '/x' :
         session_destroy();

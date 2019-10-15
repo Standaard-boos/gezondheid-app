@@ -16,6 +16,7 @@
         }
         
         public function addGoal(){
+            $true = 1;
             if(isset($_POST['submit'])){
                 $this->task = $this->db->connection->real_escape_string(strtolower($_POST['task'])) ?? 'not defined';
                 $this->task_quantity = $this->db->connection->real_escape_string($_POST['task_quantity']) ?? 'not defined';
@@ -33,9 +34,9 @@
                     VALUES (?,?,?)',$this->user_id, $this->task_quantity,$id);
                 }else{
                     //insert in goals table
-                    $stmt = $this->db->connection->prepare('INSERT INTO goals (task)
-                        VALUES(?);');
-                    $stmt->bind_param('s', $this->task);
+                    $stmt = $this->db->connection->prepare('INSERT INTO goals (task,display)
+                        VALUES(?,?);');
+                    $stmt->bind_param('si', $this->task,$true);
                     $stmt->execute();
                     $last_id = $this->db->connection->insert_id;
 
