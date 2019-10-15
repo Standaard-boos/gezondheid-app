@@ -1,17 +1,19 @@
-<?php 
-    
-    class User 
+<?php
+
+class User
+{
+    protected $email, $userPass;
+
+    public $loginError;
+
+    public function __construct($db)
     {
-        protected $email,
-                $userPass;
+        $this->db = $db;
+    }
 
-        public $loginError;
-
-        public function __construct($db)
-        {
-            $this->db = $db; 
-        }
-        public function login()
+    public function login()
+    {
+        if (isset($_POST['submit']))
         {
             if (empty($_SESSION['token'])) {
                 $_SESSION['token'] = bin2hex(random_bytes(32));
@@ -56,18 +58,23 @@
                                 }
                             }
                         }
+                    } else
+                    {
+                        $this->loginError = "Email of wachtwoord is onjuist!";
                     }
                 } else {
                     echo "kan niet";
                 }
             }
-            
-            
         }
 
-        public function logedIn(){
-            if(isset($_SESSION['loggedin'])){
-                echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
-            }
+    }
+
+    public function logedIn()
+    {
+        if (isset($_SESSION['loggedin']))
+        {
+            echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
         }
     }
+}
