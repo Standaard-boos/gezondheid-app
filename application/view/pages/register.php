@@ -15,7 +15,7 @@ $registration->register();
             <input type="text" name="name" placeholder="Gebruiksnaam" class="input" required autofocus>
         </div>
         <div class="input-icon">
-            <input class="input" type="text" name="email" placeholder="Email">
+            <input class="input" type="text" name="email" placeholder="Email" required>
         </div><br>
         <div class="input-icon">
             <i class="fas fa-lock icon"></i>
@@ -24,8 +24,7 @@ $registration->register();
         </div>
         <div class="input-icon">
             <i class="fas fa-lock icon"></i>
-            <input type="password" name="verifyPassword" class="input" placeholder="Herhaal wachtwoord"
-                   required><br>
+            <input type="password" name="verifyPassword" class="input" placeholder="Herhaal wachtwoord" required><br>
         </div>
         <div class="input-icon">
             <label>Geslacht</label>
@@ -35,13 +34,13 @@ $registration->register();
             <input class="" type="radio" name="gender" value="female"> Female
         </div>
         <div class="input-icon">
-            <input class="input" type="text" name="height" placeholder="Lengte">
+            <input class="input" type="text" name="height" placeholder="Lengte" required>
         </div>
         <div class="input-icon">
-            <input class="input" type="text" name="weight" placeholder="Gewicht">
+            <input class="input" type="text" name="weight" placeholder="Gewicht" required>
         </div>
         <div class="input-icon">
-            <input class="input" type="number" name="age" placeholder="leeftijd">
+            <input class="input" type="number" name="age" placeholder="leeftijd" required>
         </div>
         <button class="button" name="submit" type="submit">Registreer</button>
     </form>
