@@ -31,6 +31,7 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
     //based on https://dribbble.com/shots/3913847-404-page
 
@@ -52,7 +53,4 @@
         //console.log('X: ' + xAxis);
 
     });
-    function goBack() {
-        window.history.back();
-    }
 </script>
