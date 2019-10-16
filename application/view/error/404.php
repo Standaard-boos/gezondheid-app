@@ -1,31 +1,58 @@
-<body class="fourbody">
-<a href="javascript:history.back()">
-    <svg height="0.8em" width="0.8em" viewBox="0 0 2 1" preserveAspectRatio="none">
-        <polyline
-                fill="none"
-                stroke="#777777"
-                stroke-width="0.1"
-                points="0.9,0.1 0.1,0.5 0.9,0.9"
-        />
-    </svg> Terug
-</a>
-<div class="fourbackground-wrapper">
-    <h1 id="visual">404</h1>
+<div class="fourbody">
+    <div class="box">
+        <div class="box__ghost">
+            <div class="symbol"></div>
+            <div class="symbol"></div>
+            <div class="symbol"></div>
+            <div class="symbol"></div>
+            <div class="symbol"></div>
+            <div class="symbol"></div>
+            <div class="box__ghost-container">
+                <div class="box__ghost-eyes">
+                    <div class="box__eye-left"></div>
+                    <div class="box__eye-right"></div>
+                </div>
+                <div class="box__ghost-bottom">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="box__ghost-shadow"></div>
+        </div>
+        <div class="box__description">
+            <div class="box__description-container">
+                <div class="box__description-title">404</div>
+                <div class="box__description-text">It seems like we couldn't find the page you were looking for</div>
+            </div>
+            <a href="javascript:history.back()" class="box__button">Terug</a>
+        </div>
+    </div>
 </div>
-<p>Pagina niet gevonden</p>
-</body>
-
-
 <script>
-    const visual = document.getElementById("visual")
-    const events = ['resize', 'load']
+    //based on https://dribbble.com/shots/3913847-404-page
 
-    events.forEach(function(e){
-        window.addEventListener(e, function(){
-            const width = window.innerWidth
-            const height = window.innerHeight
-            const ratio = 45 / (width / height)
-            visual.style.transform = "translate(-50%, -50%) rotate(-" + ratio + "deg)"
-        });
+    var pageX = $(document).width();
+    var pageY = $(document).height();
+    var mouseY=0;
+    var mouseX=0;
+
+    $(document).mousemove(function( event ) {
+        //verticalAxis
+        mouseY = event.pageY;
+        yAxis = (pageY/2-mouseY)/pageY*300;
+        //horizontalAxis
+        mouseX = event.pageX / -pageX;
+        xAxis = -mouseX * 100 - 100;
+
+        $('.box__ghost-eyes').css({ 'transform': 'translate('+ xAxis +'%,-'+ yAxis +'%)' });
+
+        //console.log('X: ' + xAxis);
+
     });
+    function goBack() {
+        window.history.back();
+    }
 </script>
