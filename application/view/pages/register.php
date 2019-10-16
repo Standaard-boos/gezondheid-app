@@ -19,8 +19,8 @@ $registration->register();
         </div><br>
         <div class="input-icon">
             <i class="fas fa-lock icon"></i>
-            <input  type="password" name="password" class="input" placeholder="Wachtwoord" required><br>
-            <i class="fas fa-eye icon-right"></i>
+            <input  type="password" name="password" class="input loginPasswordInput" placeholder="Wachtwoord" required><br>
+            <i class="fas fa-eye icon-right seePassword"></i>
         </div>
         <div class="input-icon">
             <i class="fas fa-lock icon"></i>
@@ -47,4 +47,4 @@ $registration->register();
     </form>
 </div>
 
-
+<script src="assets/js/script.js"></script>        
