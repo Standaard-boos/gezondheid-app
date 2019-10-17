@@ -8,7 +8,7 @@ class SeeGoals{
 
         public function __construct($db){
             $this->db = $db;
-            $this->user_id = implode('', $_SESSION['user_id']);
+            $this->user_id = $_SESSION['user_id'];
             
             if(!isset($_SESSION['loggedin'])){
                 header("Location:/");
@@ -44,13 +44,16 @@ class SeeGoals{
 
         public function SeeGoal(){
             $bool = false;
-            $goal = $this->db->query('SELECT user_goals.goals_id, goals.task,goals.id, user_goals.task_quantity, goals.display 
+            $goal = $this->db->query('SELECT user_goals.goals_id, goals.task,goals.id,goals.user_doelen, user_goals.task_quantity, goals.display 
             FROM user_goals
             INNER JOIN goals
             ON user_goals.goals_id = goals.id
             WHERE user_goals.user_id = ? ORDER BY goals.id DESC
             ', $this->user_id)->fetchAll();
             foreach($goal as $row){
+                if ($row["task_quantity"] <= $row['user_doelen']) {
+                    $achieved = '<small>Uw doel is behaald</small>';
+                }
                 if($row['display']){
                     $bool = false;
                     $html = '<div class="input-blocks" task-id='.$row["id"].'>
@@ -65,8 +68,9 @@ class SeeGoals{
                             </div>
                             <div class="input-icon">
                                 <i class="far fa-clock icon"></i>
-                                <input class="input goal" type="number" min="0" name="goal" 
+                                <input class="input goal" type="number" value="'. $row['user_doelen'] .'"\ min="0" name="goal" 
                                 placeholder="Hoeveel heeft u gehaald van uw doel">
+                                '. $achieved .'
                             </div>
                                 <button class="button updateGoalBtn" type="button"  >Update doel</button>
                                 <button class="button deleteGoalBtn" type="button">Verwijder doel</button>
