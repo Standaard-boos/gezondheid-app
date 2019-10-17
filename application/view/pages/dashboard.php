@@ -12,9 +12,16 @@ if (isset($_SESSION['valid'])) {?>
 
     
     <div class="dash-container">
+        <div class="menu menu-close">
+            <i id="menuButton" class="fas fa-bars fa-2x"></i>
+            <ul class="menu-items">
+                <a class="items" href="/seegoals"><li>Doelen</li></a>
+                <a class="items" href="/waarden"><li>Waarden</li></a>
+                <a class="items" href="/x"><li>Logout</li></a>
+            </ul>
+        </div>
         <div class="header">
             <h1 class="title">Overzicht</h1>
-            <a class="logout" href="/x"><span class="button desktop">Logout</span><i class="fas fa-sign-out-alt fa-2x mobile"></i></a>
         </div>
         <div class="main">
             <div class="flex-container">
@@ -40,5 +47,6 @@ if (isset($_SESSION['valid'])) {?>
         </div>
     </div>
 
+    <script src="assets/js/menu.js"></script>
     <script src="assets/js/chart.js"></script>
 <?php } ?>
