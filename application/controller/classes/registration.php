@@ -22,7 +22,7 @@ class registration
             $verifyPassword = htmlspecialchars($_POST['verifyPassword']);
             $heightUser = htmlspecialchars($_POST['height']);
             $weightUser = htmlspecialchars($_POST['weight']);
-            $ageUser = htmlspecialchars($_POST['age']);
+            $ageUser = htmlspecialchars($_POST['geboortedatum']);
             $genderUser = htmlspecialchars($_POST['gender']);
 
             $error = 0;
@@ -38,7 +38,7 @@ class registration
 
             if ($error === 0)
             {
-                $this->db->query('INSERT INTO user (username, password, email, age, height, gender)
+                $this->db->query('INSERT INTO user (username, password, email, geboortedatum, height, gender)
                                 VALUES (?, ?, ?, ?, ?, ?)', $username, $hashed_password, $email, $ageUser, $heightUser, $genderUser);
 
                 $account = $this->db->query('SELECT ID FROM user WHERE username = ? AND email = ?', $username, $email)->fetchArray();

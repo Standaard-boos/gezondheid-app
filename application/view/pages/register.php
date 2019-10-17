@@ -41,7 +41,7 @@ $registration->register();
             <input class="input" type="text" name="weight" placeholder="Gewicht">
         </div>
         <div class="input-icon">
-            <input class="input" type="number" name="age" placeholder="leeftijd">
+            <input class="input" type="date" name="geboortedatum" placeholder="Geboortedatum">
         </div>
         <button class="button" name="submit" type="submit">Registreer</button>
     </form>
