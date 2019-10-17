@@ -44,6 +44,7 @@ class SeeGoals{
 
         public function SeeGoal(){
             $bool = false;
+            $achieved;
             $goal = $this->db->query('SELECT user_goals.goals_id, goals.task,goals.id,goals.user_doelen, user_goals.task_quantity, goals.display 
             FROM user_goals
             INNER JOIN goals

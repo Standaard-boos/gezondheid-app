@@ -15,16 +15,19 @@ class Drugs{
         if (!empty($_POST['token'])) {
             if (hash_equals($_SESSION['token'], $_POST['token'])) {
                 if(isset($_POST['submit'])){
-                    $drug_type = $_POST['drug_types'];
-                    $quantity = $_POST['quantity'];
+                    $drug_type = $this->db->connection->real_escape_string($_POST['drug_types']) ?? 'not defined';
+                    $quantity = $this->db->connection->real_escape_string($_POST['quantity']) ?? 'not defined';
+                    $input_quantity = $this->db->connection->real_escape_string($_POST['input_quantity']) ?? 'not defined';
 
-                    $this->db->query('INSERT INTO drugs (user_id,drugs_type_id,quantity)
-                    VALUES (?,?,?)',$_SESSION['user_id'], $_POST['drug_types'], $_POST['quantity']);
-            
+                    if (empty($input_quantity)) {
+                        $this->db->query('INSERT INTO drugs (user_id,drugs_type_id,quantity)
+                        VALUES (?,?,?)',$_SESSION['user_id'],$drug_type, $quantity);
+                    }else{
+                        $this->db->query('INSERT INTO drugs (user_id,drugs_type_id,quantity)
+                        VALUES (?,?,?)',$_SESSION['user_id'],$drug_type, $input_quantity);
+                    }
                 }
             }
-        }
-    
-       
+        }   
     }
 }

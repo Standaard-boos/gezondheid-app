@@ -27,7 +27,7 @@ $drug->addDrugs();
         </div>
         <h4 class="input-icon">Hoeveel heb je genomen? (Pil, Spuit, lijntje, gram)</h4>
         <div class="input-icon">
-        <select class="input" name="quantity" required>
+            <select class="input" name="quantity" id="select_quantity" required>
                 <option value="">Kies uit...</option>
                 <option value="0.25">1/4</option> 
                 <option value="0.50">1/2</option> 
@@ -35,10 +35,17 @@ $drug->addDrugs();
                 <option value="1.00">1 </option> 
                 <option value="2">2</option> 
                 <option value="3">3</option> 
+                <option value="more">meer dan 3</option> 
             </select>
+        </div>
+        <div class="input-icon">
+            <input type="hidden" class="input input_quantity" name="input_quantity" 
+                placeholder="Vul hoeveelheid in"required>
         </div>
         <button class="button" name="submit" type="submit">Drugs toevoegen</button>
     </form>
 </div>
+<script src="assets/js/script.js"></script>        
+
 
 
