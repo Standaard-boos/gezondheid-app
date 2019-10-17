@@ -8,7 +8,7 @@
 
         public function __construct($db){
             $this->db = $db;
-            $this->user_id = implode('', $_SESSION['user_id']);
+            $this->user_id = $_SESSION['user_id'];
             
             if(!isset($_SESSION['loggedin'])){
                 header("Location:/");
