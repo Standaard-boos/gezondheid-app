@@ -22,7 +22,21 @@
             @extend %input;
             width: calc(100% - 54px);
             margin-bottom: 10px;
+            &:valid{
+                color: #155724;
+                background-color: #d4edda;
+                border-color: #c3e6cb;
+            } 
+            &:invalid{
+                color: #721c24;
+                background-color: #f8d7da;
+                border-color: #f5c6cb;
+            } 
         }
+
+          
+        }
+    
 
         .input-icon {
             position: relative;
@@ -59,7 +73,7 @@
             padding-top: 10px;
         }
     }
-}
+    
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
