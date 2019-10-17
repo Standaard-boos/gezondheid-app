@@ -14,13 +14,22 @@ class GetPersonData
                                 FROM user INNER JOIN weight ON weight.ID WHERE user.email = ? AND weight.user_id = ? LIMIT 1', $_SESSION['user_email'], $_SESSION['user_id'])->fetchArray();
 
         // Get the age from the birtdate
-        $age = $this->db->query('SELECT year(now()) - year(geboortedatum) AS geboortedatum FROM user WHERE user.id = ?', $_SESSION['user_id']) ->fetchArray();     
-
+        $age = $this->db->query('SELECT geboortedatum FROM user WHERE user.id = ?', $_SESSION['user_id']) ->fetchArray();     
+        
         $this->db;
+        $ageUserDB = $age['geboortedatum'];
+        $splittedDate = explode("-", $ageUserDB);
+        $engelseFormatDateUser = $splittedDate[2] . "/" . $splittedDate[1] . "/" . $splittedDate[0];
+
+        $tz  = new DateTimeZone('Europe/Brussels');
+        $age = DateTime::createFromFormat('d/m/Y', $engelseFormatDateUser , $tz)
+            ->diff(new DateTime('now', $tz))
+            ->y;
+            
         $username = $_SESSION['user_name'];
         $gewicht = $user_info['weights'] . " KG";
         $lengte = $_SESSION['height'] . " M";
-        $leeftijd = $age['geboortedatum'] . " jaar"; 
+        $leeftijd = $age . " jaar"; 
         $roken = "nee";
 
         echo "<p>Username: " . $username . "</p><p> Gewicht: " . $gewicht . "</p><p> Lengte: " . $lengte . "</p><p> Leeftijd: " . $leeftijd . "</p><p>Roker: " . $roken . "</p>";
