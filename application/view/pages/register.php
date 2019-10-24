@@ -44,6 +44,7 @@ $registration->register();
             <input class="input" type="number" name="age" placeholder="leeftijd">
         </div>
         <button class="button" name="submit" type="submit">Registreer</button>
+        <button class="button" onclick="window.history.go(-1); return false;" type="button">Terug</button>
     </form>
 </div>
 
