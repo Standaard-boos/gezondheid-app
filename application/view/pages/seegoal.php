@@ -3,6 +3,7 @@ require_once(ROOT . '/../application/controller/classes/SeeGoals.php');
 require_once(ROOT . '/../application/config/connection.php');
 ?>
 
+<?php @include('../application/view/components/menu.php')?>
 <div class="container-form">
     <h1 class="title">Doelen</h1>
     <form action="" class="form" action="/register" method="post" id="seeGoalsForm">
