@@ -9,17 +9,8 @@ $_SESSION['valid'] = true;
 $class = new GetPersonData($db);
 
 if (isset($_SESSION['valid'])) {?>
-
-    
-    <div class="dash-container">
-        <div class="menu menu-close">
-            <i id="menuButton" class="fas fa-bars fa-2x"></i>
-            <ul class="menu-items">
-                <a class="items" href="/seegoals"><li>Doelen</li></a>
-                <a class="items" href="/waarden"><li>Waarden</li></a>
-                <a class="items" href="/x"><li>Logout</li></a>
-            </ul>
-        </div>
+    <?php @include('../application/view/components/menu.php')?>
+    <div class="dash-container">    
         <div class="header">
             <h1 class="title">Overzicht</h1>
         </div>
@@ -27,7 +18,7 @@ if (isset($_SESSION['valid'])) {?>
             <div class="flex-container">
                     <div class="content account">
                         <div>
-                            <?php echo $class->GetData(); ?> 
+                            <?= $class->GetData(); ?> 
                         </div>
                         <a href="/user"><button class="button account-btn">Beheer account</button></a>
                     </div>
@@ -47,6 +38,5 @@ if (isset($_SESSION['valid'])) {?>
         </div>
     </div>
 
-    <script src="assets/js/menu.js"></script>
     <script src="assets/js/chart.js"></script>
-<?php } ?>
+<?php } ?> 

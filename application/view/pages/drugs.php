@@ -5,6 +5,7 @@ require_once(ROOT . '/../application/controller/classes/drugs.php');
 $drug = new Drugs($db);
 $drug->addDrugs();
 ?>
+<?php @include('../application/view/components/menu.php')?>
 <div class="container-form">
     <h1 class="title">Drugs toevoegen</h1>
     <form class="form" action="/drugs" method="post">

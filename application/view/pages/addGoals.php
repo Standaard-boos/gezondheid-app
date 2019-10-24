@@ -6,6 +6,7 @@
     $goal->addGoal();
 
 ?>
+<?php @include('../application/view/components/menu.php')?>
 <div class="container-add-goal">
     <div class="container-header">
         <a href="/dash"><i class="fas fa-arrow-left fa-2x" id="goBackArrow"></i> &nbsp</a>

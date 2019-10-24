@@ -5,6 +5,7 @@ require_once(ROOT . '/../application/config/connection.php');
 $insertValues = new insertWaardes($db);
 $insertValues->insertValues();
 ?>
+<?php @include('../application/view/components/menu.php')?>
 <div class="container-form">
     <h1 class="title">Gegevens invoegen</h1>
     <form class="form" action="/waarden" method="post">
