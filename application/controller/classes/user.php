@@ -57,16 +57,23 @@ class User
                                     return true;
                                 }
                                 else{
+                                    $_SESSION['loginError'] = 'Email of Wachtwoord is onjuist!';
+
                                     $this->loginError = "Email of wachtwoord is onjuist!";
                                 }   
                             }
                             else{
+                                $_SESSION['loginError'] = 'Email of Wachtwoord is onjuist!';
+
+
                                 $this->loginError = "Email of wachtwoord is onjuist!";
                             }
                         }
                     }
                 } else
                 {
+                    $_SESSION['loginError'] = 'Email of Wachtwoord is onjuist!';
+
                     $this->loginError = "Email of wachtwoord is onjuist!";
                 }
             } else {

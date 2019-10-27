@@ -7,7 +7,17 @@
     $user->logedIn();  
 
 ?>
-
+<?php
+if(isset($_SESSION['loginError']))
+{?>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <?php echo $_SESSION['loginError'] ?>
+</div>
+<?php
+    unset($_SESSION['loginError']);
+}
+?>
 <div class="container-form">
     <h1 class="title">Gezondheidsmeter</h1>
     <form class="form login-form" action="" method="post">

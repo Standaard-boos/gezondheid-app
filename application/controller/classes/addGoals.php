@@ -44,6 +44,8 @@
                     $this->db->query('INSERT INTO user_goals (user_id,task_quantity,goals_id)
                         VALUES (?,?,?)',$this->user_id, $this->task_quantity,$last_id);
 
+                    $_SESSION['addgoalsuccess'] = 'Doel toegevoegd!';
+
                     $stmt->close();
                 }     
             }
