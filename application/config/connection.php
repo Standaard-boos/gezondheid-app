@@ -128,9 +128,9 @@ class db
 
 }
 
-$dbhost = 'phpmyadmin.marojeri.nl';
-$dbuser = 'team_13';
-$dbpass = 'vG7nL2Wo18dslfNk';
-$dbname = 'team_13';
+$dbhost = '157.245.71.54';
+$dbuser = 'team13';
+$dbpass = '1eFH7sWP2Bg0PnnO!';
+$dbname = 'team 13';
 
 $db = new db($dbhost, $dbuser, $dbpass, $dbname);
