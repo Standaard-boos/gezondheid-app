@@ -25,24 +25,24 @@
                 $stmtCheck->bind_param('s',$this->task);
                 $stmtCheck->bind_result($id);
                 $stmtCheck->execute();
-                
+
                 //check if goal already exists 
                 if($stmtCheck->fetch() > 0){
                     $stmtCheck->close();
                     // insert in user_goals table
-                    $this->db->query('INSERT INTO user_goals (user_id,task_quantity,goals_id)
-                    VALUES (?,?,?)',$this->user_id, $this->task_quantity,$id);
+                    $this->db->query('INSERT INTO user_goals (user_id,task_quantity,user_progress,goals_id, display)
+                    VALUES (?,?,0,?,?)',$this->user_id, $this->task_quantity,$id, 1);
+                    $_SESSION['addgoalsuccess'] = 'Doel toegevoegd!';
                 }else{
                     //insert in goals table
-                    $stmt = $this->db->connection->prepare('INSERT INTO goals (task,display)
-                        VALUES(?,?);');
-                    $stmt->bind_param('si', $this->task,$true);
+                    $stmt = $this->db->connection->prepare('INSERT INTO goals (task)
+                        VALUES(?);');
+                    $stmt->bind_param('s', $this->task);
                     $stmt->execute();
                     $last_id = $this->db->connection->insert_id;
-
                     // // insert in user_goals table
-                    $this->db->query('INSERT INTO user_goals (user_id,task_quantity,goals_id)
-                        VALUES (?,?,?)',$this->user_id, $this->task_quantity,$last_id);
+                    $this->db->query('INSERT INTO user_goals (user_id,task_quantity,user_progress,goals_id, display)
+                        VALUES (?,?,0,?,?)',$this->user_id, $this->task_quantity,$last_id, 1);
 
                     $_SESSION['addgoalsuccess'] = 'Doel toegevoegd!';
 
