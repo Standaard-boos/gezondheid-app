@@ -3,7 +3,7 @@
 class db
 {
 
-    protected $connection;
+    public $connection;
     protected $query;
     public $query_count = 0;
 
@@ -128,9 +128,9 @@ class db
 
 }
 
-$dbhost = 'codana.tk';
-$dbuser = 'ivor_gezond';
-$dbpass = '6xra06oQ5';
-$dbname = 'ivor_gezond';
+$dbhost = '157.245.71.54';
+$dbuser = 'team13';
+$dbpass = '1eFH7sWP2Bg0PnnO!';
+$dbname = 'team 13';
 
 $db = new db($dbhost, $dbuser, $dbpass, $dbname);

@@ -2,42 +2,51 @@
 require_once(ROOT . '/../application/controller/classes/FirstClass.php');
 require_once(ROOT . '/../application/controller/classes/GetChartData.php');
 require_once(ROOT . '/../application/controller/classes/GetPersonData.php');
-$_SESSION['username'] = "Hulk hogan";
-$_SESSION['valid'] = true;
+require_once(ROOT . '/../application/config/connection.php');
 
 
-if (isset($_SESSION['valid'])) {
 
-    ?>
-
-    <div class="dashboardContainer">
-        <h2 class="h2">Overzicht</h2>
-        <!-- <h3 class="h3">Welkom : <?php //echo $_SESSION['username']; ?></h3> -->
-        <div class="dataPerson">
-            <?php echo GetPersonData::GetData(); ?>
+$class = new GetPersonData($db);?>
+<?php
+if(isset($_SESSION['loginError']))
+{?>
+    <div class="alertsuccess">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['loginError'] ?>
+    </div>
+    <?php
+    unset($_SESSION['loginError']);
+}
+?>
+<?php if (isset($_SESSION['valid'])) {?>
+    <?php @include('../application/view/components/menu.php')?>
+    <div class="dash-container">    
+        <div class="header">
+            <h1 class="title">Overzicht</h1>
         </div>
-        <div class="buttonContainer">
-            <button class="button">Invoer Gegevens</button>
-            <button class="button">Doelen</button>
-            <a href="../view/pages/addgoal.php" class="button">Voeg doel toe</a>
-            <a href="../view/pages/seegoal.php" class="button">Zie doelen</a>
-        </div>
-        <div>
-            <select id="ChartSelectBox" class="selectbox" onchange="ShowHideCharts()">
-                <option value="kies">kies...</option>
-                <option value="voeding">chart voor voeding</option>
-                <option value="gewicht">chart voor gewicht</option>
-            </select>
-            <div class="containerCharts">
-                <div class="hidden" id="chart1">
-                    <canvas id="myChart" width="400" height="400"></canvas>
+        <div class="main">
+            <div class="flex-container">
+                    <div class="content account">
+                        <div>
+                            <?= $class->GetData(); ?> 
+                        </div>
+                        <a href="/user"><button class="button account-btn">Beheer account</button></a>
+                    </div>
+            </div>
+            <div class="flex-container">
+                <div class="content">
+                    <div class="hidden" id="chart1">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                    </div>
                 </div>
-                <div class="hidden" id="chart2">
-                    <canvas id="myChart2" width="400" height="400"></canvas>
+                <div class="content">
+                    <div class="hidden" id="chart2">
+                        <canvas id="myChart2" width="400" height="400"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="assets/js/chart.js"></script>
-<?php } ?>
+<?php } ?> 
