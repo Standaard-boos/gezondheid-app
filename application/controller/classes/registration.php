@@ -19,7 +19,7 @@ class registration
             $username = htmlspecialchars($_POST['name']);
             $email = htmlspecialchars($_POST['email']);
             $password = htmlspecialchars($_POST['password']);
-            $verifyPassword = htmlspecialchars($_POST['verifyPassword']);
+            $verifyPassword = htmlspecialchars($_POST[ 'verifyPassword']);
             $heightUser = htmlspecialchars($_POST['height']);
             $weightUser = htmlspecialchars($_POST['weight']);
             $ageUser = htmlspecialchars($_POST['geboortedatum']);

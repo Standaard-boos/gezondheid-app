@@ -6,9 +6,19 @@ require_once(ROOT . '/../application/config/connection.php');
 
 $_SESSION['username'] = "Hulk hogan";
 $_SESSION['valid'] = true;
-$class = new GetPersonData($db);
-
-if (isset($_SESSION['valid'])) {?>
+$class = new GetPersonData($db);?>
+<?php
+if(isset($_SESSION['loginError']))
+{?>
+    <div class="alertsuccess">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['loginError'] ?>
+    </div>
+    <?php
+    unset($_SESSION['loginError']);
+}
+?>
+<?php if (isset($_SESSION['valid'])) {?>
     <?php @include('../application/view/components/menu.php')?>
     <div class="dash-container">    
         <div class="header">

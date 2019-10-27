@@ -38,13 +38,13 @@ class SeeGoals{
                 $stmt->close();
                 $message = array();
                 $message[0] = "Gebruikers doelen is verwijderd";
+                $_SESSION['goaldeleted'] = 'Doel verwijderd!';
                 echo json_encode($message);
             }
         }
 
         public function SeeGoal(){
             $bool = false;
-            $achieved;
             $goal = $this->db->query('SELECT user_goals.goals_id, goals.task,goals.id,goals.user_doelen, user_goals.task_quantity, goals.display 
             FROM user_goals
             INNER JOIN goals
@@ -64,17 +64,19 @@ class SeeGoals{
                             </div>
                             <div class="input-icon">
                                 <i class="far fa-clock icon"></i>
-                                <div class="input">'.$row["task_quantity"] .
-                                '</div>
+                                <div class="input">'.$row["task_quantity"] .'</div>
                             </div>
                             <div class="input-icon">
                                 <i class="far fa-clock icon"></i>
                                 <input class="input goal" type="number" value="'. $row['user_doelen'] .'"\ min="0" name="goal" 
-                                placeholder="Hoeveel heeft u gehaald van uw doel">
-                                '. $achieved .'
-                            </div>
+                                placeholder="Hoeveel heeft u gehaald van uw doel"></div>
                                 <button class="button updateGoalBtn" type="button"  >Update doel</button>
-                                <button class="button deleteGoalBtn" type="button">Verwijder doel</button>
+                                <br>
+                                <br>
+                                <br>
+                                <a href="../seegoal" class="button deleteGoalBtn">Verwijder doel</a>
+                                <br>
+                                <br>
                             </div>';
                         echo $html;
                 }else{
@@ -91,6 +93,8 @@ class SeeGoals{
                     <div class="input-icon">
                         <a href="../addgoal" class="button">Voeg doel toe</a>
                     </div>
+                    <br>
+                    <br>
                     <div class="input-icon">
                         <a href="../dash" class="button">Terug</a>
                     </div>';
