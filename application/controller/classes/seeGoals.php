@@ -25,6 +25,7 @@ class SeeGoals{
                 $stmt->close();
                 $message = array();
                 $message[0] = "Gebruikers doelen is gewijzigd";
+                $_SESSION['goaledited'] = 'Doel gewijzigd!';
                 echo json_encode($message);
             }
         }
@@ -71,10 +72,7 @@ class SeeGoals{
                                 <input class="input goal" type="number" value="'. $row['user_doelen'] .'"\ min="0" name="goal" 
                                 placeholder="Hoeveel heeft u gehaald van uw doel"></div>
                                 <button class="button updateGoalBtn" type="button"  >Update doel</button>
-                                <br>
-                                <br>
-                                <br>
-                                <a href="../seegoal" class="button deleteGoalBtn">Verwijder doel</a>
+                                <button class="button deleteGoalBtn">Verwijder doel</button>
                                 <br>
                                 <br>
                             </div>';

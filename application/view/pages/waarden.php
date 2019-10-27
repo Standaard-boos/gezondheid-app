@@ -21,6 +21,9 @@ $insertValues->insertValues();
         <input class="input" id="suikers" type="text" name="suikers" placeholder="Suikers">
         <input class="input" id="zout" type="text" name="zout" placeholder="Zout">
         <button class="button" id="submit_gegevens" name="submit" type="submit">Gegevens toevoegen</button>
+         <br>
+        <br>
+        <a href="../dash" class="button">Terug</a>
     </form>
 </div>
 

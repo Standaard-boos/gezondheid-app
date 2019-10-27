@@ -46,7 +46,7 @@ class changeUserValues
                     {
                         $hashed_password_new = password_hash($newPasswordUser, PASSWORD_DEFAULT);
                         $updateQuery = $this->db->query('UPDATE user SET email = ?, password = ? WHERE  ID = ?', $emailUser, $hashed_password_new, $_SESSION['user_id']);
-                        echo 'Gewijzigd';
+                        echo 'Gewijzigd';                        
                     }
                 } else
                 {
@@ -73,6 +73,9 @@ class changeUserValues
                         <input class="input" type="text" name="newPasswordUser" class="login-inputs" placeholder="Uw nieuwe wachtwoord" required><br>
                     </div>
                     <button type="submit" name="submit" class="button">Wijzig</button>
+                    <br>
+                    <br>
+                    <a href="../dash" class="button">Terug</a>
                 </form>
             </div>';
     }

@@ -4,17 +4,18 @@ require_once(ROOT . '/../application/config/connection.php');
 ?>
 
 <?php @include('../application/view/components/menu.php')?>
-<?php
-if(isset($_SESSION['goaldeleted']))
-{?>
+
+<div class="deleted">
     <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <?php echo $_SESSION['goaldeleted'] ?>
+    </div> 
+</div>
+<div class="edited">
+    <div class="alertsuccess">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
     </div>
-    <?php
-    unset($_SESSION['goaldeleted']);
-}
-?>
+</div>
+   
 <div class="container-form">
     <h1 class="title">Doelen</h1>
     <form class="form" method="post" id="seeGoalsForm">
