@@ -55,6 +55,11 @@ if(isset($_SESSION['addeddrugs']))
                 placeholder="Vul hoeveelheid in"required>
         </div>
         <button class="button" name="submit" type="submit">Drugs toevoegen</button>
+        <br>
+        <br>
+        <div class="input-icon">
+            <a href="../dash" class="button">Terug</a>
+        </div>
     </form>
 </div>
 <script src="assets/js/script.js"></script>        
