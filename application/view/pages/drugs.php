@@ -6,6 +6,17 @@ $drug = new Drugs($db);
 $drug->addDrugs();
 ?>
 <?php @include('../application/view/components/menu.php')?>
+<?php
+if(isset($_SESSION['addeddrugs']))
+{?>
+    <div class="alertsuccess">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['addeddrugs'] ?>
+    </div>
+    <?php
+    unset($_SESSION['addeddrugs']);
+}
+?>
 <div class="container-form">
     <h1 class="title">Drugs toevoegen</h1>
     <form class="form" action="/drugs" method="post">
