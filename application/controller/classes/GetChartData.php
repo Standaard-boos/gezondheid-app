@@ -7,6 +7,7 @@ class GetChartData{
         $gewicht = 0;
         $gebruiker_ID = $_SESSION['user_id'];
         //$username = $_SESSION['user_name'];
+        $array = null;
 
 
         $connect = new TijdelijkConn();
@@ -24,10 +25,7 @@ class GetChartData{
             $i++;
         }
 
-        //var_dump($array);
 
-        //$array = array(10,20,30,40,50,60,70,80,90,100,110,120);
-        //var_dump($array);
         return $array;
     }
 
@@ -81,17 +79,23 @@ class GetChartData{
 
 
         $totaal = $vetArray + $zoutArray + $suikerArray + $protineArray;
+        if($totaal != 0){
+            $totaal = $totaal / 100;
 
-        $totaal = $totaal / 100;
+            $vetArray = $vetArray / $totaal;
+            $suikerArray = $suikerArray / $totaal;
+            $zoutArray = $zoutArray / $totaal;
+            $protineArray = $protineArray / $totaal;
 
-        $vetArray = $vetArray / $totaal;
-        $suikerArray = $suikerArray / $totaal;
-        $zoutArray = $zoutArray / $totaal;
-        $protineArray = $protineArray / $totaal;
+            $array = array(round($vetArray,1) , round($suikerArray ,1) , round($zoutArray,1), round($protineArray,1));
 
-        $array = array(round($vetArray,1) , round($suikerArray ,1) , round($zoutArray,1), round($protineArray,1));
+            return $array;
+        }else{
+            return null;
+        }
 
-        return $array;
+
+
     }
 
 }

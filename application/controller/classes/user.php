@@ -51,6 +51,7 @@ class User
                                     $_SESSION['loggedin'] = $login;
                                     $_SESSION['email'] = $this->email;
                                     $_SESSION['session_id'] = session_id();
+                                    $_session['valid'] = true;
 
 
                                     echo "<script type='text/javascript'>window.location.href = \"/dash\";</script>";
