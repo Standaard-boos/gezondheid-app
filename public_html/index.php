@@ -63,7 +63,7 @@ if(!isset($_SESSION['user_id'])) {
         break;
 
       case '/dash' :
-        $title = "Login";
+        $title = "overzicht";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
         break;
     

@@ -4,8 +4,8 @@ require_once(ROOT . '/../application/controller/classes/GetChartData.php');
 require_once(ROOT . '/../application/controller/classes/GetPersonData.php');
 require_once(ROOT . '/../application/config/connection.php');
 
-
-
+$_SESSION['username'] = "Hulk hogan";
+$_SESSION['valid'] = true;
 $class = new GetPersonData($db);?>
 <?php
 if(isset($_SESSION['loginError']))

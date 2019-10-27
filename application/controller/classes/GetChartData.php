@@ -1,9 +1,9 @@
 <?php
 
-    require_once(ROOT . '/../application/config/TijdelijkConn.php');
 class GetChartData{
 
     function Data(){
+
         $gewicht = 0;
         $gebruiker_ID = $_SESSION['user_id'];
         //$username = $_SESSION['user_name'];
@@ -93,6 +93,7 @@ class GetChartData{
         }else{
             return null;
         }
+
 
 
 
