@@ -5,11 +5,13 @@
 
     $class = new GetChartData();
 
-    $data = $class->Data();
+    $data1 = $class->Data();
+    $data2 = $class->pieData();
 
     header('Content-Type: application/json');
 
-    echo json_encode($data);
+    $array = array($data1,$data2);
+    echo json_encode($array);
 
 
 ?>
