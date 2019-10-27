@@ -1,40 +1,112 @@
 <?php
   session_start();
+  define('ROOT',(__DIR__));
 
-  function connection() {
-    $configs = include('config.php');
+function connection() {
+  $servername = json_encode($configs->host);
+  $username = json_encode($configs->app_info);
+  $password = json_encode($configs->app_info);
+  $dbname = json_encode($configs->app_info);
 
-    $servername = json_encode($configs->host);
-    $username = json_encode($configs->app_info);
-    $password = json_encode($configs->app_info);
-    $dbname = json_encode($configs->app_info);
+  $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
 
-    $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
+  return $conn;
+}
 
-    return $conn;
+
+$request = $_SERVER['REQUEST_URI'];
+
+if(!isset($_SESSION['user_id'])) { 
+  switch ($request) {
+    //default
+    case '/':
+      $title = "Login";
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+      break;
+
+    case '':
+      $title = "Login";   
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+      break;
+
+    case '/register' :
+      $title = "Register";
+      $pageContent = dirname(__DIR__, 1) . '/application/view/pages/register.php';
+      break; 
+
+    //dashboard
+      case '/dash' :
+      header('location: /');
+      break;
+
+    //404      
+      default:
+        $title = 'Sorry page not found!';
+        $pageContent = dirname(__DIR__, 1) . '/application/view/error/404.php';
+        break;
+
+     //logout
+      case '/x' :
+        session_destroy();
+        header('location: /');
+        break; 
   }
-
-  function deleteCookie($cookieName) {
-    if (isset($_COOKIE[$cookieName])) {
-        unset($_COOKIE[$cookieName]);
-        setcookie($cookieName, '', time() - 3600, '/');
-    } 
-  }
-
-//	setcookie('messageSuc', "Account toegevoegd", time() + (86400 * 30) , "/");
-
-  $request = $_SERVER['REQUEST_URI'];
-
+} else {
   switch ($request) {
     //default
       case '/' :
-        $title = "Login";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+        header('location: /dash');
         break;
 
       case '' :
+        header('location: /dash');
+        break;
+
+      case '/dash' :
         $title = "Login";
-        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/login.php';
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
+        break;
+    
+      case '/seegoal':
+        $title = "seegoal";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/seegoal.php';
+        break;
+
+      case '/addgoal':
+        $title = "addgoal";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
+        break;
+
+    
+      case '/waarden' :
+        $title = "Gegevens";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/waarden.php';
+        break;
+
+      case '/user' :
+          $title = "Uw gegevens";
+          $pageContent = dirname(__DIR__, 1) . '/application/view/pages/user.php';
+          break;
+      
+      case '/drugs' :
+        $title = "Drugs";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/drugs.php';
+        break;
+
+    // Ajax calls
+      case '/ajax' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
+      case '/deleteGoal' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
+      case '/getGoals' :
+        include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
+        break;
+    //API
+      case '/api/chart':
+        include dirname(__DIR__, 1) . '/application/controller/function/GetChartDataHandler.php';
+        die();
         break;
 
     //logout
@@ -49,9 +121,9 @@
         $pageContent = dirname(__DIR__, 1) . '/application/view/error/404.php';
         break;
   }
+}
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html class="no-js">
     <head>
         <meta charset="utf-8">
@@ -78,6 +150,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://kit.fontawesome.com/d6cae58ee4.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     </head>
     <body>
         <?php require $pageContent; ?>
