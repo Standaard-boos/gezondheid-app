@@ -43,6 +43,7 @@ $registration->register();
             <input class="input" type="date" name="geboortedatum" placeholder="Geboortedatum" required>
         </div>
         <button class="button" name="submit" type="submit">Registreer</button>
+        <button class="button" onclick="window.history.go(-1); return false;" type="button">Terug</button>
     </form>
 </div>
 
