@@ -34,9 +34,9 @@ $(document).ready(function(){
 
             var labels = [];
             var j = 1;
-            for(var i = 0; i < data[0].length; i++){
+            for(var i = 0; i < data.length; i++){
                 console.log("hoi");
-                var weegmoment = "weegmoment " + j;
+                var weegmoment = "weeg moment " + j;
                 labels.push(weegmoment);
                 j++;
 
@@ -55,9 +55,9 @@ $(document).ready(function(){
                     labels: labels,
                     datasets: [{
                         label: 'gewicht',
-                        backgroundColor: '',
+                        backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data: data[0]//[0, 10, 5, 2, 20, 30, 45]
+                        data: data //[0, 10, 5, 2, 20, 30, 45]
                     }]
                 },
 
@@ -66,17 +66,30 @@ $(document).ready(function(){
             });
 
             var ctx2 = document.getElementById('myChart2').getContext('2d');
-            var myPieChart = new Chart(ctx2, {
-                type: 'pie',
+            var myChart2 = new Chart(ctx2, {
+                type: 'line',
                 data: {
-                    labels: ['vet','suiker','zout','eiwit'],
+                    labels:labels,
                     datasets:[{
-                        label: 'Totaal',
-                        data: data[1],//[100,10,300,400],
-                        backgroundColor:[ "#9bf542", "#b042f5" , "#f56042","#FFFF00"],
-                    }],
+                        label: 'jaar 1',
+                        data: data,
+                        borderColor: "#3e95cd",
+                        fill: false
+
+                    }]
+
                 },
-                options: {}
+                options: {
+                    title: {
+                        display: true,
+                        text: 'gewichts verlies'
+                    },
+                    scales: {
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    }
+                }
             });
 
         }
