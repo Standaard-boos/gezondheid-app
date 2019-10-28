@@ -80,7 +80,7 @@ class changeUserValues
                     </div>
                     Uw nieuwe wachtwoord:
                     <div class="input-icon">
-                        <input class="input" type="text" name="newPasswordUser" class="login-inputs" placeholder="Uw nieuwe wachtwoord" required><br>
+                        <input class="input" type="password" name="newPasswordUser" class="login-inputs" placeholder="Uw nieuwe wachtwoord" required><br>
                     </div>
                     <button type="submit" name="submit" class="button">Wijzig</button>
                 </form>
