@@ -66,4 +66,5 @@ if(isset($_SESSION['gewichtopslaan']))
     </form>
 </div>
 
+<script src="assets/js/waarden.js"></script>        
 
