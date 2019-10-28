@@ -32,15 +32,33 @@ $(document).ready(function(){
         async: false,
         success: function(data) {
 
-            var labels = [];
-            var j = 1;
-            for(var i = 0; i < data.length; i++){
-                console.log("hoi");
-                var weegmoment = "weeg moment " + j;
-                labels.push(weegmoment);
-                j++;
 
+            if(data[0] == null){
+                document.getElementById("NodataChart1").innerHTML = "We hebben geen data om te tonen!";
+                document.getElementById('myChart').style.display = 'none';
+
+
+            }else{
+
+                var labels = [];
+                var j = 1;
+                for(var i = 0; i < data[0].length; i++){
+                    console.log("hoi");
+                    var weegmoment = "weegmoment " + j;
+                    labels.push(weegmoment);
+                    j++;
+
+                }
             }
+            if (data[1] == null){
+                document.getElementById("NodataChart2").innerHTML = "We hebben geen data om te tonen!";
+                document.getElementById('myChart2').style.display = 'none';
+            }
+
+
+
+
+
 
 
             console.log(labels);
@@ -57,7 +75,9 @@ $(document).ready(function(){
                         label: 'gewicht',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data: data //[0, 10, 5, 2, 20, 30, 45]
+
+                        data:  data[0]//[0, 10, 5, 2, 20, 30, 45]
+
                     }]
                 },
 
@@ -71,12 +91,11 @@ $(document).ready(function(){
                 data: {
                     labels:labels,
                     datasets:[{
-                        label: 'jaar 1',
-                        data: data,
-                        borderColor: "#3e95cd",
-                        fill: false
 
-                    }]
+                        label: 'Totaal',
+                        data:  data[1],//[100,10,300,400],
+                        backgroundColor:[ "#9bf542", "#b042f5" , "#f56042","#FFFF00"],
+                    }],
 
                 },
                 options: {
