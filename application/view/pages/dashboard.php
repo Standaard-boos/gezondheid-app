@@ -38,6 +38,7 @@ if(isset($_SESSION['loginError']))
                 <div class="content">
                     <div class="hidden" id="chart1">
                         <p id="NodataChart1" class="noDataText"></p>
+                        <p id="ToFewChart1" class="noDataText"></p>
                         <canvas id="myChart" width="400" height="400"></canvas>
                     </div>
                 </div>

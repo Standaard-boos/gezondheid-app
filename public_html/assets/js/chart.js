@@ -38,7 +38,12 @@ $(document).ready(function(){
                 document.getElementById('myChart').style.display = 'none';
 
 
-            }else{
+
+            }else if(data[0].length == 1){
+                document.getElementById('ToFewChart1').innerHTML = "Je hebt te weinig data";
+                document.getElementById('myChart').style.display = 'none';
+
+            }else {
 
                 var labels = [];
                 var j = 1;
@@ -49,6 +54,7 @@ $(document).ready(function(){
                     j++;
 
                 }
+
             }
             if (data[1] == null){
                 document.getElementById("NodataChart2").innerHTML = "We hebben geen data om te tonen!";
@@ -86,29 +92,17 @@ $(document).ready(function(){
             });
 
             var ctx2 = document.getElementById('myChart2').getContext('2d');
-            var myChart2 = new Chart(ctx2, {
-                type: 'line',
+            var myPieChart = new Chart(ctx2, {
+                type: 'pie',
                 data: {
-                    labels:labels,
+                    labels: ['vet','suiker','zout' , 'protine'],
                     datasets:[{
-
                         label: 'Totaal',
-                        data:  data[1],//[100,10,300,400],
-                        backgroundColor:[ "#9bf542", "#b042f5" , "#f56042","#FFFF00"],
+                        data: data[1],//[100,10,300],
+                        backgroundColor:[ "#9bf542", "#b042f5" , "#f56042","#ffff00"],
                     }],
-
                 },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'gewichts verlies'
-                    },
-                    scales: {
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
-                }
+                options: {}
             });
 
         }

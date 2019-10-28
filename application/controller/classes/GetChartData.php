@@ -1,5 +1,7 @@
 <?php
 
+    require_once(ROOT . '/../application/config/TijdelijkConn.php');
+
 class GetChartData{
 
     function Data(){
@@ -25,8 +27,10 @@ class GetChartData{
             $i++;
         }
 
+            return $array;
 
-        return $array;
+
+
     }
 
     function pieData(){
