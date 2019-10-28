@@ -33,7 +33,7 @@ class changeUserValues
                     if ($passwordUser != $verifiedPassword)
                     {
                         $error = 1;
-                        $alert = '<div class="alert">
+                        $alert = '<div class="alertsuccess">
                           <span class="closebtn">&times;</span>
                           Uw huidige wachtwoord klopt niet!
                           </div>';
@@ -41,7 +41,7 @@ class changeUserValues
 
                     if ($emailUser == '' || $passwordUser == '' || $newPasswordUser == '')
                     {
-                        $alert = '<div class="alert">
+                        $alert = '<div class="alertsuccess">
                           <span class="closebtn">&times;</span>
                           Velden mogen niet leeg zijn!
                           </div>';
@@ -53,7 +53,7 @@ class changeUserValues
                         $hashed_password_new = password_hash($newPasswordUser, PASSWORD_DEFAULT);
                         $updateQuery = $this->db->query('UPDATE user SET email = ?, password = ? WHERE  ID = ?', $emailUser, $hashed_password_new, $_SESSION['user_id']);
                         $_SESSION['user_email'] = $emailUser;
-                        $alert = '<div class="alert">
+                        $alert = '<div class="alertsuccess">
                           <span class="closebtn">&times;</span>
                           Wachtwoord gewijzigd!
                           </div>';
