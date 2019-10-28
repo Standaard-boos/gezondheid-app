@@ -73,7 +73,7 @@ class changeUserValues
                         $_SESSION['user_email'] = $emailUser;
                         $alert = '<div class="alertsuccess">
                           <span class="closebtn">&times;</span>
-                          Wachtwoord gewijzigd!
+                          Gegevens gewijzigd!
                           </div>';
                     }
                 } else
