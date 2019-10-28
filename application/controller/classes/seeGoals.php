@@ -23,7 +23,7 @@ class SeeGoals{
                 $stmt->bind_param('ii',$data,$id);            
                 $stmt->execute();
                 $stmt->close();
-                $_SESSION['goaldeleted'] = 'Doel geupdate!';
+                $_SESSION['goalupdated'] = 'Doel geupdate!';
             }
         }
 
