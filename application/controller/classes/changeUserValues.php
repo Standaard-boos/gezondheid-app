@@ -46,6 +46,7 @@ class changeUserValues
                     {
                         $hashed_password_new = password_hash($newPasswordUser, PASSWORD_DEFAULT);
                         $updateQuery = $this->db->query('UPDATE user SET email = ?, password = ? WHERE  ID = ?', $emailUser, $hashed_password_new, $_SESSION['user_id']);
+                        $_SESSION['user_email'] = $emailUser;
                         echo 'Gewijzigd';
                     }
                 } else
