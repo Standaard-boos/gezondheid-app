@@ -32,13 +32,7 @@ $(document).ready(function(){
         async: false,
         success: function(data) {
 
-            var labels = [];
-            var j = 1;
-            for(var i = 0; i < data.length; i++){
-                console.log("hoi");
-                var weegmoment = "weeg moment " + j;
-                labels.push(weegmoment);
-                j++;
+
             if(data[0] == null){
                 document.getElementById("NodataChart1").innerHTML = "We hebben geen data om te tonen!";
                 document.getElementById('myChart').style.display = 'none';
@@ -68,6 +62,11 @@ $(document).ready(function(){
             }
 
 
+
+
+
+
+
             console.log(labels);
 
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -82,7 +81,9 @@ $(document).ready(function(){
                         label: 'gewicht',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data: data //[0, 10, 5, 2, 20, 30, 45]
+
+                        data:  data[0]//[0, 10, 5, 2, 20, 30, 45]
+
                     }]
                 },
 
