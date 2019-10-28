@@ -36,15 +36,17 @@ if(isset($_SESSION['goalupdated']))
                 $goal->SeeGoal();
             ?>  
         </div>
-        <div class="input-icon">
-        </div>
-        <div class="input-icon">
-            <a href="../addgoal" class="button">Voeg doel toe</a>
-        </div>
-        <br>
-        <br>
-        <div class="input-icon">
-            <a href="../dash" class="button">Terug</a>
+        <div class="other-content">   
+            <div class="input-icon">
+            </div>
+            <div class="input-icon">
+                <a href="../addgoal" class="button">Voeg doel toe</a>
+            </div>
+            <br>
+            <br>
+            <div class="input-icon">
+                <a href="../dash" class="button">Terug</a>
+            </div>  
         </div>
     </form>
 </div>

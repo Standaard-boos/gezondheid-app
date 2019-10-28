@@ -73,7 +73,7 @@ class changeUserValues
                         $_SESSION['user_email'] = $emailUser;
                         $alert = '<div class="alertsuccess">
                           <span class="closebtn">&times;</span>
-                          Wachtwoord gewijzigd!
+                          Gegevens gewijzigd!
                           </div>';
                     }
                 } else
@@ -104,7 +104,8 @@ class changeUserValues
             $isDrugUserChecked = '';
         }
 
-        echo '<div class="container-form">
+
+        echo @$alert .'<div class="container-form">
                 <h1 class="title">Uw gegevens</h1>
                 <form class="form login-form" action="" method="post">
                 <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
