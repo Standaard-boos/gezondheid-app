@@ -15,6 +15,17 @@ if(isset($_SESSION['goaldeleted']))
     unset($_SESSION['goaldeleted']);
 }
 ?>
+<?php
+if(isset($_SESSION['goalupdated']))
+{?>
+    <div class="alertsuccess">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['goalupdated'] ?>
+    </div>
+    <?php
+    unset($_SESSION['goalupdated']);
+}
+?>
 <div class="container-form">
     <h1 class="title">Doelen</h1>
     <form class="form" method="post" id="seeGoalsForm">

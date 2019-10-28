@@ -18,8 +18,7 @@ if(isset($_SESSION['loginError']))
     unset($_SESSION['loginError']);
 }
 ?>
-
-
+<?php if (isset($_SESSION['valid'])) {?>
     <?php @include('../application/view/components/menu.php')?>
     <div class="dash-container">    
         <div class="header">
@@ -44,7 +43,6 @@ if(isset($_SESSION['loginError']))
                 </div>
                 <div class="content">
                     <div class="hidden" id="chart2">
-                        <p id="NodataChart2" class="noDataText"></p>
                         <canvas id="myChart2" width="400" height="400"></canvas>
                     </div>
                 </div>
@@ -53,4 +51,4 @@ if(isset($_SESSION['loginError']))
     </div>
 
     <script src="assets/js/chart.js"></script>
-
+<?php } ?> 
