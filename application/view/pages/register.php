@@ -42,6 +42,17 @@ $registration->register();
         <div class="input-icon">
             <input class="input" type="date" name="geboortedatum" placeholder="Geboortedatum" required>
         </div>
+        <h4>Gebruikt u drugs?</h4>
+        <select name="drugs">
+            <option value="1">Ja</option>
+            <option value="0">Nee</option>
+        </select>
+        <h4>Rookt u?</h4>
+        <select name="roker">
+            <option value="1">Ja</option>
+            <option value="0">Nee</option>
+        </select>
+        <br>
         <button class="button" id="register_check" name="submit" type="submit">Registreer</button>
         <br>
         <br>
