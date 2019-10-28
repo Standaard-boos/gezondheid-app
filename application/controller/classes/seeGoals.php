@@ -23,7 +23,7 @@ class SeeGoals{
                 $stmt->bind_param('ii',$data,$id);            
                 $stmt->execute();
                 $stmt->close();
-                $_SESSION['goaldeleted'] = 'Doel geupdate!';
+                $_SESSION['goalupdated'] = 'Doel geupdate!';
             }
         }
 
@@ -49,15 +49,20 @@ class SeeGoals{
                                 placeholder="Uw doel is behaald!"></div>\'';
                 }
                 else{
-                    $achieved = '<input class="input goal" type="number" style="text-align: center" value="'. $row['user_progress'] .'" min="0" name="goal" 
+                    if ($row['user_progress'] !== 0 ) {
+                        $progress =  $row['user_progress'];
+                    } else {
+                        $progress = "";
+                    }
+                    $achieved = '<input class="input goal" type="number" style="text-align: center" value="'. $progress .'" min="0" name="goal" 
                                 placeholder="Wat is uw progressie?"></div>';
                 }
                 if($row['display']){
                     $bool = false;
                     $html = '<div class="input-blocks" task-id='.$row["ID"].'>
                             <div class="input-icon">
-                                <div class="title"> '.$row["task"] .
-                                '</div>
+                                <h2 class="sub-title"> '.$row["task"] .
+                                '</h2>
                             </div>
                             <div class="input-icon">
                                 <i class="far fa-clock icon"></i>
@@ -82,17 +87,7 @@ class SeeGoals{
                 echo  'Geen doelen gevonden.';
             }
             // buttons for adding a goal
-            echo '<div class="input-icon">
-                        <div class="title" id="NoGoals"></div>
-                    </div>
-                    <div class="input-icon">
-                        <a href="../addgoal" class="button">Voeg doel toe</a>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="input-icon">
-                        <a href="../dash" class="button">Terug</a>
-                    </div>';
+            echo '';
         }
 }     
 ?>

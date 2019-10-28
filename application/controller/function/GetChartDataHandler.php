@@ -6,10 +6,18 @@
     $class = new GetChartData();
 
     $data = $class->Data();
+    $data2 = $class->pieData();
 
     header('Content-Type: application/json');
 
-    echo json_encode($data);
+
+
+
+    $array = array($data,$data2);
+
+    $dataJson = json_encode($array);
+
+    echo $dataJson;
 
 
 ?>

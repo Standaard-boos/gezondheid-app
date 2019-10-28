@@ -32,15 +32,39 @@ $(document).ready(function(){
         async: false,
         success: function(data) {
 
-            var labels = [];
-            var j = 1;
-            for(var i = 0; i < data.length; i++){
-                console.log("hoi");
-                var weegmoment = "weeg moment " + j;
-                labels.push(weegmoment);
-                j++;
+
+            if(data[0] == null){
+                document.getElementById("NodataChart1").innerHTML = "We hebben geen data om te tonen!";
+                document.getElementById('myChart').style.display = 'none';
+
+
+
+            }else if(data[0].length == 1){
+                document.getElementById('ToFewChart1').innerHTML = "Je hebt te weinig data";
+                document.getElementById('myChart').style.display = 'none';
+
+            }else {
+
+                var labels = [];
+                var j = 1;
+                for(var i = 0; i < data[0].length; i++){
+                    console.log("hoi");
+                    var weegmoment = "weegmoment " + j;
+                    labels.push(weegmoment);
+                    j++;
+
+                }
 
             }
+            if (data[1] == null){
+                document.getElementById("NodataChart2").innerHTML = "We hebben geen data om te tonen!";
+                document.getElementById('myChart2').style.display = 'none';
+            }
+
+
+
+
+
 
 
             console.log(labels);
@@ -57,7 +81,9 @@ $(document).ready(function(){
                         label: 'gewicht',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data: data //[0, 10, 5, 2, 20, 30, 45]
+
+                        data:  data[0]//[0, 10, 5, 2, 20, 30, 45]
+
                     }]
                 },
 
@@ -66,30 +92,17 @@ $(document).ready(function(){
             });
 
             var ctx2 = document.getElementById('myChart2').getContext('2d');
-            var myChart2 = new Chart(ctx2, {
-                type: 'line',
+            var myPieChart = new Chart(ctx2, {
+                type: 'pie',
                 data: {
-                    labels:labels,
+                    labels: ['vet','suiker','zout' , 'protine'],
                     datasets:[{
-                        label: 'jaar 1',
-                        data: data,
-                        borderColor: "#3e95cd",
-                        fill: false
-
-                    }]
-
+                        label: 'Totaal',
+                        data: data[1],//[100,10,300],
+                        backgroundColor:[ "#9bf542", "#b042f5" , "#f56042","#ffff00"],
+                    }],
                 },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'gewichts verlies'
-                    },
-                    scales: {
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
-                }
+                options: {}
             });
 
         }
