@@ -33,12 +33,18 @@ class changeUserValues
                     if ($passwordUser != $verifiedPassword)
                     {
                         $error = 1;
-                        echo 'Uw huidige wachtwoord klopt niet' . '<br>';
+                        $alert = '<div class="alert">
+                          <span class="closebtn">&times;</span>
+                          Uw huidige wachtwoord klopt niet!
+                          </div>';
                     }
 
                     if ($emailUser == '' || $passwordUser == '' || $newPasswordUser == '')
                     {
-                        echo 'Velden mogen niet leeg';
+                        $alert = '<div class="alert">
+                          <span class="closebtn">&times;</span>
+                          Velden mogen niet leeg zijn!
+                          </div>';
                         exit();
                     }
 
@@ -47,7 +53,10 @@ class changeUserValues
                         $hashed_password_new = password_hash($newPasswordUser, PASSWORD_DEFAULT);
                         $updateQuery = $this->db->query('UPDATE user SET email = ?, password = ? WHERE  ID = ?', $emailUser, $hashed_password_new, $_SESSION['user_id']);
                         $_SESSION['user_email'] = $emailUser;
-                        echo 'Gewijzigd';
+                        $alert = '<div class="alert">
+                          <span class="closebtn">&times;</span>
+                          Wachtwoord gewijzigd!
+                          </div>';
                     }
                 } else
                 {
@@ -57,7 +66,7 @@ class changeUserValues
         }
         $user_info = $this->db->query('SELECT * FROM user WHERE ID = ?', $_SESSION['user_id'])->fetchArray();
 
-        echo '<div class="container-form">
+        echo @$alert .'<div class="container-form">
                 <h1 class="title">Uw gegevens</h1>
                 <form class="form login-form" action="" method="post">
                 <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
