@@ -6,6 +6,18 @@
     $goal->addGoal();
 
 ?>
+<?php @include('../application/view/components/menu.php')?>
+<?php
+if(isset($_SESSION['addgoalsuccess']))
+{?>
+    <div class="alertsuccess">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['addgoalsuccess'] ?>
+    </div>
+    <?php
+    unset($_SESSION['addgoalsuccess']);
+}
+?>
 <div class="container-add-goal">
     <div class="container-header">
         <a href="/dash"><i class="fas fa-arrow-left fa-2x" id="goBackArrow"></i> &nbsp</a>
@@ -21,7 +33,7 @@
             <input type="number" name="task_quantity" class="input" placeholder="0" required>
         </div>
         <button type="submit" name="submit" class="button sendBtn" >Verstuur</button>
-        <a href="/dash" class="button backBtn">Terug</a>
+        <a href="/seegoal" class="button backBtn">Terug</a>
     </form>
 
 </div>

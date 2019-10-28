@@ -19,69 +19,66 @@ class SeeGoals{
             $id = $_POST['id'];
             $data = $_POST['data'];
             if (!empty($id) || empty($data)) {
-                $stmt = $this->db->connection->prepare('UPDATE goals SET user_doelen = ? WHERE id = ?');
+                $stmt = $this->db->connection->prepare('UPDATE user_goals SET user_progress = ? WHERE id = ?');
                 $stmt->bind_param('ii',$data,$id);            
                 $stmt->execute();
                 $stmt->close();
-                $message = array();
-                $message[0] = "Gebruikers doelen is gewijzigd";
-                echo json_encode($message);
+                $_SESSION['goaldeleted'] = 'Doel geupdate!';
             }
         }
 
         public function deleteGoal(){
             $id = $_POST['id'];
             if(!empty($id)){
-                $stmt = $this->db->connection->prepare('UPDATE goals SET display = 0 WHERE id = ?');
+                $stmt = $this->db->connection->prepare('UPDATE user_goals SET display = 0 WHERE id = ?');
                 $stmt->bind_param('i',$id);            
                 $stmt->execute();
                 $stmt->close();
-                $message = array();
-                $message[0] = "Gebruikers doelen is verwijderd";
-                echo json_encode($message);
+                $_SESSION['goaldeleted'] = 'Doel verwijderd!';
             }
         }
 
         public function SeeGoal(){
-            $bool = false;
-            $achieved;
-            $goal = $this->db->query('SELECT user_goals.goals_id, goals.task,goals.id,goals.user_doelen, user_goals.task_quantity, goals.display 
-            FROM user_goals
-            INNER JOIN goals
-            ON user_goals.goals_id = goals.id
-            WHERE user_goals.user_id = ? ORDER BY goals.id DESC
-            ', $this->user_id)->fetchAll();
+            $bool = true;
+            $goal = $this->db->query('SELECT UG.ID,G.task, UG.task_quantity, UG.user_progress, UG.user_id, UG.display FROM goals AS G
+            INNER JOIN user_goals as UG ON G.id = UG.goals_id
+            WHERE UG.user_id = ? ORDER BY UG.date DESC', $this->user_id)->fetchAll();
             foreach($goal as $row){
-                if ($row["task_quantity"] <= $row['user_doelen']) {
-                    $achieved = '<small>Uw doel is behaald</small>';
+                if ($row["task_quantity"] <= $row['user_progress']) {
+                    $achieved = '<input class="input goal" type="number" style="border-color: green; text-align: center" readonly min="0" name="goal" 
+                                placeholder="Uw doel is behaald!"></div>\'';
+                }
+                else{
+                    $achieved = '<input class="input goal" type="number" style="text-align: center" value="'. $row['user_progress'] .'" min="0" name="goal" 
+                                placeholder="Wat is uw progressie?"></div>';
                 }
                 if($row['display']){
                     $bool = false;
-                    $html = '<div class="input-blocks" task-id='.$row["id"].'>
+                    $html = '<div class="input-blocks" task-id='.$row["ID"].'>
                             <div class="input-icon">
                                 <div class="title"> '.$row["task"] .
                                 '</div>
                             </div>
                             <div class="input-icon">
                                 <i class="far fa-clock icon"></i>
-                                <div class="input">'.$row["task_quantity"] .
-                                '</div>
+                                <div class="input">'.$row["task_quantity"] .'</div>
                             </div>
                             <div class="input-icon">
                                 <i class="far fa-clock icon"></i>
-                                <input class="input goal" type="number" value="'. $row['user_doelen'] .'"\ min="0" name="goal" 
-                                placeholder="Hoeveel heeft u gehaald van uw doel">
-                                '. $achieved .'
-                            </div>
-                                <button class="button updateGoalBtn" type="button"  >Update doel</button>
-                                <button class="button deleteGoalBtn" type="button">Verwijder doel</button>
+                                '. @$achieved .'
+                                <br>
+                                <a href="../seegoal" class="button updateGoalBtn">Update doel</a>
+                                <br>
+                                <br>
+                                <br>
+                                <a href="../seegoal" class="button deleteGoalBtn">Verwijder doel</a>
+                                <br>
+                                <br>
                             </div>';
                         echo $html;
-                }else{
-                    $bool = true;
                 }
             }
-            if($bool){
+            if($bool == true){
                 echo  'Geen doelen gevonden.';
             }
             // buttons for adding a goal
@@ -91,6 +88,8 @@ class SeeGoals{
                     <div class="input-icon">
                         <a href="../addgoal" class="button">Voeg doel toe</a>
                     </div>
+                    <br>
+                    <br>
                     <div class="input-icon">
                         <a href="../dash" class="button">Terug</a>
                     </div>';
