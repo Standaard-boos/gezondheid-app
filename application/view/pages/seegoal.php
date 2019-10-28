@@ -30,10 +30,22 @@ if(isset($_SESSION['goalupdated']))
     <h1 class="title">Doelen</h1>
     <form class="form" method="post" id="seeGoalsForm">
         <!-- here comes the data -->
-        <?php
-            $goal = new SeeGoals($db);
-            $goal->SeeGoal();
-        ?>  
+        <div class="scroll">
+            <?php
+                $goal = new SeeGoals($db);
+                $goal->SeeGoal();
+            ?>  
+        </div>
+        <div class="input-icon">
+        </div>
+        <div class="input-icon">
+            <a href="../addgoal" class="button">Voeg doel toe</a>
+        </div>
+        <br>
+        <br>
+        <div class="input-icon">
+            <a href="../dash" class="button">Terug</a>
+        </div>
     </form>
 </div>
 <script src="assets/js/goals.js"></script>        
