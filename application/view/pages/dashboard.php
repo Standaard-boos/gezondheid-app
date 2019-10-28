@@ -36,6 +36,7 @@ if(isset($_SESSION['loginError']))
             </div>
             <div class="flex-container">
                 <div class="content">
+                    <b><p style="text-align: center">Uw gewicht de afgelopen periode</p></b>
                     <div class="hidden" id="chart1">
                         <p id="NodataChart1" class="noDataText"></p>
                         <p id="ToFewChart1" class="noDataText"></p>
@@ -43,6 +44,7 @@ if(isset($_SESSION['loginError']))
                     </div>
                 </div>
                 <div class="content">
+                    <b><p style="text-align: center">Voedingswaarden van deze week</p></b>
                     <div class="hidden" id="chart2">
                         <p id="NodataChart2" class="noDataText"></p>
                         <canvas id="myChart2" width="400" height="400"></canvas>
