@@ -18,7 +18,6 @@
                 $user_id = $_SESSION['user_id'];
                 @$food = $this->db->query("SELECT ID, name FROM food WHERE name = '$foodpost' ")->fetchAll();
                 @$drink = $this->db->query("SELECT ID, name FROM drinks WHERE name = '$drinkpost'")->fetchAll();
-//                var_dump($food);
 
                 $timestamp = date('Y-m-d');
                 if (@$food != NULL) {
