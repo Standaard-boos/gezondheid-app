@@ -13,7 +13,6 @@ class GetPersonData
         $user_info = $this->db->query('SELECT user.ID, user.username, user.email, user.geboortedatum, user.height, user.gender, weight.weights
                                 FROM user INNER JOIN weight ON weight.ID WHERE user.email = ? AND weight.user_id = ? LIMIT 1', $_SESSION['user_email'], $_SESSION['user_id'])->fetchArray();
 
-        // Get the age from the birtdate
         $age = $this->db->query('SELECT geboortedatum FROM user WHERE user.id = ?', $_SESSION['user_id']) ->fetchArray();     
         
         $this->db;
@@ -32,7 +31,7 @@ class GetPersonData
         $leeftijd = $age . " jaar"; 
         $roken = "nee";
 
-        echo "<p>Username: " . $username . "</p><p> Gewicht: " . $gewicht . "</p><p> Lengte: " . $lengte . "</p><p> Leeftijd: " . $leeftijd . "</p><p>Roker: " . $roken . "</p>";
+        echo "<p> Gewicht: " . $gewicht . "</p><p> Lengte: " . $lengte . "</p><p> Leeftijd: " . $leeftijd . "</p><p>Roker: " . $roken . "</p>";
     }
 
 }
