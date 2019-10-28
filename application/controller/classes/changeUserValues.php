@@ -66,7 +66,7 @@ class changeUserValues
         }
         $user_info = $this->db->query('SELECT * FROM user WHERE ID = ?', $_SESSION['user_id'])->fetchArray();
 
-        echo $alert .'<div class="container-form">
+        echo @$alert .'<div class="container-form">
                   <h1 class="title">Uw gegevens</h1>
                   <form class="form login-form" action="" method="post">
                   <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
