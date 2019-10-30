@@ -72,6 +72,11 @@ if(!isset($_SESSION['user_id'])) {
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/seegoal.php';
         break;
 
+      case '/weekly-overview':
+        $title = "weekly overview";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/weeklyOverview.php';
+        break;
+
       case '/addgoal':
         $title = "addgoal";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/addGoals.php';
