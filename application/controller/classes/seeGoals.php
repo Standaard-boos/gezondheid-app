@@ -40,7 +40,7 @@ class SeeGoals{
 
         public function SeeGoal(){
             $bool = true;
-            $goal = $this->db->query('SELECT UG.ID,G.task, UG.task_quantity, UG.user_progress, UG.user_id, UG.display FROM goals AS G
+            $goal = $this->db->query('SELECT UG.ID,G.task,UG.goal_waarden ,UG.task_quantity, UG.user_progress, UG.user_id, UG.display FROM goals AS G
             INNER JOIN user_goals as UG ON G.id = UG.goals_id
             WHERE UG.user_id = ? ORDER BY UG.date DESC', $this->user_id)->fetchAll();
             foreach($goal as $row){
@@ -61,12 +61,11 @@ class SeeGoals{
                     $bool = false;
                     $html = '<div class="input-blocks" task-id='.$row["ID"].'>
                             <div class="input-icon">
-                                <h2 class="sub-title"> '.$row["task"] .
-                                '</h2>
+                                <h2 class="sub-title"> '.$row["task"] . '</h2>
                             </div>
                             <div class="input-icon">
                                 <i class="far fa-clock icon"></i>
-                                <div class="input">'.$row["task_quantity"] .'</div>
+                                <div class="input">'.$row["task_quantity"] ." " .$row["goal_waarden"].'</div>
                             </div>
                             <div class="input-icon">
                                 <i class="far fa-clock icon"></i>

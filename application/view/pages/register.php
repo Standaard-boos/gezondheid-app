@@ -9,7 +9,7 @@ $registration->register();
 ?>
 <div class="container-form">
     <h1 class="title">Persoon Registeren</h1>
-    <form class="form" action="/register" method="post">
+    <form class="form go-right" action="/register" method="post">
         <div class="input-icon">
             <i class="fas fa-user-circle icon"></i>
             <input type="text" name="name" placeholder="Gebruiksnaam" class="input" required autofocus>
@@ -35,9 +35,11 @@ $registration->register();
         </div>
         <div class="input-icon">
             <input class="input" type="number" name="height" placeholder="Lengte" required>
+            <label class="label_waarde">CM</label>
         </div>
         <div class="input-icon">
             <input class="input" type="number" name="weight" placeholder="Gewicht" required>
+            <label class="label_waarde">KG</label>
         </div>
         <div class="input-icon">
             <input class="input" type="date" name="geboortedatum" placeholder="Geboortedatum" required>

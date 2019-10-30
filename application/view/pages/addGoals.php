@@ -25,15 +25,25 @@ if(isset($_SESSION['addgoalsuccess']))
     </div>
     <form action="/addgoal" method="post" class="form">
         <div class="form-group">
-            <label>Taak</label>
+            <h4>Doel</h4>
             <input type="text" name="task" class="input" placeholder="Rennen.." required autofocus>
+            <h4 class="input-icon">In welke waarden ?</h4>
+        <div class="input-icon">
+            <select class="input" name="goal_quantity" id="goal_quantity" required>
+                <option value="Keer">Keer</option>         
+                <option value="KM">KM</option> 
+                <option value="M">M</option> 
+                <option value="sets van 5">Set van 5</option> 
+                <option value="sets van 10">Set van 10</option> 
+            </select>
+        </div>
         </div>
          <div class="form-group">
-            <label>Hoeveel</label>
+            <h4>Hoeveel</h4>
             <input type="number" name="task_quantity" class="input" placeholder="0" required>
         </div>
         <button type="submit" name="submit" class="button sendBtn" >Verstuur</button>
         <a href="/seegoal" class="button backBtn">Terug</a>
     </form>
-
 </div>
+<script src="assets/js/addgoal.js"></script>    
