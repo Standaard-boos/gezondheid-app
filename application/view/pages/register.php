@@ -46,6 +46,7 @@ $registration->register();
         </div>
         <h4>Beweging</h4>
         <select name="movement" class="input">
+            <option value="" selected disabled hidden>Kies uit...</option>
             <option value="1.2">geen tot weinig lichaams beweging</option>
             <option value="1.375">lichte lichaamsbeweging</option>
             <option value="1.55">normale lichaamsbeweging</option>
@@ -54,11 +55,13 @@ $registration->register();
         </select>
         <h4>Gebruikt u drugs?</h4>
         <select name="drugs" class="input">
+            <option value="" selected disabled hidden>Kies uit...</option>
             <option value="1">Ja</option>
             <option value="0">Nee</option>
         </select>
         <h4>Rookt u?</h4>
         <select name="roker" class="input">
+            <option value="" selected disabled hidden>Kies uit...</option>
             <option value="1">Ja</option>
             <option value="0">Nee</option>
         </select>
