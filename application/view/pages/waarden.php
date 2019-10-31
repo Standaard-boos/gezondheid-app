@@ -50,9 +50,9 @@ if(isset($_SESSION['gewichtopslaan']))
             <input class="input" id="drink" type="text" name="drink" placeholder="Drinken">
             <i class="fas fa-utensils fa-lg icon"></i>
         </div>
-        <h2 class="sub-title">Waardes in grammen</h2>
-        <input class="input" id="calorieen" type="text" name="calorieen" placeholder="Calorieen">
-        <input class="input" id="koolydraten" type="text" name="koolhydraten" placeholder="Koolydraten">
+        <h2 class="sub-title">Waardes in grammen en ml</h2>
+        <!-- <input class="input" id="koolydraten" type="text" name="koolhydraten" placeholder="Koolydraten"> -->
+        <input class="input" id="calorie" type="text" name="calorie" placeholder="calorieën">
         <input class="input" id="eiwitten" type="text" name="eiwitten" placeholder="Eiwitten">
         <input class="input" id="vetten" type="text" name="vetten" placeholder="Vetten ">
         <input class="input" id="suikers" type="text" name="suikers" placeholder="Suikers">
@@ -68,4 +68,5 @@ if(isset($_SESSION['gewichtopslaan']))
     </form>
 </div>
 
+<script src="assets/js/waarden.js"></script>        
 

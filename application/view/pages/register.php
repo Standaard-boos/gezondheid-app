@@ -30,19 +30,39 @@ $registration->register();
             <label>Geslacht</label>
         </div>
         <div class="input-icon">
-            <input class="" type="radio" name="gender" value="male"> Male
+            <input class="" type="radio" name="gender" value="male" required> Male
             <input class="" type="radio" name="gender" value="female"> Female
         </div>
         <div class="input-icon">
-            <input class="input" type="text" name="height" placeholder="Lengte" required>
+            <input class="input" type="number" name="height" placeholder="Lengte" required>
         </div>
         <div class="input-icon">
-            <input class="input" type="text" name="weight" placeholder="Gewicht" required>
+            <input class="input" type="number" name="weight" placeholder="Gewicht" required>
         </div>
         <div class="input-icon">
             <input class="input" type="date" name="geboortedatum" placeholder="Geboortedatum" required>
         </div>
-        <button class="button" name="submit" type="submit">Registreer</button>
+        <h4>Beweging</h4>
+        <select name="movement">
+            <option value="1.2">geen tot weinig lichaams beweging</option>
+            <option value="1.375">lichte lichaamsbeweging</option>
+            <option value="1.55">normale lichaamsbeweging</option>
+            <option value="1.725">zware lichaamsbeweging</option>
+            <option value="1.9">hele zware lichaamsbeweging</option>
+        </select>
+        <h4>Gebruikt u drugs?</h4>
+        <select name="drugs">
+            <option value="1">Ja</option>
+            <option value="0">Nee</option>
+        </select>
+        <h4>Rookt u?</h4>
+        <select name="roker">
+            <option value="1">Ja</option>
+            <option value="0">Nee</option>
+        </select>
+        
+        <br>
+        <button class="button" id="register_check" name="submit" type="submit">Registreer</button>
         <br>
         <br>
         <div class="input-icon">
@@ -52,3 +72,4 @@ $registration->register();
 </div>
 
 <script src="assets/js/script.js"></script>        
+<script src="assets/js/form.js"></script>

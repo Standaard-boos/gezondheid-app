@@ -18,7 +18,6 @@
                 $user_id = $_SESSION['user_id'];
                 @$food = $this->db->query("SELECT ID, name FROM food WHERE name = '$foodpost' ")->fetchAll();
                 @$drink = $this->db->query("SELECT ID, name FROM drinks WHERE name = '$drinkpost'")->fetchAll();
-//                var_dump($food);
 
                 $timestamp = date('Y-m-d');
                 if (@$food != NULL) {
@@ -38,8 +37,9 @@
                     $fat = htmlspecialchars($_POST['vetten']);
                     $sugars = htmlspecialchars($_POST['suikers']);
                     $salt = htmlspecialchars($_POST['zout']);
-                    $this->db->query('INSERT INTO food (name, fat, sugar, salt, protein)
-                                VALUES (?, ?, ?, ?, ?)', $food, $fat, $sugars, $salt, $protein);
+                    $calorie = htmlspecialchars($_POST['calorie']);
+                    $this->db->query('INSERT INTO food (name, fat, sugar, salt, protein,calorie)
+                                VALUES (?, ?, ?, ?, ?,?)', $food, $fat, $sugars, $salt, $protein, $calorie);
                     $foodID = $this->db->query('SELECT ID FROM `food` ORDER BY ID DESC')->fetchAll();
                     $this->db->query('INSERT INTO user_food (user_ID, food_id, gram, date)
                                 VALUES (?, ?, ?, ?)', $user_id, $foodID[0], 100, $timestamp);
@@ -50,9 +50,9 @@
                     $protein = htmlspecialchars($_POST['eiwitten']);
                     $fat = htmlspecialchars($_POST['vetten']);
                     $sugars = htmlspecialchars($_POST['suikers']);
-                    $salt = htmlspecialchars($_POST['zout']);
-                    $this->db->query('INSERT INTO drinks (name, fat, sugar, protine)
-                                VALUES (?, ?, ?, ?)', $food, $fat, $sugars, $protein);
+                    $calorie = htmlspecialchars($_POST['calorie']);
+                    $this->db->query('INSERT INTO drinks (name, fat, sugar, protine, calorie)
+                                VALUES (?, ?, ?, ?, ?)', $food, $fat, $sugars, $protein, $calorie);
                     $foodID = $this->db->query('SELECT ID FROM `drinks` ORDER BY ID DESC')->fetchAll();
                     $this->db->query('INSERT INTO user_drinks (user_id, drinken_id, milliliters, date)
                                 VALUES (?, ?, ?, ?)', $user_id, $foodID[0], 100, $timestamp);
