@@ -63,8 +63,10 @@ if(isset($_SESSION['gewichtopslaan']))
 <div class="container-form">
     <form class="form"  action="/waarden" method="post">
         <h2 class="sub-title" style="margin-bottom: 20px">Gewicht vandaag?</h2>
-        <input class="input" id="gewicht" type="number" name="gewicht" placeholder="Gewicht">
-             <label class="label_waarde">KG</label>
+        <div class="input-icon">
+            <input class="input" id="gewicht" type="number" name="gewicht" placeholder="Gewicht">
+            <label class="icon-right">KG</label>
+        </div>
         <button class="button" id="submit_gegevens" name="submit" type="submit">Gegevens toevoegen</button>
     </form>
 </div>

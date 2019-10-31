@@ -46,11 +46,11 @@ if(isset($_SESSION['registered']))
         </div>
         <div class="input-icon">
             <input class="input" type="number" name="height" placeholder="Lengte" required>
-          <label class="label_waarde">CM</label>
+          <label class="icon-right">CM</label>
         </div>
         <div class="input-icon">
             <input class="input" type="number" name="weight" placeholder="Gewicht" required>
-          <label class="label_waarde">KG</label>
+          <label class="icon-right">KG</label>
         </div>
         <div class="input-icon">
             <input class="input" type="date" name="geboortedatum" placeholder="Geboortedatum" required>
