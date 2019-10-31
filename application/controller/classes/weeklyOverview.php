@@ -30,8 +30,8 @@ class WeeklyOverview {
             FROM `user_food`
             INNER JOIN food
             ON user_food.food_id = food.ID
-            WHERE user_ID = 13
-            AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()') ->fetchAll();
+            WHERE user_ID = ?
+            AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
 
         foreach ($nutrition as $key) {
             @$totalKcal += $key['calorie'];
@@ -42,13 +42,16 @@ class WeeklyOverview {
             FROM `user_food`
             INNER JOIN drinks
             ON user_food.food_id = drinks.ID
-            WHERE user_ID = 13
-            AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()') ->fetchAll();
+            WHERE user_ID = ?
+            AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
         foreach ($drinks as $key) {
             @$totalKcal += $key['calorie'];
         }
-
-        return number_format((float)$totalKcal/7, 2, '.', '');
+        if(@$totalKcal <= 0 ){
+            return ": Je hebt nog niks gegeten of gedronken";
+        }else{
+            return number_format((float)$totalKcal/7, 2, '.', '');
+        }
     }
     function bmr(){
         if ($this->gender == 'male') {
