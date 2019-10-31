@@ -16,20 +16,23 @@ $class = new WeeklyOverview($db);
         <div class="flex-container">
             <div class="content content-small">
                 <h3>Gemiddelde aantal calorieën de laatste 7 dagen:</h3>
-                <h2><?= $class->getNutritionData()?></h2> 
+                <h2><?= $class->getNutritionData()?></h2>
+                <i class="far fa-calendar-alt fa-6x icon" style="color: green;"></i>
             </div>
             <div class="content content-small">
                 <h3>Caloriebehoefte:</h3>
-                <h2><?= $class->bmr() ?></h2> 
+                <h2><?= $class->bmr() ?></h2>
+                <i class="fas fa-utensils fa-6x icon" style="color: green;"></i>
             </div>
             <div class="content content-small">
                 <h3>BMI (Body mass index):</h3>
-                <h2><?= $class->bmi(); ?></h2> 
+                <h2><?= $class->bmi(); ?></h2>
+                <i class="fas fa-child fa-6x icon" style="color: green"></i>
             </div>
             <div class="content content-small">
                 <h3>Weeklijkse Doelen:</h3>
                 <h2>Aantal afgeronde doelen: <?= $class->goalsAchieved()?> </h2>
-                <h2></h2> 
+                <i class="fas fa-bullseye fa-6x icon" style="color: green;"></i>
             </div>
         </div>
     </div>
