@@ -32,13 +32,13 @@
                 if($stmtCheck->fetch() > 0){
                     $stmtCheck->close();
                     // insert in user_goals table
-                    $this->db->query('INSERT INTO user_goals (user_id, date, goal_waarden, task_quantity,user_progress,goals_id, display)
-                        VALUES (?,?,?,?,?,?,?)',$this->user_id, $timestamp, $sets,  $this->task_quantity, 0, $this->task, 1);
+                    $this->db->query('INSERT INTO user_goals (user_id, date, task_quantity,user_progress,goals_id, display)
+                        VALUES (?,?,?,?,?,?)',$this->user_id, $timestamp,  $this->task_quantity, 0, $this->task, 1);
                     $_SESSION['addgoalsuccess'] = 'Doel toegevoegd!';
                 }else{
                     // // insert in user_goals table
-                    $this->db->query('INSERT INTO user_goals (user_id, date, goal_waarden, task_quantity,user_progress,goals_id, display)
-                        VALUES (?,?,?,?,?,?,?)',$this->user_id, $timestamp, $sets,  $this->task_quantity, 0, $this->task, 1);
+                    $this->db->query('INSERT INTO user_goals (user_id, date, task_quantity,user_progress,goals_id, display)
+                        VALUES (?,?,?,?,?,?)',$this->user_id, $timestamp,  $this->task_quantity, 0, $this->task, 1);
 
                     $_SESSION['addgoalsuccess'] = 'Doel toegevoegd!';
 
