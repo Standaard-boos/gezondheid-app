@@ -26,6 +26,11 @@ $class = new WeeklyOverview($db);
                 <h3>BMI (Body mass index):</h3>
                 <h2><?= $class->bmi(); ?></h2> 
             </div>
+            <div class="content content-small">
+                <h3>Weeklijkse Doelen:</h3>
+                <h2>Aantal afgeronde doelen: <?= $class->goalsAchieved()?> </h2>
+                <h2></h2> 
+            </div>
         </div>
     </div>
 </div>

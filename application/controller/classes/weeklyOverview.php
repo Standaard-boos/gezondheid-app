@@ -7,6 +7,7 @@ class WeeklyOverview {
     private $gender;
     private $movement;
     private $result;
+    public $countGoals;
 
     function __construct($db){
         $this->db = $db;
@@ -72,6 +73,26 @@ class WeeklyOverview {
      
         // weight lose -500 kcal 
         // weight gain +500 kcal
+    }
+
+    function goalsAchieved(){
+        $counter = 0;
+        $goals = $this->db->query(
+            'SELECT user_goals.task_quantity,user_goals.user_progress,goals.task
+            FROM user_goals
+            INNER JOIN goals
+            ON user_goals.goals_id = goals.id
+            WHERE user_ID = ?
+            AND DATE(user_goals.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
+
+        foreach ($goals as $key) {
+            if($key['task_quantity'] <= $key['user_progress'])
+            {
+                $counter++;
+            }
+        }
+        $this->countGoals = count($goals);
+        return $counter . '/' . $this->countGoals;
     }
 
     function bmi(){
