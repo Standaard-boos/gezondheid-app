@@ -35,9 +35,11 @@ $registration->register();
         </div>
         <div class="input-icon">
             <input class="input" type="text" name="height" placeholder="Lengte" required>
+            <label class="label_waarde">CM</label>
         </div>
         <div class="input-icon">
             <input class="input" type="text" name="weight" placeholder="Gewicht" required>
+            <label class="label_waarde">KG</label>
         </div>
         <div class="input-icon">
             <input class="input" type="date" name="geboortedatum" placeholder="Geboortedatum" required>
