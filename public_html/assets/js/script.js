@@ -1,6 +1,7 @@
 
 window.onload = function (){
     this.seePass()
+    this.chooseMoreDrugs()
 }
 
 function seePass(){
@@ -22,3 +23,16 @@ function seePass(){
     });
 }
 
+function chooseMoreDrugs(){
+    const input_quantity = document.querySelector('.input_quantity')
+    const select_quantity = document.querySelector('#select_quantity')
+
+    select_quantity.addEventListener('change', () => {
+        if (select_quantity.options[select_quantity.selectedIndex].value == 'more'){
+            input_quantity.type = 'number'
+        }else{
+            input_quantity.type = 'hidden'
+        }
+
+    })
+}

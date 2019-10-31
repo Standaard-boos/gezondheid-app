@@ -63,13 +63,18 @@ if(!isset($_SESSION['user_id'])) {
         break;
 
       case '/dash' :
-        $title = "Login";
+        $title = "overzicht";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/dashboard.php';
         break;
     
       case '/seegoal':
         $title = "seegoal";
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/seegoal.php';
+        break;
+
+      case '/weekly-overview':
+        $title = "weekly overview";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/weeklyOverview.php';
         break;
 
       case '/addgoal':
@@ -118,7 +123,7 @@ if(!isset($_SESSION['user_id'])) {
     //404      
       default:
         $title = 'Sorry page not found!';
-        $pageContent = dirname(__DIR__, 1) . '/views/error/404.php';
+        $pageContent = dirname(__DIR__, 1) . '/application/view/error/404.php';
         break;
   }
 }

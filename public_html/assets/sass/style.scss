@@ -9,12 +9,16 @@
 @import "layout/fonts";
 @import "layout/basic";
 @import "layout/inputelements";
+@import "layout/menu";
 
 //pages
 @import "layout/form";
 @import "layout/login/login";
 @import "layout/register/register";
 @import "layout/dashboard";
+
+//error
+@import "layout/error/404";
 @import "layout/add_goal";
 @import "layout/waarden";
 @import "layout/see_goals";
