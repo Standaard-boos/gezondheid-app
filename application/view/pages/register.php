@@ -45,7 +45,7 @@ $registration->register();
             <input class="input" type="date" name="geboortedatum" placeholder="Geboortedatum" required>
         </div>
         <h4>Beweging</h4>
-        <select name="movement">
+        <select name="movement" class="input">
             <option value="1.2">geen tot weinig lichaams beweging</option>
             <option value="1.375">lichte lichaamsbeweging</option>
             <option value="1.55">normale lichaamsbeweging</option>
@@ -53,12 +53,12 @@ $registration->register();
             <option value="1.9">hele zware lichaamsbeweging</option>
         </select>
         <h4>Gebruikt u drugs?</h4>
-        <select name="drugs">
+        <select name="drugs" class="input">
             <option value="1">Ja</option>
             <option value="0">Nee</option>
         </select>
         <h4>Rookt u?</h4>
-        <select name="roker">
+        <select name="roker" class="input">
             <option value="1">Ja</option>
             <option value="0">Nee</option>
         </select>
