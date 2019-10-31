@@ -26,6 +26,7 @@ class registration
             $genderUser = htmlspecialchars($_POST['gender']);
             $rook = htmlspecialchars($_POST['roker']);
             $drugs = htmlspecialchars($_POST['drugs']);
+            $movement = htmlspecialchars($_POST['movement']);
 
             $error = 0;
 
@@ -40,8 +41,9 @@ class registration
 
             if ($error === 0)
             {
-                $this->db->query('INSERT INTO user (username, password, email, geboortedatum, height, gender, roker, drugs)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?)', $username, $hashed_password, $email, $ageUser, $heightUser, $genderUser, $rook, $drugs);
+                $this->db->query('INSERT INTO user (username, password, email, geboortedatum, height, gender, roker, drugs, movement)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)', $username, $hashed_password, $email, $ageUser, $heightUser,
+                                 $genderUser, $rook, $drugs, $movement);
 
                 $account = $this->db->query('SELECT ID FROM user WHERE username = ? AND email = ?', $username, $email)->fetchArray();
                 $UserID = $account['ID'];
