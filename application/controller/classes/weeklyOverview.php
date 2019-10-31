@@ -32,23 +32,23 @@ class WeeklyOverview {
             ON user_food.food_id = food.ID
             WHERE user_ID = ?
             AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
-
         foreach ($nutrition as $key) {
             @$totalKcal += $key['calorie'];
         }
 
         $drinks = $this->db->query(
             'SELECT drinks.name, drinks.fat, drinks.sugar, drinks.calorie, drinks.protine 
-            FROM `user_food`
+            FROM `user_drinks`
             INNER JOIN drinks
-            ON user_food.food_id = drinks.ID
+            ON user_drinks.drinken_id = drinks.ID
             WHERE user_ID = ?
-            AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
+            AND DATE(user_drinks.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
         foreach ($drinks as $key) {
             @$totalKcal += $key['calorie'];
         }
+
         if(@$totalKcal <= 0 ){
-            return ": Je hebt nog niks gegeten of gedronken";
+            return "Je hebt nog niks gegeten of gedronken";
         }else{
             return number_format((float)$totalKcal/7, 2, '.', '');
         }
