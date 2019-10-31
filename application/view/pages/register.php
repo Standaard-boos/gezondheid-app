@@ -41,8 +41,8 @@ if(isset($_SESSION['registered']))
             <label>Geslacht</label>
         </div>
         <div class="input-icon">
-            <input class="" type="radio" name="gender" value="male" required> Male
-            <input class="" type="radio" name="gender" value="female"> Female
+            <input class="" type="radio" name="gender" value="male" required> Man
+            <input class="" type="radio" name="gender" value="female"> Vrouw
         </div>
         <div class="input-icon">
             <input class="input" type="number" name="height" placeholder="Lengte" required>
