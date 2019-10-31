@@ -37,11 +37,9 @@ $registration->register();
         <div class="input-icon">
             <input class="input" type="number" name="height" placeholder="Lengte" required>
             <label class="label_waarde">CM</label>
-            <label class="label_waarde">CM</label>
         </div>
         <div class="input-icon">
             <input class="input" type="number" name="weight" placeholder="Gewicht" required>
-            <label class="label_waarde">KG</label>
             <label class="label_waarde">KG</label>
         </div>
         <div class="input-icon">
