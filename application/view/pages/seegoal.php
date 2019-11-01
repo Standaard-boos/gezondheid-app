@@ -1,5 +1,5 @@
 <?php
-require_once(ROOT . '/../application/controller/classes/SeeGoals.php');
+require_once(ROOT . '/../application/controller/classes/seeGoals.php');
 require_once(ROOT . '/../application/config/connection.php');
 ?>
 
