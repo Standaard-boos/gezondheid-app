@@ -7,6 +7,7 @@ class WeeklyOverview {
     private $gender;
     private $movement;
     private $result;
+    public $countGoals;
 
     function __construct($db){
         $this->db = $db;
@@ -30,25 +31,28 @@ class WeeklyOverview {
             FROM `user_food`
             INNER JOIN food
             ON user_food.food_id = food.ID
-            WHERE user_ID = 13
-            AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()') ->fetchAll();
-
+            WHERE user_ID = ?
+            AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
         foreach ($nutrition as $key) {
             @$totalKcal += $key['calorie'];
         }
 
         $drinks = $this->db->query(
             'SELECT drinks.name, drinks.fat, drinks.sugar, drinks.calorie, drinks.protine 
-            FROM `user_food`
+            FROM `user_drinks`
             INNER JOIN drinks
-            ON user_food.food_id = drinks.ID
-            WHERE user_ID = 13
-            AND DATE(user_food.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()') ->fetchAll();
+            ON user_drinks.drinken_id = drinks.ID
+            WHERE user_ID = ?
+            AND DATE(user_drinks.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
         foreach ($drinks as $key) {
             @$totalKcal += $key['calorie'];
         }
 
-        return number_format((float)$totalKcal/7, 2, '.', '');
+        if(@$totalKcal <= 0 ){
+            return "Je hebt nog niks gegeten of gedronken";
+        }else{
+            return number_format((float)$totalKcal/7, 2, '.', '');
+        }
     }
     function bmr(){
         if ($this->gender == 'male') {
@@ -69,6 +73,26 @@ class WeeklyOverview {
      
         // weight lose -500 kcal 
         // weight gain +500 kcal
+    }
+
+    function goalsAchieved(){
+        $counter = 0;
+        $goals = $this->db->query(
+            'SELECT user_goals.task_quantity,user_goals.user_progress,goals.task
+            FROM user_goals
+            INNER JOIN goals
+            ON user_goals.goals_id = goals.id
+            WHERE user_ID = ?
+            AND DATE(user_goals.date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id']) ->fetchAll();
+
+        foreach ($goals as $key) {
+            if($key['task_quantity'] <= $key['user_progress'])
+            {
+                $counter++;
+            }
+        }
+        $this->countGoals = count($goals);
+        return $counter . '/' . $this->countGoals;
     }
 
     function bmi(){

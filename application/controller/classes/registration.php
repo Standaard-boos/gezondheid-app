@@ -50,6 +50,7 @@ class registration
 
                 $this->db->query('INSERT INTO weight (user_id, weights)
                                 VALUES (?, ?)', $UserID, $weightUser);
+                $_SESSION['registered'] = 'Uw bent geregistreerd!';
             }
         }
     }

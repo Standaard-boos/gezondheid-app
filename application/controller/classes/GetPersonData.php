@@ -40,7 +40,7 @@ class GetPersonData
         }
 
         $gewicht = $user_info['weights'] . " KG";
-        $lengte = $_SESSION['height'] . " M";
+        $lengte = $_SESSION['height'] . " CM";
         $leeftijd = $age . " jaar";
         $roken = $isRoker;
         $drugs = $isDrugUser;

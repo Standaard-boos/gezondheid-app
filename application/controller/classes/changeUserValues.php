@@ -35,7 +35,7 @@ class changeUserValues
                     if ($passwordUser != $verifiedPassword)
                     {
                         $error = 1;
-                        $alert = '<div class="alertsuccess">
+                        $alert = '<div class="alert">
                           <span class="closebtn">&times;</span>
                           Uw huidige wachtwoord klopt niet!
                           </div>';
@@ -43,7 +43,7 @@ class changeUserValues
 
                     if ($emailUser == '' || $passwordUser == '' || $newPasswordUser == '')
                     {
-                        $alert = '<div class="alertsuccess">
+                        $alert = '<div class="alert">
                           <span class="closebtn">&times;</span>
                           Velden mogen niet leeg zijn!
                           </div>';

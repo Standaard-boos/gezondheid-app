@@ -5,6 +5,7 @@
     $goal = new AddGoals($db);
     $goal->addGoal();
 
+    $user = $db->query('SELECT * FROM goals')->fetchAll();
 ?>
 <?php @include('../application/view/components/menu.php')?>
 <?php
@@ -18,6 +19,7 @@ if(isset($_SESSION['addgoalsuccess']))
     unset($_SESSION['addgoalsuccess']);
 }
 ?>
+
 <div class="container-add-goal">
     <div class="container-header">
         <a href="/dash"><i class="fas fa-arrow-left fa-2x" id="goBackArrow"></i> &nbsp</a>
@@ -26,9 +28,15 @@ if(isset($_SESSION['addgoalsuccess']))
     <form action="/addgoal" method="post" class="form">
         <div class="form-group">
             <label>Taak</label>
-            <input type="text" name="task" class="input" placeholder="Rennen.." required autofocus>
+            <br>
+            <select class="input" name="task">
+            <?php foreach($user as $taak){?>
+                <option value="<?php echo $taak['id'] ?>"><?php echo $taak['task'] ?>  (<?php echo $taak['sets'] ?>)</option>;
+            <?php  }?>
+            </select>
+<!--            <input type="text" name="task" class="input" placeholder="Rennen.." required autofocus>-->
         </div>
-         <div class="form-group">
+        <div class="form-group">
             <label>Hoeveel</label>
             <input type="number" name="task_quantity" class="input" placeholder="0" required>
         </div>
