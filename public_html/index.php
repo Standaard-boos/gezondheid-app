@@ -98,6 +98,11 @@ if(!isset($_SESSION['user_id'])) {
         $pageContent = dirname(__DIR__, 1) . '/application/view/pages/drugs.php';
         break;
 
+      case '/arbeidsomstandigheden' :
+        $title = "Arbeidsomstandigheden";
+        $pageContent = dirname(__DIR__, 1) . '/application/view/pages/arbeidsomstandigheden.php';
+        break;
+
     // Ajax calls
       case '/ajax' :
         include dirname(__DIR__, 1) . '/application/controller/function/ajaxHandler.php';
