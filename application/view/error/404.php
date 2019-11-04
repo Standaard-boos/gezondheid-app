@@ -1,3 +1,4 @@
+<?php if (isset($_SESSION['user_id'])) @include('../application/view/components/menu.php') ?>
 <div class="fourbody">
     <div class="box">
         <div class="box__ghost">
