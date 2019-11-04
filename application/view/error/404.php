@@ -1,4 +1,3 @@
-<?php @include('../application/view/components/menu.php')?>
 <div class="fourbody">
     <div class="box">
         <div class="box__ghost">
