@@ -6,6 +6,7 @@
         <a class="items" href="/seegoal"><li>Doelen</li></a>
         <a class="items" href="/waarden"><li>Voedsel, drinken en gewicht</li></a>
         <a class="items" href="/drugs"><li>Drugs</li></a>
+        <a class="items" href="/sleep"><li>Slapen</li></a>
         <a class="items" href="/x"><li>Logout</li></a>
     </ul>
 </div>
