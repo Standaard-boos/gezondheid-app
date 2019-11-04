@@ -92,6 +92,11 @@ if(!isset($_SESSION['user_id'])) {
           $title = "Uw gegevens";
           $pageContent = dirname(__DIR__, 1) . '/application/view/pages/user.php';
           break;
+
+      case '/alcohol' :
+          $title = "Uw gegevens";
+          $pageContent = dirname(__DIR__, 1) . '/application/view/pages/alcohol.php';
+          break;
       
       case '/drugs' :
         $title = "Drugs";
