@@ -1,6 +1,6 @@
 <?php 
 
-class Sleepx
+class Sleep
 {
     protected $sleep;
     protected $sleep_date;
