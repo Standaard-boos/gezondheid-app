@@ -5,7 +5,6 @@ require_once(ROOT . '/../application/config/connection.php');
 
 $class = new WeeklyOverview($db);
 
-echo $class->sleepPoints()
 ?>
 
 <div class="dash-container">
