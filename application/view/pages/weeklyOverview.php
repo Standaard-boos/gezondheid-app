@@ -34,6 +34,11 @@ $class = new WeeklyOverview($db);
                 <h2>Aantal afgeronde doelen: <?= $class->goalsAchieved()?> </h2>
                 <i class="fas fa-bullseye fa-6x icon" style="color: green;"></i>
             </div>
+            <div class="content content-small">
+                <h3>Uw werkscore:</h3>
+                <?= $class->scoreWerk()?>
+                <i class="fas fa-briefcase fa-6x icon" style="color: green;"></i>
+            </div>
         </div>
     </div>
 </div>
