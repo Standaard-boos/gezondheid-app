@@ -76,7 +76,7 @@
 
       .content-small {
         @extend %content;
-        min-height: 150px;
+        height: 150px;
         text-align: center;
 
         @include respond-to('phablet') {
