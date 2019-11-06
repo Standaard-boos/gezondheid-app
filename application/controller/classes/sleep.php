@@ -1,6 +1,6 @@
 <?php 
 
-class Sleepx
+class Sleep
 {
     protected $sleep;
     protected $sleep_date;
@@ -9,7 +9,7 @@ class Sleepx
         $this->addToSleepTable();
     }
 
-    function addToSleepTable()
+    private function addToSleepTable()
     {
         if(isset($_POST['submit']))
         {
