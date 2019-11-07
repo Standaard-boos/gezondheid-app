@@ -74,6 +74,14 @@
         @extend %content;
       }
 
+      .meter {
+        p { 
+          font-weight: 500;
+          text-align: center;
+          font-size: 1.2em;
+        }
+      }
+
       .content-small {
         @extend %content;
         height: 150px;
