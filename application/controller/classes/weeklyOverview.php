@@ -140,4 +140,84 @@ class WeeklyOverview {
         }
         return $this->result;
     }
+
+    function sleepPoints(){
+       $hourSleep = [];
+       $points;
+       $hourSleepUser = 0;
+        $age = $_SESSION['user_age'];
+        switch ($age) {
+            case($age >= 1 && $age < 3):
+                $hourSleep[0] = 12;
+                $hourSleep[1] = 14;
+                break;
+            case($age >= 3 && $age < 5):
+                $hourSleep[0] = 11;
+                $hourSleep[1] = 13;
+                break;
+            case($age >= 5 && $age < 10):
+                $hourSleep[0] = 11;
+                $hourSleep[1] = 9.75;
+                break;
+            case($age >= 10 && $age < 13):
+                $hourSleep[0] = 9.75;
+                $hourSleep[1] = 9.25;
+                break;
+            case($age >= 14 && $age < 15):
+                $hourSleep[0] = 9.25;
+                $hourSleep[1] = 9.75;
+                break;
+            case($age >= 15 && $age < 16):
+                $hourSleep[0] = 8.75;
+                $hourSleep[1] = 9.75;
+                break;
+            case($age >= 16 && $age < 18):
+                $hourSleep[0] = 8.50;
+                $hourSleep[1] = 9.50;
+                break;
+            case($age >= 18):
+                $hourSleep[0] = 7;
+                $hourSleep[1] = 9;
+                break;
+            default:return;
+        }
+         $sleep = $this->db->query(
+            'SELECT AVG(sleep.hour_sleep) 
+            FROM sleep
+            INNER JOIN user_sleep 
+            ON sleep.id = user_sleep.sleep_id
+            WHERE user_sleep.user_id = ?
+            AND DATE(user_sleep.sleep_date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id'])->fetchArray();
+
+        $hourSleepUser = round($sleep['AVG(sleep.hour_sleep)']);
+        switch (true) {
+            //als user goed slaapt
+            case($hourSleepUser >= $hourSleep[0]  && $hourSleepUser <= $hourSleep[1] ):
+                $points = 10;
+                break;
+            // als user 2 uur meer slaapt of 2 uur te weinig slaapt dan gemiddeld
+            case($hourSleepUser >= $hourSleep[0]-1  && $hourSleepUser <= $hourSleep[1]+1 ):
+                $points = 8;
+                break;
+
+            case($hourSleepUser >= $hourSleep[0]-2  && $hourSleepUser <= $hourSleep[1]+2 ):
+                $points = 6;
+                break;
+
+            case($hourSleepUser >= $hourSleep[0]-3  && $hourSleepUser <= $hourSleep[1]+3 ):
+                $points = 4;
+                break;
+
+            case($hourSleepUser >= $hourSleep[0]-4  && $hourSleepUser <= $hourSleep[1]+4):
+                $points = 2;
+                break;
+
+            case($hourSleepUser >= $hourSleep[0]-5  || $hourSleepUser <= $hourSleep[1]+5):
+                $points = 0;
+                break;
+
+            default:return "Geen data gevonden";
+        }
+        return $points;
+    }
 }

@@ -9,7 +9,7 @@ class Sleep
         $this->addToSleepTable();
     }
 
-    function addToSleepTable()
+    private function addToSleepTable()
     {
         if(isset($_POST['submit']))
         {
