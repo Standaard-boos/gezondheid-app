@@ -35,6 +35,11 @@ $class = new WeeklyOverview($db);
                 <i class="fas fa-bullseye fa-6x icon" style="color: green;"></i>
             </div>
             <div class="content content-small">
+                <h3>Uw alcohol gebruik:</h3>
+                <?= $class->alcoholUsage()?>
+                <i class="fas fa-wine-glass-alt fa-6x icon" style="color: green;"></i>
+            </div>
+            <div class="content content-small">
                 <h3>Uw werkscore:</h3>
                 <?= $class->scoreWerk()?>
                 <i class="fas fa-briefcase fa-6x icon" style="color: green;"></i>

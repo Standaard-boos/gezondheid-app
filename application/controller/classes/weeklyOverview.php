@@ -142,4 +142,36 @@ class WeeklyOverview {
         }
         return $this->result;
     }
+    function alcoholUsage()
+    {
+        $user = $_SESSION['user_id'];
+        $score = $this->db->query('SELECT alcohol_type_id, quantity FROM alcohol WHERE user_id = ?', $user)->fetchAll();
+
+        $total = 0;
+        foreach ($score as $key => $value)
+        {
+            if (is_array($value))
+            {
+                $total += $value['quantity'];
+            }
+        }
+        //echo $total;
+
+        if ($total >= 10)
+        {
+            $alcoholUsage = '<br> <p style="color: red">U heeft teveel alcohol gedronken! Pas op en stop met drinken voor deze week.</p>';
+        } elseif ($total >= 5)
+        {
+            $alcoholUsage = '<br> <p style="color: #ff5b2e">U heeft aardig wat alcohol gedronken in deze week, neem niet teveel en ga zeker niet auto rijden!</p>';
+        } elseif ($total >= 2)
+        {
+            $alcoholUsage = '<br> <p style="color: #cdc800">U heeft wat alcohol op in deze week. Doe voorzichtig. </p>';
+        } elseif ($total <= 0)
+        {
+            $alcoholUsage = '<br> <p style="color: green">U heeft geen alcohol op in deze week. Goed bezig!</p>';
+        }
+
+        //$total is de totaal aan alcohol dat je hebt gedronken (quantity dus)
+        return $alcoholUsage;
+    }
 }
