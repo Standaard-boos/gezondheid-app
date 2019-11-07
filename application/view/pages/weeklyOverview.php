@@ -5,7 +5,6 @@ require_once(ROOT . '/../application/config/connection.php');
 
 $class = new WeeklyOverview($db);
 
-
 ?>
 
 <div class="dash-container">
@@ -23,6 +22,11 @@ $class = new WeeklyOverview($db);
                 <h3>Caloriebehoefte:</h3>
                 <h2><?= $class->bmr() ?></h2>
                 <i class="fas fa-utensils fa-6x icon" style="color: green;"></i>
+            </div>
+            <div class="content content-small">
+                <h3>Uw Slaapscore:</h3>
+                <?= $class->sleepPoints()?>
+                <i class="fas fa-bed fa-6x icon" style="color: green;"></i>
             </div>
             <div class="content content-small">
                 <h3>BMI (Body mass index):</h3>
