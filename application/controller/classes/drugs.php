@@ -1,20 +1,23 @@
 <?php
 
-class Drugs{
-    
-    public function __construct($db){
+class Drugs
+{
+
+    public function __construct($db)
+    {
         $this->db = $db;
     }
 
-    public function addDrugs(){
+    public function addDrugs()
+    {
         if (empty($_SESSION['token'])) {
             $_SESSION['token'] = bin2hex(random_bytes(32));
         }
         $token = $_SESSION['token'];
-        
+
         if (!empty($_POST['token'])) {
             if (hash_equals($_SESSION['token'], $_POST['token'])) {
-                if(isset($_POST['submit'])){
+                if (isset($_POST['submit'])) {
                     $drug_type = $this->db->connection->real_escape_string($_POST['drug_types']) ?? 'not defined';
                     $quantity = $this->db->connection->real_escape_string($_POST['quantity']) ?? 'not defined';
                     $input_quantity = $this->db->connection->real_escape_string($_POST['input_quantity']) ?? 'not defined';
@@ -76,22 +79,66 @@ class Drugs{
                             return "Geen data gevonden";
                     }
 
-                    if(!EMPTY($_POST['input_quantity'])){
+                    if (!EMPTY($_POST['input_quantity'])) {
                         $newPoints = $points * $_POST['input_quantity'];
-                    }
-                    else{
+                    } else {
                         $newPoints = $points * $_POST['quantity'];
                     }
 
                     if (empty($input_quantity)) {
                         $this->db->query('INSERT INTO drugs (user_id,drugs_type_id,quantity,drugspoints,created_at)
-                        VALUES (?,?,?,?,?)',$_SESSION['user_id'],$drugtype, $quantity, $newPoints, $timestamp);
-                    }else{
+                        VALUES (?,?,?,?,?)', $_SESSION['user_id'], $drugtype, $quantity, $newPoints, $timestamp);
+                    } else {
                         $this->db->query('INSERT INTO drugs (user_id,drugs_type_id,quantity,drugspoints)
-                        VALUES (?,?,?,?)',$_SESSION['user_id'],$drugtype, $input_quantity, $newPoints);
+                        VALUES (?,?,?,?)', $_SESSION['user_id'], $drugtype, $input_quantity, $newPoints);
                     }
                 }
             }
-        }   
+        }
+    }
+
+    public function calculateDrugs()
+    {
+        $drugscore = $this->db->query('SELECT drugspoints FROM drugs WHERE user_id = ?', $_SESSION['user_id'])->fetchAll();
+
+        foreach ($drugscore as $drug) {
+            $newDrugscore[] = array_sum($drug);
+            $newscore = array_sum($newDrugscore);
+        }
+
+        switch (true) {
+            case($newscore >= 10):
+                $score = 1;
+                break;
+            case($newscore == 9):
+                $score = 1;
+                break;
+            case($newscore == 8):
+                $score = 2;
+                break;
+            case($newscore == 7):
+                $score = 3;
+                break;
+            case($newscore == 6):
+                $score = 4;
+                break;
+            case($newscore == 5):
+                $score = 5;
+                break;
+            case($newscore == 4):
+                $score = 6;
+                break;
+            case($newscore == 3):
+                $score = 7;
+                break;
+            case($newscore == 2):
+                $score = 8;
+                break;
+            case($newscore == 1):
+                $score = 9;
+                break;
+        }
+
+        return $score;
     }
 }
