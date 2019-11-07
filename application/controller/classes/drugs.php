@@ -94,6 +94,7 @@ class Drugs
                     }
                 }
             }
+
         }
     }
 
@@ -105,6 +106,10 @@ class Drugs
             $newDrugscore[] = array_sum($drug);
             $newscore = array_sum($newDrugscore);
         }
+
+
+        $score = 10;
+
 
         switch (true) {
             case($newscore >= 10):
@@ -140,5 +145,6 @@ class Drugs
         }
 
         return $score;
+
     }
 }
