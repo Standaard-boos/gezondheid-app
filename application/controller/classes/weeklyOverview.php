@@ -102,18 +102,18 @@ class WeeklyOverview {
         WHERE user_id = ?
         ORDER by date DESC LIMIT 1 ', $user)->fetchArray();
 
-        $score['werktotalscore'] = '';
+            $score['werktotalscore'] =  $score['werktotalscore'] ?? '';
+            $checkscore = $score['werktotalscore'];
+            if($checkscore > 8 ){
+            return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt zo hoog u bent uiterst tevreden.";
+            }elseif($checkscore > 5){
+            return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> boven het gemmidelde u heeft naar eigen zeggen een goede werkgever.";
+            }elseif($checkscore > 3){
+            return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt in een gevaarlijke zone laat dit weten en probeer een oplossing te vinden.";
+            }elseif($checkscore > 1){
+            return  $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt in een positie waarbij u zo snel mogelijk contact moet opnemen om dit te verbeteren. ";
+            }
 
-        $checkscore = $score['werktotalscore'];
-        if($checkscore > 8 ){
-           return $_SESSION['addScoreWerk'] = "<h2>Score: $score[werktotalscore]</h2> <p>ligt zo hoog u bent uiterst tevreden.</p>";
-        }elseif($checkscore > 5){
-           return $_SESSION['addScoreWerk'] = "<h2>Score: $score[werktotalscore]</h2> <p>boven het gemmidelde u heeft naar eigen zeggen een goede werkgever.</p>";
-        }elseif($checkscore > 3){
-           return $_SESSION['addScoreWerk'] = "<h2>Score: $score[werktotalscore]</h2> <p>ligt in een gevaarlijke zone laat dit weten en probeer een oplossing te vinden.</p>";
-        }elseif($checkscore > 1){
-           return  $_SESSION['addScoreWerk'] = "<h2>Score: $score[werktotalscore]</h2> <p>ligt in een positie waarbij u zo snel mogelijk contact moet opnemen om dit te verbeteren.</p>";
-        }
     }
 
     function bmi(){
