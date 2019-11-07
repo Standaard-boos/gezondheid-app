@@ -40,6 +40,7 @@ class SeeGoals{
         }
 
         public function SeeGoal(){
+            $title = "";
             $bool = true;
             $goal = $this->db->query('SELECT UG.ID, G.task, G.sets, UG.task_quantity, UG.user_progress, UG.user_id, UG.display FROM goals AS G
             INNER JOIN user_goals as UG ON G.id = UG.goals_id
@@ -47,7 +48,7 @@ class SeeGoals{
             foreach($goal as $row){
                 if ($row["task_quantity"] <= $row['user_progress']) {
                     $achieved = '<input class="input goal" type="number" style="border-color: green; text-align: center" readonly min="0" name="goal" 
-                                placeholder="Uw doel is behaald!"></div>\'';
+                                placeholder="Uw doel is behaald!"></div>';
                 }
                 else{
                     if ($row['user_progress'] !== 0 ) {
