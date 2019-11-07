@@ -23,7 +23,7 @@ class WeeklyOverview {
         $this->height = $user['height'];
         $this->movement = $user['movement'];
         $this->age = date_diff(date_create($user['geboortedatum']), date_create('now'))->y;
-       
+
     }
     function getNutritionData(){
         $nutrition = $this->db->query(
@@ -66,11 +66,11 @@ class WeeklyOverview {
             $r = 1.8496 * $this->height;
             $h = 4.6756 * $this->age;
             $bmr = 655.0955  + ($x) + ($r) - ($h);
-            return number_format((float)$bmr * $this->movement,2, '.', ''); 
+            return number_format((float)$bmr * $this->movement,2, '.', '');
         }else{
             return;
         }
-     
+
         // weight lose -500 kcal 
         // weight gain +500 kcal
     }
@@ -102,49 +102,84 @@ class WeeklyOverview {
         WHERE user_id = ?
         ORDER by date DESC LIMIT 1 ', $user)->fetchArray();
 
+        $score['werktotalscore'] =  $score['werktotalscore'] ?? '';
         $checkscore = $score['werktotalscore'];
         if($checkscore > 8 ){
-           return $_SESSION['addScoreWerk'] = "<h2>Score: $score[werktotalscore]</h2> <p>ligt zo hoog u bent uiterst tevreden.</p>";
+            return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt zo hoog u bent uiterst tevreden.";
         }elseif($checkscore > 5){
-           return $_SESSION['addScoreWerk'] = "<h2>Score: $score[werktotalscore]</h2> <p>boven het gemmidelde u heeft naar eigen zeggen een goede werkgever.</p>";
+            return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> boven het gemmidelde u heeft naar eigen zeggen een goede werkgever.";
         }elseif($checkscore > 3){
-           return $_SESSION['addScoreWerk'] = "<h2>Score: $score[werktotalscore]</h2> <p>ligt in een gevaarlijke zone laat dit weten en probeer een oplossing te vinden.</p>";
+            return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt in een gevaarlijke zone laat dit weten en probeer een oplossing te vinden.";
         }elseif($checkscore > 1){
-           return  $_SESSION['addScoreWerk'] = "<h2>Score: $score[werktotalscore]</h2> <p>ligt in een positie waarbij u zo snel mogelijk contact moet opnemen om dit te verbeteren.</p>";
+            return  $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt in een positie waarbij u zo snel mogelijk contact moet opnemen om dit te verbeteren. ";
         }
+
     }
 
     function bmi(){
         // formule: gewicht / (lengte in meter * lengte in meter)
         $bmi = $this->weight / ($this->height/100 * $this->height/100);
-        
+
         switch(true)
         {
             case($bmi < 18.5):
-            $this->result = "Ondergewicht";
-            break;
+                $this->result = "Ondergewicht";
+                break;
 
             case($bmi > 18.5 && $bmi < 25):
-            $this->result = "Gezond gewicht";
-            break;
+                $this->result = "Gezond gewicht";
+                break;
 
             case($bmi > 25 && $bmi < 30):
-            $this->result = "Overgewicht";
-            break;
+                $this->result = "Overgewicht";
+                break;
 
             case($bmi > 30):
-            $this->result = "Zwaar overgewicht";
-            break; 
+                $this->result = "Zwaar overgewicht";
+                break;
 
             default: return;
         }
         return $this->result;
     }
+    function alcoholUsage()
+    {
+        $user = $_SESSION['user_id'];
+        $score = $this->db->query('SELECT alcohol_type_id, quantity FROM alcohol WHERE user_id = ?', $user)->fetchAll();
 
-    function sleepPoints(){
-       $hourSleep = [];
-       $points;
-       $hourSleepUser = 0;
+        $total = 0;
+        foreach ($score as $key => $value)
+        {
+            if (is_array($value))
+            {
+                $total += $value['quantity'];
+            }
+        }
+        //echo $total;
+
+        if ($total >= 10)
+        {
+            $alcoholUsage = '<br> <p style="color: red">U heeft teveel alcohol gedronken! Pas op en stop met drinken voor deze week.</p>';
+        } elseif ($total >= 5)
+        {
+            $alcoholUsage = '<br> <p style="color: #ff5b2e">U heeft aardig wat alcohol gedronken in deze week, neem niet teveel en ga zeker niet auto rijden!</p>';
+        } elseif ($total >= 2)
+        {
+            $alcoholUsage = '<br> <p style="color: #cdc800">U heeft wat alcohol op in deze week. Doe voorzichtig. </p>';
+        } elseif ($total <= 0)
+        {
+            $alcoholUsage = '<br> <p style="color: green">U heeft geen alcohol op in deze week. Goed bezig!</p>';
+        }
+
+        //$total is de totaal aan alcohol dat je hebt gedronken (quantity dus)
+        return $alcoholUsage;
+    }
+
+    function sleepPoints()
+    {
+        $hourSleep = [];
+        $points;
+        $hourSleepUser = 0;
         $age = $_SESSION['user_age'];
         switch ($age) {
             case($age >= 1 && $age < 3):
@@ -179,9 +214,10 @@ class WeeklyOverview {
                 $hourSleep[0] = 7;
                 $hourSleep[1] = 9;
                 break;
-            default:return;
+            default:
+                return;
         }
-         $sleep = $this->db->query(
+        $sleep = $this->db->query(
             'SELECT AVG(sleep.hour_sleep) 
             FROM sleep
             INNER JOIN user_sleep 
@@ -192,31 +228,32 @@ class WeeklyOverview {
         $hourSleepUser = round($sleep['AVG(sleep.hour_sleep)']);
         switch (true) {
             //als user goed slaapt
-            case($hourSleepUser >= $hourSleep[0]  && $hourSleepUser <= $hourSleep[1] ):
+            case($hourSleepUser >= $hourSleep[0] && $hourSleepUser <= $hourSleep[1]):
                 $points = 10;
                 break;
             // als user 2 uur meer slaapt of 2 uur te weinig slaapt dan gemiddeld
-            case($hourSleepUser >= $hourSleep[0]-1  && $hourSleepUser <= $hourSleep[1]+1 ):
+            case($hourSleepUser >= $hourSleep[0] - 1 && $hourSleepUser <= $hourSleep[1] + 1):
                 $points = 8;
                 break;
 
-            case($hourSleepUser >= $hourSleep[0]-2  && $hourSleepUser <= $hourSleep[1]+2 ):
+            case($hourSleepUser >= $hourSleep[0] - 2 && $hourSleepUser <= $hourSleep[1] + 2):
                 $points = 6;
                 break;
 
-            case($hourSleepUser >= $hourSleep[0]-3  && $hourSleepUser <= $hourSleep[1]+3 ):
+            case($hourSleepUser >= $hourSleep[0] - 3 && $hourSleepUser <= $hourSleep[1] + 3):
                 $points = 4;
                 break;
 
-            case($hourSleepUser >= $hourSleep[0]-4  && $hourSleepUser <= $hourSleep[1]+4):
+            case($hourSleepUser >= $hourSleep[0] - 4 && $hourSleepUser <= $hourSleep[1] + 4):
                 $points = 2;
                 break;
 
-            case($hourSleepUser >= $hourSleep[0]-5  || $hourSleepUser <= $hourSleep[1]+5):
+            case($hourSleepUser >= $hourSleep[0] - 5 || $hourSleepUser <= $hourSleep[1] + 5):
                 $points = 0;
                 break;
 
-            default:return "Geen data gevonden";
+            default:
+                return "Geen data gevonden";
         }
         return $points;
     }
