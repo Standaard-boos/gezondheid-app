@@ -38,7 +38,7 @@ if(isset($_SESSION['loginError']))
             <div class="flex-container">
                 <div class="content">
                     <div>
-                        <canvas id="foo"></canvas>
+                        <canvas id="foo" width="400" height="350"></canvas>
                         <p id="gezondText"></p>
                     </div>
                 </div>
