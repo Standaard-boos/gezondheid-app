@@ -11,7 +11,7 @@
         }
         public function GetScoreWork(){
 
-            $Conn = new Connection();
+
 
             $score = $this->db->query('SELECT werktotalscore FROM user_werkscore 
                     WHERE user_id = ?
