@@ -102,6 +102,8 @@ class WeeklyOverview {
         WHERE user_id = ?
         ORDER by date DESC LIMIT 1 ', $user)->fetchArray();
 
+        $score['werktotalscore'] = '';
+
         $checkscore = $score['werktotalscore'];
         if($checkscore > 8 ){
            return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt zo hoog u bent uiterst tevreden.";
