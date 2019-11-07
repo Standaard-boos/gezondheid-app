@@ -24,8 +24,12 @@ $class = new WeeklyOverview($db);
                 <i class="fas fa-utensils fa-6x icon" style="color: green;"></i>
             </div>
             <div class="content content-small">
-                <h3>Uw Slaapscore:</h3>
-                <?= $class->sleepPoints()?>
+                <?php $class->sleepPoints();  ?>
+                <h3>Slaap advies: </h3><br>  
+                <h4 style="color: <?= $class->sleepColor ?>">
+                    <?=$class->sleepAdvice ?>
+                </h4>
+
                 <i class="fas fa-bed fa-6x icon" style="color: green;"></i>
             </div>
             <div class="content content-small">
