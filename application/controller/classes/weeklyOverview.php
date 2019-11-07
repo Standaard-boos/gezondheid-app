@@ -23,7 +23,7 @@ class WeeklyOverview {
         $this->height = $user['height'];
         $this->movement = $user['movement'];
         $this->age = date_diff(date_create($user['geboortedatum']), date_create('now'))->y;
-       
+
     }
     function getNutritionData(){
         $nutrition = $this->db->query(
@@ -66,11 +66,11 @@ class WeeklyOverview {
             $r = 1.8496 * $this->height;
             $h = 4.6756 * $this->age;
             $bmr = 655.0955  + ($x) + ($r) - ($h);
-            return number_format((float)$bmr * $this->movement,2, '.', ''); 
+            return number_format((float)$bmr * $this->movement,2, '.', '');
         }else{
             return;
         }
-     
+
         // weight lose -500 kcal 
         // weight gain +500 kcal
     }
@@ -102,41 +102,41 @@ class WeeklyOverview {
         WHERE user_id = ?
         ORDER by date DESC LIMIT 1 ', $user)->fetchArray();
 
-            $score['werktotalscore'] =  $score['werktotalscore'] ?? '';
-            $checkscore = $score['werktotalscore'];
-            if($checkscore > 8 ){
+        $score['werktotalscore'] =  $score['werktotalscore'] ?? '';
+        $checkscore = $score['werktotalscore'];
+        if($checkscore > 8 ){
             return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt zo hoog u bent uiterst tevreden.";
-            }elseif($checkscore > 5){
+        }elseif($checkscore > 5){
             return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> boven het gemmidelde u heeft naar eigen zeggen een goede werkgever.";
-            }elseif($checkscore > 3){
+        }elseif($checkscore > 3){
             return $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt in een gevaarlijke zone laat dit weten en probeer een oplossing te vinden.";
-            }elseif($checkscore > 1){
+        }elseif($checkscore > 1){
             return  $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt in een positie waarbij u zo snel mogelijk contact moet opnemen om dit te verbeteren. ";
-            }
+        }
 
     }
 
     function bmi(){
         // formule: gewicht / (lengte in meter * lengte in meter)
         $bmi = $this->weight / ($this->height/100 * $this->height/100);
-        
+
         switch(true)
         {
             case($bmi < 18.5):
-            $this->result = "Ondergewicht";
-            break;
+                $this->result = "Ondergewicht";
+                break;
 
             case($bmi > 18.5 && $bmi < 25):
-            $this->result = "Gezond gewicht";
-            break;
+                $this->result = "Gezond gewicht";
+                break;
 
             case($bmi > 25 && $bmi < 30):
-            $this->result = "Overgewicht";
-            break;
+                $this->result = "Overgewicht";
+                break;
 
             case($bmi > 30):
-            $this->result = "Zwaar overgewicht";
-            break; 
+                $this->result = "Zwaar overgewicht";
+                break;
 
             default: return;
         }
