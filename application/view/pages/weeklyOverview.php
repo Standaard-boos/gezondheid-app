@@ -24,6 +24,11 @@ $class = new WeeklyOverview($db);
                 <i class="fas fa-utensils fa-6x icon" style="color: green;"></i>
             </div>
             <div class="content content-small">
+                <h3>Uw Slaapscore:</h3>
+                <?= $class->sleepPoints()?>
+                <i class="fas fa-bed fa-6x icon" style="color: green;"></i>
+            </div>
+            <div class="content content-small">
                 <h3>BMI (Body mass index):</h3>
                 <h2><?= $class->bmi(); ?></h2>
                 <i class="fas fa-child fa-6x icon" style="color: green"></i>
@@ -32,6 +37,11 @@ $class = new WeeklyOverview($db);
                 <h3>Weeklijkse Doelen:</h3>
                 <h2>Aantal afgeronde doelen: <?= $class->goalsAchieved()?> </h2>
                 <i class="fas fa-bullseye fa-6x icon" style="color: green;"></i>
+            </div>
+            <div class="content content-small">
+                <h3>Uw alcohol gebruik:</h3>
+                <?= $class->alcoholUsage()?>
+                <i class="fas fa-wine-glass-alt fa-6x icon" style="color: green;"></i>
             </div>
             <div class="content content-small">
                 <h3>Uw werkscore:</h3>
