@@ -50,8 +50,6 @@ class Scores
                     }elseif($checkscore > 1){
                         $_SESSION['addScoreWerk'] = "Uw score voor uw werk  $score[werktotalscore]<br> ligt in een positie waarbij u zo snel mogelijk contact moet opnemen om dit te verbeteren. ";
                     }
-                    
-        
                 }
         }
 }
