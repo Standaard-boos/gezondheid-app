@@ -16,6 +16,7 @@ if(isset($_SESSION['loginError']))
     </div>
     <?php
     unset($_SESSION['loginError']);
+
 }
 ?>
 

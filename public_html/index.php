@@ -127,6 +127,10 @@ if(!isset($_SESSION['user_id'])) {
         include dirname(__DIR__, 1) . '/application/controller/function/GetChartDataHandler.php';
         die();
         break;
+      case '/api/gauge':
+          include dirname(__DIR__, 1) . '/application/controller/function/scoreHandler.php';
+          die();
+          break;
 
     //logout
       case '/x' :
