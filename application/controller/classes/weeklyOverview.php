@@ -8,6 +8,9 @@ class WeeklyOverview {
     private $movement;
     private $result;
     public $countGoals;
+    public $sleepAdvice;
+    public $sleepColor;
+    public $avgSleep;
 
     function __construct($db){
         $this->db = $db;
@@ -178,7 +181,7 @@ class WeeklyOverview {
     function sleepPoints()
     {
         $hourSleep = [];
-        $points;
+        $points = 10;
         $hourSleepUser = 0;
         $age = $_SESSION['user_age'];
         switch ($age) {
@@ -224,36 +227,61 @@ class WeeklyOverview {
             ON sleep.id = user_sleep.sleep_id
             WHERE user_sleep.user_id = ?
             AND DATE(user_sleep.sleep_date) BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()', $_SESSION['user_id'])->fetchArray();
-
+        
         $hourSleepUser = round($sleep['AVG(sleep.hour_sleep)']);
-        switch (true) {
-            //als user goed slaapt
-            case($hourSleepUser >= $hourSleep[0] && $hourSleepUser <= $hourSleep[1]):
-                $points = 10;
-                break;
-            // als user 2 uur meer slaapt of 2 uur te weinig slaapt dan gemiddeld
-            case($hourSleepUser >= $hourSleep[0] - 1 && $hourSleepUser <= $hourSleep[1] + 1):
-                $points = 8;
-                break;
+        $this->avgSleep = $hourSleepUser;
+        if($hourSleepUser > 0)
+        {
 
-            case($hourSleepUser >= $hourSleep[0] - 2 && $hourSleepUser <= $hourSleep[1] + 2):
-                $points = 6;
-                break;
-
-            case($hourSleepUser >= $hourSleep[0] - 3 && $hourSleepUser <= $hourSleep[1] + 3):
-                $points = 4;
-                break;
-
-            case($hourSleepUser >= $hourSleep[0] - 4 && $hourSleepUser <= $hourSleep[1] + 4):
-                $points = 2;
-                break;
-
-            case($hourSleepUser >= $hourSleep[0] - 5 || $hourSleepUser <= $hourSleep[1] + 5):
-                $points = 0;
-                break;
-
-            default:
-                return "Geen data gevonden";
+            switch (true) {
+                //als user goed slaapt
+                case($hourSleepUser >= $hourSleep[0] && $hourSleepUser <= $hourSleep[1]):
+                    $points = 10;
+                    $this->sleepAdvice = "Je slaapt heel goed ga zo door!";
+                    $this->sleepColor = "green";
+                    break;
+                // als user 2 uur meer slaapt of 2 uur te weinig slaapt dan gemiddeld
+                case($hourSleepUser >= $hourSleep[0] - 1 && $hourSleepUser <= $hourSleep[1] + 1):
+                    $points = 8;
+                    $this->sleepAdvice = "Je slaapt goed maar probeer tussen " . $hourSleep[0] 
+                    . " en " . $hourSleep[1] . " uur te slapen";
+                    $this->sleepColor = "green";
+    
+                    break;
+    
+                case($hourSleepUser >= $hourSleep[0] - 2 && $hourSleepUser <= $hourSleep[1] + 2):
+                    $points = 6;
+                    $this->sleepAdvice = "Je slaapt niet zo goed  probeer tussen " . $hourSleep[0] 
+                    . " en " . $hourSleep[1] . " uur te slapen";
+                    $this->sleepColor = "orange";
+                    break;
+    
+                case($hourSleepUser >= $hourSleep[0] - 3 && $hourSleepUser <= $hourSleep[1] + 3):
+                    $points = 4;
+                    $this->sleepAdvice = "Je slaapt slecht probeer tussen " . $hourSleep[0] 
+                    . " en " . $hourSleep[1] . " uur te slapen";
+                    $this->sleepColor = "orange";
+                    break;
+    
+                case($hourSleepUser >= $hourSleep[0] - 4 && $hourSleepUser <= $hourSleep[1] + 4):
+                    $points = 2;
+                    $this->sleepAdvice = "Je slaapt heel slecht probeer tussen " . $hourSleep[0] 
+                    . " en " . $hourSleep[1] . " uur te slapen";
+                    $this->sleepColor = "red";
+                    break;
+    
+                case($hourSleepUser >= $hourSleep[0] - 5 || $hourSleepUser <= $hourSleep[1] + 5):
+                    $points = 0;
+                    $this->sleepAdvice = "Je slaapt heel slecht probeer tussen " . $hourSleep[0] 
+                    . " en " . $hourSleep[1] . " uur te slapen";
+                    $this->sleepColor = "red";
+                    break;
+    
+                default:
+                    return "Geen data gevonden";
+            }
+        }else{
+            $this->sleepAdvice = "Je hebt nog geen data ingevuld";
         }
         return $points;
     }
