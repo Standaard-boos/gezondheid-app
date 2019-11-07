@@ -36,7 +36,7 @@ $class = new WeeklyOverview($db);
             </div>
             <div class="content content-small">
                 <h3>Uw werkscore:</h3>
-                <h2>Score: <?= $class->scoreWerk()?> </h2>
+                <?= $class->scoreWerk()?>
                 <i class="fas fa-briefcase fa-6x icon" style="color: green;"></i>
             </div>
         </div>

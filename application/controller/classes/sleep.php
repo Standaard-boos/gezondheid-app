@@ -1,6 +1,6 @@
 <?php 
 
-class Sleepx
+class Sleep
 {
     protected $sleep;
     protected $sleep_date;
@@ -22,7 +22,7 @@ class Sleepx
 
             if($this->sleep > 0 && $this->sleep <= 24 && $this->sleep_date <=  $timestamp)
             {
-                if($checkDate['sleep_date'] == $this->sleep_date)
+                if(@$checkDate['sleep_date'] == $this->sleep_date)
                 {
                     if(count($check) > 0 )
                     { 

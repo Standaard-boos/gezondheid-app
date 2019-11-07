@@ -113,6 +113,7 @@ class WeeklyOverview {
             }elseif($checkscore > 1){
             return  $_SESSION['addScoreWerk'] = "$score[werktotalscore]<br> ligt in een positie waarbij u zo snel mogelijk contact moet opnemen om dit te verbeteren. ";
             }
+
     }
 
     function bmi(){
