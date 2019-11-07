@@ -16,6 +16,7 @@ if(isset($_SESSION['loginError']))
     </div>
     <?php
     unset($_SESSION['loginError']);
+
 }
 ?>
 
@@ -35,6 +36,12 @@ if(isset($_SESSION['loginError']))
                     </div>
             </div>
             <div class="flex-container">
+                <div class="content meter">
+                    <div>
+                        <canvas id="foo" width="400" height="350"></canvas>
+                        <p id="gezondText"></p>
+                    </div>
+                </div>
                 <div class="content">
                     <b><p style="text-align: center">Uw gewicht de afgelopen periode</p></b>
                     <div class="hidden" id="chart1">
@@ -55,4 +62,6 @@ if(isset($_SESSION['loginError']))
     </div>
 
     <script src="assets/js/chart.js"></script>
+    <script src="assets/js/gauge.min.js"></script>
+    <script src="assets/js/metertje.js"></script>
 
